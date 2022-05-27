@@ -112,7 +112,7 @@
         $sql_select = mysqli_query($con, "SELECT *  FROM tbl_giaodich ,tbl_sanpham, tbl_donhang WHERE tbl_giaodich.sanpham_id = tbl_sanpham.sanpham_id AND tbl_giaodich.magiaodich = '$magiaodich' AND tbl_donhang.khachhang_id = tbl_giaodich.khachhang_id and tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id");
       ?>
         <table class="table table-bordered">
-          <tr style="text-align:center" class="table-tr ">
+          <tr style="text-align:center">
             <th>STT</th>
             <th>Mã giao dịch</th>
             <th>Mã hàng</th>

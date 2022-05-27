@@ -36,14 +36,11 @@ h3.heading-tittle::before {
 		font-size: 21px;
 		color: #fff;
 }
-.btn-buy button.button-cart {
+button.button-cart {
 		/* width: 45px; */
-		padding: 12px 30px;
+		padding: 12px 60px;
     height: 45px;
-    background: #ec008c;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to left, #fc6767, #ec008c);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to left, #fc6767, #ec008c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background-color: #3494E6;
 		color: #fff;
     border: none;
     outline: none;

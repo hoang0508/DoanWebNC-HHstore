@@ -232,7 +232,7 @@
 										</a>
 									</li>
 									<li>
-										<a class="icon ig" href="#">
+										<a class="icon gp" href="#">
 											<i class="fa fa-instagram"></i>
 										</a>
 									</li>
@@ -274,7 +274,7 @@
 		$sql_product = mysqli_query($con, "SELECT * FROM tbl_donhang ORDER BY tbl_donhang.donhang_id DESC");
 		$row_sanpham = mysqli_fetch_array($sql_product);
 		if($row_sanpham['huydon'] == 2) {
-				return ;
+
 		}
 		else {
 			$sanpham_id = $row_sanpham['donhang_id'];

@@ -20,7 +20,7 @@
 			<!-- //tittle heading -->
 			<div class="row">
 				<!-- product left -->
-				<div class="agileinfo-ads-display col-lg-12">
+				<div class="agileinfo-ads-display col-lg-9">
 					<div class="wrapper">
 						<!-- first section -->
 							<div class="row">
@@ -30,7 +30,7 @@
               }
               ?>
          <div class="col-md-12 mt-3">
-      <h4 class="mb-3 bg-title">Danh sách đơn hàng</h4>
+      <h4 class="mb-3">Danh sách đơn hàng</h4>
       
       <?php
         if(isset($_GET['khachhang'])){
@@ -41,7 +41,7 @@
         $sql_select = mysqli_query($con, "SELECT * FROM tbl_giaodich ,tbl_sanpham WHERE tbl_giaodich.sanpham_id = tbl_sanpham.sanpham_id AND tbl_giaodich.khachhang_id = '$id_khach'  GROUP BY tbl_giaodich.magiaodich DESC");
       ?>
         <table class="table table-bordered">
-          <tr style="text-align:center" class="table-tr">
+          <tr style="text-align:center">
             <th>STT</th>
             <th>Mã giao dịch</th>
             <th>Ngày đặt</th>
@@ -101,7 +101,7 @@
         </table>
       </div>
       <div class="col-md-12">
-      <h4 class="mb-3  bg-title">Chi tiết đơn hàng</h4>
+      <h4 class="mb-3">Chi tiết đơn hàng</h4>
       
       <?php
         if(isset($_GET['magiaodich'])){
@@ -112,7 +112,7 @@
         $sql_select = mysqli_query($con, "SELECT *  FROM tbl_giaodich ,tbl_sanpham, tbl_donhang WHERE tbl_giaodich.sanpham_id = tbl_sanpham.sanpham_id AND tbl_giaodich.magiaodich = '$magiaodich' AND tbl_donhang.khachhang_id = tbl_giaodich.khachhang_id and tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id");
       ?>
         <table class="table table-bordered">
-          <tr style="text-align:center" class="table-tr ">
+          <tr style="text-align:center">
             <th>STT</th>
             <th>Mã giao dịch</th>
             <th>Mã hàng</th>

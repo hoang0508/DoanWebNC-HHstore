@@ -36,7 +36,7 @@ h3.heading-tittle::before {
 		font-size: 21px;
 		color: #fff;
 }
-.btn-buy button.button-cart {
+button.button-cart {
 		/* width: 45px; */
 		padding: 12px 30px;
     height: 45px;

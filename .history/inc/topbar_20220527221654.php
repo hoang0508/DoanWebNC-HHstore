@@ -284,16 +284,10 @@
 								<form action="#" method="post" class="last">
 									<input type="hidden" name="cmd" value="_cart">
 									<input type="hidden" name="display" value="1">
-									<a href="?quanly=giohang">
-										<button class="btn w3view-cart" type="button" name="submit" value="">
-											<i class="fas fa-cart-arrow-down cart-down"></i>
-											<?php
-													$sql_giohang = mysqli_query($con,  "SELECT COUNT(*) AS 'gh' FROM `tbl_giohang`");
-													$row_gh = mysqli_fetch_array($sql_giohang)
-											?>						
-												<span class="cart-number" ><?php echo $row_gh['gh']  ?></span>
-										</button>
-									</a>
+									<button class="btn w3view-cart" type="submit" name="submit" value="">
+										<i class="fas fa-cart-arrow-down cart-down"></i>
+										<span class="cart-number">0</span>
+									</button>
 								</form>
 							</div>
 						</div>

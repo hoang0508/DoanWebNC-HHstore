@@ -58,23 +58,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../css/reset2.css">
+    <link rel="stylesheet" href="../css/reset.css">
     <!-- <link rel="stylesheet" href="../css/fixedh.css"> -->
     <link rel="stylesheet" href="./css/styleh1.css">
 </head>
 
 <style>
   /* Admin Login */
-  body {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #2193b0;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  }
   form {
     max-width: 500px;
     width: 100%;
@@ -146,7 +136,10 @@
   }
 </style>
 
-<body>
+<body style="background: #2193b0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #6dd5ed, #2193b0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #6dd5ed, #2193b0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
     <form action="" method="POST" class="login__create">
         <h3>Đăng nhập Admin</h3>
         <div class="form-login">

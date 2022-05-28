@@ -1,0 +1,13 @@
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 0 15px;
+}
+
+.form-group--product {
+  width: 50%;
+}
+
+.form-group--product .form-input {
+  padding: 10px;
+}

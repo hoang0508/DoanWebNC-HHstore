@@ -77,12 +77,8 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/clendar.css">
-    <link rel="stylesheet" href="./css/styleh5.css">
-    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/styleh1.css">
     
   </head>
   <body class="nav-md">

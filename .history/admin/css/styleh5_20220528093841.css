@@ -44,10 +44,12 @@ body::-webkit-scrollbar-thumb {
 span.number-txt {
   font-size: 30px;
   text-align: end;
+  font-weight: 600;
 }
 
 span.txt-desc {
   font-size: 20px;
+  font-weight: 500;
 }
 
 span {

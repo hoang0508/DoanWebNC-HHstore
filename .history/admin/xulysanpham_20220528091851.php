@@ -93,7 +93,7 @@
    <script type="text/javascript">
   tinymce.init({
     selector: '.tiniText',
-    width: 1100,
+    width: 1170,
     height: 300,
     plugins: [
       'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
@@ -110,8 +110,7 @@
     content_css: 'css/content.css'
   });
   </script>
-  <link rel="stylesheet" href="./css/styleForm1.css">
-  <link rel="stylesheet" href="./css/font.css">
+  <link rel="stylesheet" href="./css/styleForm.css">
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -150,7 +149,6 @@
               <img src="../uploads/<?php echo $row_capnhat['sanpham_img1'] ?>" width="80" height="80" alt="">
               <br><br>
               <label for="">Hình ảnh 3</label>
-
               <input type="file" name="hinhanh3" class="form-control">
               <br>
               <img src="../uploads/<?php echo $row_capnhat['sanpham_img2'] ?>" width="80" height="80" alt="">

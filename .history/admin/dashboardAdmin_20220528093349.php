@@ -82,7 +82,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/clendar.css">
     <link rel="stylesheet" href="./css/styleh5.css">
-    <link rel="stylesheet" href="./css/font.css">
     
   </head>
   <body class="nav-md">

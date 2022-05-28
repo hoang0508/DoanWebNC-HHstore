@@ -18,8 +18,7 @@
     $chitiet = $_POST['chitiet'];
     $mota = $_POST['mota'];
     $path = '../uploads/';
-    $active = $_POST['active-hot'];
-    $sql_insert_product = mysqli_query($con, "INSERT INTO `tbl_sanpham`(`sanpham_name`, `sanpham_chitiet`, `sanpham_mota`, `sanpham_gia`, `sanpham_giakhuyenmai`,`sanpham_soluong`, `sanpham_image`, `sanpham_img1`, `sanpham_img2`, `category_id`, `sanpham_noibat_hot`) VALUES ('$tensanpham','$chitiet','$mota','$gia','$giakhuyenmai','$soluong','$hinhanh1', '$hinhanh2', '$hinhanh3','$danhmuc', $active)");
+    $sql_insert_product = mysqli_query($con, "INSERT INTO `tbl_sanpham`(`sanpham_name`, `sanpham_chitiet`, `sanpham_mota`, `sanpham_gia`, `sanpham_giakhuyenmai`,`sanpham_soluong`, `sanpham_image`, `sanpham_img1`, `sanpham_img2`, `category_id`) VALUES ('$tensanpham','$chitiet','$mota','$gia','$giakhuyenmai','$soluong','$hinhanh1', '$hinhanh2', '$hinhanh3','$danhmuc')");
     move_uploaded_file($hinhanh_tmp1, $path.$hinhanh1);
     move_uploaded_file($hinhanh_tmp2, $path.$hinhanh2);
     move_uploaded_file($hinhanh_tmp3, $path.$hinhanh3);
@@ -234,7 +233,8 @@
                 </div>
                 <div class="form-group--product" >
                 <label for="" class="form-label">SP nổi bật or hot</label>
-                  <select name="active-hot" id="" class="form-control form-input">
+                  
+                  <select name="active-hot" id="" class="form-control">
                   <option value="1">ACTIVE</option>
                   <option value="0">HOT</option>
                   </select>

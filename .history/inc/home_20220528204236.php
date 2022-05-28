@@ -224,22 +224,7 @@ button.subscrice-btn {
 	<div class="ads-grid py-sm-5 py-4">
 		<div class="container py-xl-4 py-lg-2">
 				<div class="product-active">
-					<h3 class="heading-tittle">Sản phẩm nổi bật</h3>
-					<div class="product-active--list">
-						<?php
-							$sql_product_active = mysqli_query($con,"SELECT * FROM tbl_sanpham WHERE sanpham_noibat_hot = '1' ORDER BY sanpham_id DESC");
-							while($row_product_active = mysqli_fetch_array(	$sql_product_active)) {
-						 ?>
-						<div class="product-active--item">
-							<div class="product-active--image">
-								<img src="images/<?php echo $row_product_active['sanpham_image']?>" alt="">
-							</div>
-							<p class="product-active--name"></p>
-						</div>
-						<?php
-							}
-						?>
-					</div>
+
 				</div>
 			<!-- tittle heading -->
 			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
@@ -466,7 +451,7 @@ button.subscrice-btn {
 							<div class="box-scroll">
 								<div class="scroll">
 								<?php
-									$sql_product_sidebar = mysqli_query($con, "SELECT * FROM tbl_sanpham WHERE sanpham_noibat_hot = '0'  ORDER BY sanpham_id DESC");
+									$sql_product_sidebar = mysqli_query($con, "SELECT * FROM tbl_sanpham WHERE sanpham_hot = '0'  ORDER BY sanpham_id DESC");
 									while($row_sanpham_sidebar = mysqli_fetch_array($sql_product_sidebar)) {
 									?>
 									<div class="row">
@@ -491,7 +476,7 @@ button.subscrice-btn {
 					<section id="subscrice">
         <div class="subscrice-container container d-grid d-flex">
             <div class="subscrice-container__data" data-aos="zoom-in-up" data-aos-easing="ease-in-out" data-aos-delay="300">
-                <h3 class="data-subtitle subscrice-title ">Flash Sale <br> 50% OFF.</h3>
+                <h3 class="data-subtitle subscrice-title ">Subscrice And Sale <br> 50% OFF.</h3>
                 <div class="countdown d-flex ">
                     <div id="day">NA</div>
                     <div id="hour">NA</div>

@@ -466,7 +466,7 @@ button.subscrice-btn {
 							<div class="box-scroll">
 								<div class="scroll">
 								<?php
-									$sql_product_sidebar = mysqli_query($con, "SELECT * FROM tbl_sanpham WHERE sanpham_noibat_hot = '0'  ORDER BY sanpham_id DESC");
+									$sql_product_sidebar = mysqli_query($con, "SELECT * FROM tbl_sanpham WHERE sanpham_hot = '0'  ORDER BY sanpham_id DESC");
 									while($row_sanpham_sidebar = mysqli_fetch_array($sql_product_sidebar)) {
 									?>
 									<div class="row">

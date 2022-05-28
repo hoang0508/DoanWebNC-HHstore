@@ -467,3 +467,29 @@ h3.heading-tittle1 {
   background: #dd3e54;
   color: #fff;
 }
+
+.product-active {
+  background-color: #fff;
+  margin-bottom: 30px;
+  padding: 12px;
+}
+
+.product-active--list {
+  display: flex;
+  align-items: center;
+}
+
+.product-active--image {
+  background-color: #eee;
+  padding: 10px;
+  width: 150px;
+  height: 150px;
+  border-radius: 100rem;
+}
+
+.product-active--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}

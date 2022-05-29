@@ -122,10 +122,6 @@ button.button:hover {
 }
 
 .product-title p.heading-pd {
-	background-color: #eee;
-  padding: 10px;
-	border-radius: 5px;
-  margin-bottom: 15px;
 	text-transform: uppercase;
 	margin-top: 20px;
 	font-weight: bold;
@@ -302,7 +298,7 @@ else {
 								</fieldset>
 							</form>
 							<div class="social-interact mt-3">
-									<h3 class="social-title mb-3" style="font-size: 20px;">Chia sẻ</h3>
+									<h3 class="social-title mb-3" style="font-size: 20px;">Share sản phẩm</h3>
 									<a href="#" class="modal-social">
 											<i class="fa fa-facebook facebook" aria-hidden="true"></i>
 									</a>

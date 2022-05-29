@@ -94,9 +94,9 @@ button.button--cart {
 
 button.button p {
 	margin-left: 10px;
-  color: #fff !important;
-  font-size: 16px;
-  font-weight: 500;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 button.button:hover {
@@ -122,10 +122,6 @@ button.button:hover {
 }
 
 .product-title p.heading-pd {
-	background-color: #eee;
-  padding: 10px;
-	border-radius: 5px;
-  margin-bottom: 15px;
 	text-transform: uppercase;
 	margin-top: 20px;
 	font-weight: bold;
@@ -273,11 +269,11 @@ else {
 							</div>
 					</div>
 					<p class="mb-3">
-						<span class="product-details--text">Giá sản phẩm: </span>
-						<span class="item_price details-price"><?php echo number_format($row_chitiet['sanpham_giakhuyenmai']).'vnd' ?></span>
+						<span class="item_price"><?php echo number_format($row_chitiet['sanpham_giakhuyenmai']).'vnd' ?></span>
 						<del class="mx-2 font-weight-light"><?php echo number_format($row_chitiet['sanpham_gia']).'vnd' ?></del>
+						<label>Miễn phí vận chuyển</label>
 					</p>
-					<div class="product-details--text mb-3"><?php echo $row_chitiet['sanpham_soluong'] ?> sản phẩm có sẵn</div>
+				
 					<div class="occasion-cart">
 						<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out ">
 						<!-- action="?quanly=giohang":đường đã cho hành động của form;dùng vs phương thức Post -->
@@ -288,7 +284,6 @@ else {
 									<input type="hidden" name="giasanpham" value="<?php echo $row_chitiet['sanpham_gia'] ?>" />	
 									<input type="hidden" name="hinhanh" value="<?php echo $row_chitiet['sanpham_image'] ?>" />
 									<div class="add-cart d-flex align-items-center">
-									 <span class="product-details--text">Số lượng: </span>
 										<div class="btn-count">
 											<span class="minus">-</span>
 												<input type="text" min="1" name="soluong" value="1" class="number-cart"  />
@@ -302,7 +297,7 @@ else {
 								</fieldset>
 							</form>
 							<div class="social-interact mt-3">
-									<h3 class="social-title mb-3" style="font-size: 20px;">Chia sẻ</h3>
+									<h3 class="social-title mb-3" style="font-size: 20px;">Share sản phẩm</h3>
 									<a href="#" class="modal-social">
 											<i class="fa fa-facebook facebook" aria-hidden="true"></i>
 									</a>

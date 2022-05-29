@@ -123,9 +123,9 @@ button.button:hover {
 
 .product-title p.heading-pd {
 	background-color: #eee;
-  padding: 10px;
-	border-radius: 5px;
-  margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
 	text-transform: uppercase;
 	margin-top: 20px;
 	font-weight: bold;

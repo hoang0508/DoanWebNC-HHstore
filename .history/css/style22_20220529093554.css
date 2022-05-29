@@ -945,8 +945,9 @@ h3.heading-tittle {
 }
 
 span.item_price {
-  font-size: 16px;
-  color: #d60404;
+  font-size: 20px;
+  color: #ea384d;
+  font-weight: 600;
 }
 
 .info-product-price del {

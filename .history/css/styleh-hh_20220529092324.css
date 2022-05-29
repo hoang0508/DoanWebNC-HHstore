@@ -516,4 +516,6 @@ h3.heading-tittle1 {
   border: none !important;
   text-align: center;
   margin: 0 !important;
+  font-size: 18px;
+  font-weight: 600;
 }

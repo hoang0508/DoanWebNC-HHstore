@@ -519,6 +519,7 @@ else if($tam =='recruitment'){
 }
 else {
 	include ('./inc/home.php');
+  include './inc/slider.php';
 }
 	include './inc/footer.php';
 ?>

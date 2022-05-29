@@ -48,7 +48,7 @@
 	<!-- Custom-Files -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Bootstrap css -->
-	<link href="css/style2.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style22.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Main css -->
 	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<!-- Font-Awesome-Icons-CSS -->
@@ -72,7 +72,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/reset2.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/contact.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"  >
-  <link rel="stylesheet" type="text/css" href="./css/stylehh.css" >
+  <link rel="stylesheet" type="text/css" href="./css/styleh.css" >
 </head>
 
 <style>
@@ -484,6 +484,7 @@ body::-webkit-scrollbar-thumb {
 	<?php
 include './inc/topbar.php';
 include './inc/menu.php';
+include './inc/slider.php';
 if(isset($_GET['quanly'])) {
 	$tam = $_GET['quanly'];
 }
@@ -546,7 +547,7 @@ else {
 			infinite: true,
 			slidesToShow: 3,
 			slidesToScroll: 2,
-      autoplay: true,
+      // autoplay: true,
       autoplaySpeed: 5000,
       dots: true,
       prevArrow:"<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",

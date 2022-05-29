@@ -217,9 +217,8 @@ else {
 			</div>
 		</div>
 	</div>
-	<div class="details-bg" style="background-image: url(./images/bn-details.jpg)">
-		<div class="overlay"></div>
-		<h3 class="details-text">Chi tiết sản phẩm</h3>
+	<div style="background-image: url(./image/bn-details.jpg)">
+
 	</div>
 	<!-- //page -->
   <?php 

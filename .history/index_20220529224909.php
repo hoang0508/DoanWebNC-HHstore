@@ -72,7 +72,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/reset2.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/contact.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"  >
-  <link rel="stylesheet" type="text/css" href="./css/stylehh.css" >
+  <link rel="stylesheet" type="text/css" href="./css/styleh.css" >
 </head>
 
 <style>
@@ -519,6 +519,7 @@ else if($tam =='recruitment'){
 }
 else {
 	include ('./inc/home.php');
+  include './inc/slider.php';
 }
 	include './inc/footer.php';
 ?>

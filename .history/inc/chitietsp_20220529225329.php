@@ -217,10 +217,6 @@ else {
 			</div>
 		</div>
 	</div>
-	<div class="details-bg" style="background-image: url(./images/bn-details.jpg)">
-		<div class="overlay"></div>
-		<h3 class="details-text">Chi tiết sản phẩm</h3>
-	</div>
 	<!-- //page -->
   <?php 
     while($row_chitiet = mysqli_fetch_array($sql_chitiet)) {

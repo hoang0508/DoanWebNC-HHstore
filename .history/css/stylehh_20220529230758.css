@@ -525,3 +525,21 @@ h3.heading-tittle1 {
   font-weight: 600;
   color: #000;
 }
+
+.details-bg {
+  min-height: 350px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+}
+
+.overlay {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  inset: 0;
+  position: absolute;
+}

@@ -219,7 +219,7 @@ else {
 	</div>
 	<div class="details-bg" style="background-image: url(./images/bn-details.jpg)">
 		<div class="overlay"></div>
-		<h3 class="details-text">Chi tiết sản phẩm</h3>
+		<h3>Chi tiết sản phẩm</h3>
 	</div>
 	<!-- //page -->
   <?php 

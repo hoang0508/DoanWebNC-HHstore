@@ -26,7 +26,7 @@
 				    aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
+				<div class="collapse navbar-collapse ml-4" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5 header-menu">
 						<li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="index.php">Trang chủ
@@ -46,11 +46,6 @@
 						<?php
 						}
 						?>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Giới thiệu
-							</a>
-						</li>
 					<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 						<?php
 							$sql_danhmuctin = mysqli_query($con,"SELECT * FROM tbl_danhmuc_tin ORDER BY danhmuctin_id DESC");
@@ -63,6 +58,7 @@
 							while($row_danhmuctin = mysqli_fetch_array($sql_danhmuctin)){
 							?>
 								<a class="dropdown-item" href="?quanly=tintuc&id_tin=<?php echo $row_danhmuctin['danhmuctin_id']?>"><?php echo $row_danhmuctin['tendanhmuc'] ?></a>
+								
 								<?php 
 							}
 								?>
@@ -70,8 +66,14 @@
 						</li>
 						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Blog
+								Trang
 							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="product.html">Sản phẩm mới</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="checkout.html">Kiểm tra hàng</a>
+								<a class="dropdown-item" href="payment.html">Thanh toán</a>
+							</div>
 						</li>
 						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							

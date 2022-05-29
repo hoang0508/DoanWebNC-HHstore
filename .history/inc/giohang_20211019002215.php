@@ -61,10 +61,7 @@
 			}
 		}
 ?>
-<div class="details-bg" style="background-image: url(./images/bn-cart.png)">
-		<div class="overlay"></div>
-		<h3 class="details-text">Giỏ hàng</h3>
-	</div>
+
 	<!-- checkout page -->
 	<div class="privacy py-sm-5 py-4">
 		<div class="container py-xl-4 py-lg-2">

@@ -46,11 +46,6 @@
 						<?php
 						}
 						?>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Giới thiệu
-							</a>
-						</li>
 					<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 						<?php
 							$sql_danhmuctin = mysqli_query($con,"SELECT * FROM tbl_danhmuc_tin ORDER BY danhmuctin_id DESC");
@@ -63,6 +58,7 @@
 							while($row_danhmuctin = mysqli_fetch_array($sql_danhmuctin)){
 							?>
 								<a class="dropdown-item" href="?quanly=tintuc&id_tin=<?php echo $row_danhmuctin['danhmuctin_id']?>"><?php echo $row_danhmuctin['tendanhmuc'] ?></a>
+								
 								<?php 
 							}
 								?>
@@ -70,8 +66,9 @@
 						</li>
 						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Blog
+								Trang
 							</a>
+							
 						</li>
 						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							

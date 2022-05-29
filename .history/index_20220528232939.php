@@ -72,7 +72,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/reset2.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/contact.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"  >
-  <link rel="stylesheet" type="text/css" href="./css/styleh-hh.css" >
+	<link rel="stylesheet" type="text/css" href="./css/styleh1-hh.css" >
 </head>
 
 <style>
@@ -526,7 +526,7 @@ else {
 
 
 	<!-- js-files -->
-	<script  type="text/javascript" src="./js/apph-1.js"></script>
+	<script  type="text/javascript" src="./js/apphh.js"></script>
 
   <!-- slider -->
   <script

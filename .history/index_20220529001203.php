@@ -526,7 +526,7 @@ else {
 
 
 	<!-- js-files -->
-	<script  type="text/javascript" src="./js/apph-1.js"></script>
+	<script  type="text/javascript" src="./js/apphh.js"></script>
 
   <!-- slider -->
   <script

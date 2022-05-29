@@ -493,3 +493,25 @@ h3.heading-tittle1 {
   object-fit: cover;
   /* border-radius: inherit; */
 }
+
+.btn-count {
+  background-color: #f3f3f3;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.btn-count .plus,
+.minus {
+  text-align: center;
+  font-size: 20px;
+}
+
+.btn-count .number-cart {
+  background: none;
+  border: none !important;
+  text-align: center;
+}

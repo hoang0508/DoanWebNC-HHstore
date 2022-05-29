@@ -283,7 +283,9 @@ else {
 									<div class="add-cart d-flex">
 										<div class="btn-count">
 											<span class="minus">-</span>
-												<input type="text" min="1" name="soluong" value="1" class="number-cart"  />
+											<span class="number-cart">
+												<input type="hidden" min="1" name="soluong" value="1"  />
+											</span>
 											<span class="plus">+</span>
 										</div>
 										<div class="btn-buy btn-cart"><i class="fa fa-cart-plus" aria-hidden="true"></i>

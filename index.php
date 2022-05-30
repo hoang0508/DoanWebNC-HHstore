@@ -484,6 +484,8 @@ body::-webkit-scrollbar-thumb {
 	<?php
 include './inc/topbar.php';
 include './inc/menu.php';
+include './inc/topDown.php';
+
 if(isset($_GET['quanly'])) {
 	$tam = $_GET['quanly'];
 }

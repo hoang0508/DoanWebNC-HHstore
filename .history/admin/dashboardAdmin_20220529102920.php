@@ -2,7 +2,6 @@
   include '../db/conect.php';
   include '../admin/2404/incLogin.php'
 ?>
-
 <?php 
   $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
 ?>
@@ -380,98 +379,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- chart   -->
-                        <figure class="highcharts-figure">
-                            <div id="container"></div>
-                            <p class="highcharts-description">
-                                Basic line chart showing trends in a dataset. This chart includes the
-                                <code>series-label</code> module, which adds a label to each line for
-                                enhanced readability.
-                            </p>
-                        </figure>
-                        <script src="https://code.highcharts.com/highcharts.js"></script>
-                        <script src="https://code.highcharts.com/modules/series-label.js"></script>
-                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                        <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-
-
-                        <script type="text/javascript">
-                        Highcharts.chart('container', {
-
-                            title: {
-                                text: 'Thóng Kê Doanh Thu Tháng'
-                            },
-
-                            yAxis: {
-                                title: {
-                                    text: 'Doanh thu'
-                                }
-                            },
-
-                            xAxis: {
-
-                                categories: [<?php
-             $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) as 'T' ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
-            while($X_array = mysqli_fetch_array($sql_X)) {
-                ?> '<?php echo $X_array['T'] ?>',
-                                    <?php
-                }
-              ?>
-                                ]
-                            },
-
-                            legend: {
-                                layout: 'vertical',
-                                align: 'right',
-                                verticalAlign: 'middle'
-                            },
-
-                            plotOptions: {
-                                series: {
-                                    label: {
-                                        connectorAllowed: false
-                                    },
-
-                                }
-                            },
-
-                            series: [{
-                                name: 'VND',
-                                data: [<?php
-             $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
-            while($X_array = mysqli_fetch_array($sql_X)) {
-                ?> <?php echo $X_array['doanhthu'] ?>,
-                                    <?php
-                }
-              ?>
-                                ]
-
-                            }],
-
-                            responsive: {
-                                rules: [{
-                                    condition: {
-                                        maxWidth: 500
-                                    },
-                                    chartOptions: {
-                                        legend: {
-                                            layout: 'horizontal',
-                                            align: 'center',
-                                            verticalAlign: 'bottom'
-                                        }
-                                    }
-                                }]
-                            }
-
-                        });
-                        </script>
                     </section>
                 </div>
             </div>
-
             <!-- /page content -->
             <!-- footer content -->
             <footer>
@@ -547,6 +457,94 @@
     <script src="build/js/custom.min.js"></script>
 
 
+    <!-- chart   -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p class="highcharts-description">
+            Basic line chart showing trends in a dataset. This chart includes the
+            <code>series-label</code> module, which adds a label to each line for
+            enhanced readability.
+        </p>
+    </figure>
+
+    <script type="text/javascript">
+    Highcharts.chart('container', {
+
+        title: {
+            text: 'Solar Employment Growth by Sector, 2010-2016'
+        },
+
+        subtitle: {
+            text: 'Source: thesolarfoundation.com'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Number of Employees'
+            }
+        },
+
+        xAxis: {
+            accessibility: {
+                rangeDescription: 'Range: 2010 to 2017'
+            }
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 2010
+            }
+        },
+
+        series: [{
+            name: 'Installation',
+            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+        }, {
+            name: 'Manufacturing',
+            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+        }, {
+            name: 'Sales & Distribution',
+            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+        }, {
+            name: 'Project Development',
+            data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+        }, {
+            name: 'Other',
+            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+    });
+    </script>
 </body>
 
 </html>

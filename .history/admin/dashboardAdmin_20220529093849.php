@@ -2,7 +2,6 @@
   include '../db/conect.php';
   include '../admin/2404/incLogin.php'
 ?>
-
 <?php 
   $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
 ?>
@@ -128,7 +127,6 @@
         background: #f1f7ff;
     }
     </style>
-
 
 </head>
 
@@ -380,98 +378,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- chart   -->
-                        <figure class="highcharts-figure">
-                            <div id="container"></div>
-                            <p class="highcharts-description">
-                                Basic line chart showing trends in a dataset. This chart includes the
-                                <code>series-label</code> module, which adds a label to each line for
-                                enhanced readability.
-                            </p>
-                        </figure>
-                        <script src="https://code.highcharts.com/highcharts.js"></script>
-                        <script src="https://code.highcharts.com/modules/series-label.js"></script>
-                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                        <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-
-
-                        <script type="text/javascript">
-                        Highcharts.chart('container', {
-
-                            title: {
-                                text: 'Thóng Kê Doanh Thu Tháng'
-                            },
-
-                            yAxis: {
-                                title: {
-                                    text: 'Doanh thu'
-                                }
-                            },
-
-                            xAxis: {
-
-                                categories: [<?php
-             $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) as 'T' ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
-            while($X_array = mysqli_fetch_array($sql_X)) {
-                ?> '<?php echo $X_array['T'] ?>',
-                                    <?php
-                }
-              ?>
-                                ]
-                            },
-
-                            legend: {
-                                layout: 'vertical',
-                                align: 'right',
-                                verticalAlign: 'middle'
-                            },
-
-                            plotOptions: {
-                                series: {
-                                    label: {
-                                        connectorAllowed: false
-                                    },
-
-                                }
-                            },
-
-                            series: [{
-                                name: 'VND',
-                                data: [<?php
-             $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
-            while($X_array = mysqli_fetch_array($sql_X)) {
-                ?> <?php echo $X_array['doanhthu'] ?>,
-                                    <?php
-                }
-              ?>
-                                ]
-
-                            }],
-
-                            responsive: {
-                                rules: [{
-                                    condition: {
-                                        maxWidth: 500
-                                    },
-                                    chartOptions: {
-                                        legend: {
-                                            layout: 'horizontal',
-                                            align: 'center',
-                                            verticalAlign: 'bottom'
-                                        }
-                                    }
-                                }]
-                            }
-
-                        });
-                        </script>
                     </section>
                 </div>
             </div>
-
             <!-- /page content -->
             <!-- footer content -->
             <footer>
@@ -545,6 +454,166 @@
 
     <!-- Custom Theme Scripts -->
     <script src="build/js/custom.min.js"></script>
+
+
+    <!-- chart   -->
+
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p class="highcharts-description">
+            Chart showing data loaded dynamically. The individual data points can
+            be clicked to display more information.
+        </p>
+    </figure>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <script type="text/javascript">
+    Highcharts.addEvent(Highcharts.Point, 'click', function() {
+        if (this.series.options.className.indexOf('popup-on-click') !== -1) {
+            const chart = this.series.chart;
+            const date = Highcharts.dateFormat('%A, %b %e, %Y', this.x);
+            const text = `<b>${date}</b><br/>${this.y} ${this.series.name}`;
+
+            const anchorX = this.plotX + this.series.xAxis.pos;
+            const anchorY = this.plotY + this.series.yAxis.pos;
+            const align = anchorX < chart.chartWidth - 200 ? 'left' : 'right';
+            const x = align === 'left' ? anchorX + 10 : anchorX - 10;
+            const y = anchorY - 30;
+            if (!chart.sticky) {
+                chart.sticky = chart.renderer
+                    .label(text, x, y, 'callout', anchorX, anchorY)
+                    .attr({
+                        align,
+                        fill: 'rgba(0, 0, 0, 0.75)',
+                        padding: 10,
+                        zIndex: 7 // Above series, below tooltip
+                    })
+                    .css({
+                        color: 'white'
+                    })
+                    .on('click', function() {
+                        chart.sticky = chart.sticky.destroy();
+                    })
+                    .add();
+            } else {
+                chart.sticky
+                    .attr({
+                        align,
+                        text
+                    })
+                    .animate({
+                        anchorX,
+                        anchorY,
+                        x,
+                        y
+                    }, {
+                        duration: 250
+                    });
+            }
+        }
+    });
+
+
+    Highcharts.chart('container', {
+
+        chart: {
+            scrollablePlotArea: {
+                minWidth: 700
+            }
+        },
+
+        data: {
+            csvURL: 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/analytics.csv',
+            beforeParse: function(csv) {
+                return csv.replace(/\n\n/g, '\n');
+            }
+        },
+
+        title: {
+            text: 'Daily sessions at www.highcharts.com'
+        },
+
+        subtitle: {
+            text: 'Source: Google Analytics'
+        },
+
+        xAxis: {
+            tickInterval: 7 * 24 * 3600 * 1000, // one week
+            tickWidth: 0,
+            gridLineWidth: 1,
+            labels: {
+                align: 'left',
+                x: 3,
+                y: -3
+            }
+        },
+
+        yAxis: [{ // left y axis
+            title: {
+                text: null
+            },
+            labels: {
+                align: 'left',
+                x: 3,
+                y: 16,
+                format: '{value:.,0f}'
+            },
+            showFirstLabel: false
+        }, { // right y axis
+            linkedTo: 0,
+            gridLineWidth: 0,
+            opposite: true,
+            title: {
+                text: null
+            },
+            labels: {
+                align: 'right',
+                x: -3,
+                y: 16,
+                format: '{value:.,0f}'
+            },
+            showFirstLabel: false
+        }],
+
+        legend: {
+            align: 'left',
+            verticalAlign: 'top',
+            borderWidth: 0
+        },
+
+        tooltip: {
+            shared: true,
+            crosshairs: true
+        },
+
+        plotOptions: {
+            series: {
+                cursor: 'pointer',
+                className: 'popup-on-click',
+                marker: {
+                    lineWidth: 1
+                }
+            }
+        },
+
+        series: [{
+            name: 'All sessions',
+            lineWidth: 4,
+            marker: {
+                radius: 4
+            }
+        }, {
+            name: 'New users'
+        }]
+    });
+    </script>
+
 
 
 </body>

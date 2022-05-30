@@ -2,7 +2,29 @@
   include '../db/conect.php';
   include '../admin/2404/incLogin.php'
 ?>
-
+<?php
+$sql  = mysqli_query($con, "SELECT DATE_FORMAT(ngaythang, '%d-%m') AS 'NGAY', sum(total_price) as 'doanh_thu' FROM tbl_donhang GROUP BY ngaythang);");
+$result = mysqli_query($con,$sql);
+$arr = [];
+foreach ($resuilt as $each) {
+  $arr[$each['ngay']] = $each['doanh_thu'];
+}
+$max_date = 30;
+$today = date('d');
+$get_day_last_month = 30 - $today;
+$last_month = date('Y-m-d', strtotime(" -1 month"));
+$max_day_last_month = (new DateTime($last_month)) ->format('t');
+$start_day_last_month = $max_day_last_month - $get_day_last_month;
+for($i = $start_day_last_month; $i<=$max_day_last_month;$i++){
+  $key=$i . '-' . $last_month;
+  if(empty($arr[$key])){
+    $arr[$key] = 0;
+  }
+}
+echo json_encode($arr);
+exit();
+// $sql =  mysqli_query($con, "SELECT MONTH(tbl_donhang.ngaythang) AS 'THANG' , SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'NGAYTHANG' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)")
+?>
 <?php 
   $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
 ?>
@@ -380,98 +402,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- chart   -->
-                        <figure class="highcharts-figure">
-                            <div id="container"></div>
-                            <p class="highcharts-description">
-                                Basic line chart showing trends in a dataset. This chart includes the
-                                <code>series-label</code> module, which adds a label to each line for
-                                enhanced readability.
-                            </p>
-                        </figure>
-                        <script src="https://code.highcharts.com/highcharts.js"></script>
-                        <script src="https://code.highcharts.com/modules/series-label.js"></script>
-                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                        <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-
-
-                        <script type="text/javascript">
-                        Highcharts.chart('container', {
-
-                            title: {
-                                text: 'Thóng Kê Doanh Thu Tháng'
-                            },
-
-                            yAxis: {
-                                title: {
-                                    text: 'Doanh thu'
-                                }
-                            },
-
-                            xAxis: {
-
-                                categories: [<?php
-             $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) as 'T' ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
-            while($X_array = mysqli_fetch_array($sql_X)) {
-                ?> '<?php echo $X_array['T'] ?>',
-                                    <?php
-                }
-              ?>
-                                ]
-                            },
-
-                            legend: {
-                                layout: 'vertical',
-                                align: 'right',
-                                verticalAlign: 'middle'
-                            },
-
-                            plotOptions: {
-                                series: {
-                                    label: {
-                                        connectorAllowed: false
-                                    },
-
-                                }
-                            },
-
-                            series: [{
-                                name: 'VND',
-                                data: [<?php
-             $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
-            while($X_array = mysqli_fetch_array($sql_X)) {
-                ?> <?php echo $X_array['doanhthu'] ?>,
-                                    <?php
-                }
-              ?>
-                                ]
-
-                            }],
-
-                            responsive: {
-                                rules: [{
-                                    condition: {
-                                        maxWidth: 500
-                                    },
-                                    chartOptions: {
-                                        legend: {
-                                            layout: 'horizontal',
-                                            align: 'center',
-                                            verticalAlign: 'bottom'
-                                        }
-                                    }
-                                }]
-                            }
-
-                        });
-                        </script>
                     </section>
                 </div>
             </div>
-
             <!-- /page content -->
             <!-- footer content -->
             <footer>
@@ -547,6 +480,78 @@
     <script src="build/js/custom.min.js"></script>
 
 
+    <!-- chart   -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p class="highcharts-description">
+            Basic line chart showing trends in a dataset. This chart includes the
+            <code>series-label</code> module, which adds a label to each line for
+            enhanced readability.
+        </p>
+    </figure>
+
+    <script type="text/javascript">
+    Highcharts.chart('container', {
+
+        title: {
+            text: 'Thóng Kê Doanh Thu Tháng'
+        },
+
+        yAxis: {
+            title: {
+                text: 'Doanh thu'
+            }
+        },
+
+        xAxis: {
+
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+
+            }
+        },
+
+        series: [{
+            name: 'VND',
+            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+    });
+    </script>
 </body>
 
 </html>

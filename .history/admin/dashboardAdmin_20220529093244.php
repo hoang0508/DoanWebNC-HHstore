@@ -2,7 +2,6 @@
   include '../db/conect.php';
   include '../admin/2404/incLogin.php'
 ?>
-
 <?php 
   $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
 ?>
@@ -83,52 +82,6 @@
     <link rel="stylesheet" href="./css/clendar.css">
     <link rel="stylesheet" href="./css/styleh5.css">
     <link rel="stylesheet" href="./css/font.css">
-
-    <style type="text/css">
-    .highcharts-figure,
-    .highcharts-data-table table {
-        min-width: 360px;
-        max-width: 800px;
-        margin: 1em auto;
-    }
-
-    .highcharts-data-table table {
-        font-family: Verdana, sans-serif;
-        border-collapse: collapse;
-        border: 1px solid #ebebeb;
-        margin: 10px auto;
-        text-align: center;
-        width: 100%;
-        max-width: 500px;
-    }
-
-    .highcharts-data-table caption {
-        padding: 1em 0;
-        font-size: 1.2em;
-        color: #555;
-    }
-
-    .highcharts-data-table th {
-        font-weight: 600;
-        padding: 0.5em;
-    }
-
-    .highcharts-data-table td,
-    .highcharts-data-table th,
-    .highcharts-data-table caption {
-        padding: 0.5em;
-    }
-
-    .highcharts-data-table thead tr,
-    .highcharts-data-table tr:nth-child(even) {
-        background: #f8f8f8;
-    }
-
-    .highcharts-data-table tr:hover {
-        background: #f1f7ff;
-    }
-    </style>
-
 
 </head>
 
@@ -380,98 +333,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- chart   -->
-                        <figure class="highcharts-figure">
-                            <div id="container"></div>
-                            <p class="highcharts-description">
-                                Basic line chart showing trends in a dataset. This chart includes the
-                                <code>series-label</code> module, which adds a label to each line for
-                                enhanced readability.
-                            </p>
-                        </figure>
-                        <script src="https://code.highcharts.com/highcharts.js"></script>
-                        <script src="https://code.highcharts.com/modules/series-label.js"></script>
-                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                        <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-
-
-
-                        <script type="text/javascript">
-                        Highcharts.chart('container', {
-
-                            title: {
-                                text: 'Thóng Kê Doanh Thu Tháng'
-                            },
-
-                            yAxis: {
-                                title: {
-                                    text: 'Doanh thu'
-                                }
-                            },
-
-                            xAxis: {
-
-                                categories: [<?php
-             $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) as 'T' ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
-            while($X_array = mysqli_fetch_array($sql_X)) {
-                ?> '<?php echo $X_array['T'] ?>',
-                                    <?php
-                }
-              ?>
-                                ]
-                            },
-
-                            legend: {
-                                layout: 'vertical',
-                                align: 'right',
-                                verticalAlign: 'middle'
-                            },
-
-                            plotOptions: {
-                                series: {
-                                    label: {
-                                        connectorAllowed: false
-                                    },
-
-                                }
-                            },
-
-                            series: [{
-                                name: 'VND',
-                                data: [<?php
-             $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
-            while($X_array = mysqli_fetch_array($sql_X)) {
-                ?> <?php echo $X_array['doanhthu'] ?>,
-                                    <?php
-                }
-              ?>
-                                ]
-
-                            }],
-
-                            responsive: {
-                                rules: [{
-                                    condition: {
-                                        maxWidth: 500
-                                    },
-                                    chartOptions: {
-                                        legend: {
-                                            layout: 'horizontal',
-                                            align: 'center',
-                                            verticalAlign: 'bottom'
-                                        }
-                                    }
-                                }]
-                            }
-
-                        });
-                        </script>
                     </section>
                 </div>
             </div>
-
             <!-- /page content -->
             <!-- footer content -->
             <footer>
@@ -547,6 +411,21 @@
     <script src="build/js/custom.min.js"></script>
 
 
+    <!-- chart   -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <p class="highcharts-description">
+            Chart showing data loaded dynamically. The individual data points can
+            be clicked to display more information.
+        </p>
+    </figure>
 </body>
 
 </html>

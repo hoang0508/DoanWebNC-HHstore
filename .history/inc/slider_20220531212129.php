@@ -9,13 +9,10 @@
 		</ol>
 		<div class="carousel-inner">
 			<div class="carousel-item item1 active">
-				<div class="overlay"></div>
 				<div class="banner-content">
-					<h3 class="banner-content--text">Mua ngay giá rẻ, <span class="banner-content--sale">Ưu đãi sale 50%</span></h3>
-					<p class="banner-content--desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis perferendis quidem ullam nihil. Deserunt ducimus, dolores vel minima esse necessitatibus, aut iusto magni suscipit ullam atque placeat mollitia tenetur aperiam.</p>
-					<div class="btn-buy">
-						<button class="button-cart">Mua ngay</button>
-					</div>
+					<h3 class="banner-content--text">Mua ngay giá rẻ, <span>Ưu đãi sale 50%</span></h3>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis perferendis quidem ullam nihil. Deserunt ducimus, dolores vel minima esse necessitatibus, aut iusto magni suscipit ullam atque placeat mollitia tenetur aperiam.</p>
+					<button class="button-cart">Mua ngay</button>
 				</div>
 			</div>
 			<!-- <div class="carousel-item item2">

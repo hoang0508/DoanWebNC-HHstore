@@ -132,7 +132,7 @@
           $sql_capnhat = mysqli_query($con, "SELECT * FROM tbl_sanpham WHERE sanpham_id = '$id_capnhat'");
           $row_capnhat = mysqli_fetch_array($sql_capnhat);
           ?>
-           <div class="col-md-12">
+           <div class="col-md-4">
             <h4>Cập nhật sản phẩm</h4>
             <form action="" method="POST" enctype='multipart/form-data'>
             <div class="flex flex-mb">
@@ -140,14 +140,13 @@
                   <label for="" class="form-label">Tên sản phẩm</label>
                    <input type="text" name="tensanpham" class="form-control form-input" value="<?php echo $row_capnhat['sanpham_name'] ?>">
                 </div>
-                <input type="hidden" name="capnhat_id" class="form-control" value="<?php echo $row_capnhat['sanpham_id'] ?>">
                 <br>
                 <div class="form-group--product">
                   <label for="" class="form-label">Hình ảnh 1</label>
                   <label for="" class="form-label--images">
                     <input type="file" name="hinhanh1" class="input-image" />
                     <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_image'] ?>" class="chose-image--update" alt="">
+                      <img src="./images/img-upload.png" class="chose-image" alt="">
                       <p>Chọn ảnh</p>
                     </div>
                   </label>
@@ -159,7 +158,7 @@
                   <label for="" class="form-label--images">
                     <input type="file" name="hinhanh2" class="input-image" />
                     <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img1'] ?>" class="chose-image--update" alt="">
+                      <img src="./images/img-upload.png" class="chose-image" alt="">
                       <p>Chọn ảnh</p>
                     </div>
                   </label>
@@ -169,7 +168,7 @@
                   <label for="" class="form-label--images">
                     <input type="file" name="hinhanh3" class="input-image" />
                     <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img2'] ?>" class="chose-image--update" alt="">
+                      <img src="./images/img-upload.png" class="chose-image" alt="">
                       <p>Chọn ảnh</p>
                     </div>
                   </label>
@@ -178,17 +177,17 @@
               <div class="flex flex-mb">
               <div class="form-group--product">
                 <label for="" class="form-label">Giá</label>
-                <input type="text" name="giasanpham" class="form-control form-input" value="<?php echo $row_capnhat['sanpham_gia'] ?>">
+                <input type="text" name="giasanpham" class="form-control form-input" placeholder="Giá sản phẩm...">
               </div>
               <div class="form-group--product">
                 <label for="" class="form-label">Giá khuyến mãi</label>
-                <input type="text" name="giakhuyenmai" class="form-control form-input"  value="<?php echo $row_capnhat['sanpham_giakhuyenmai'] ?>">
+                <input type="text" name="giakhuyenmai" class="form-control form-input" placeholder="Giá khuyến mãi...">
               </div>
               </div>
               <div class="flex flex-mb">
                 <div>
                   <label for="" class="form-label">Số lượng</label>
-                  <input type="number" name="soluong" class="form-control form-quanliti" value="<?php echo $row_capnhat['sanpham_soluong'] ?>">
+                  <input type="number" name="soluong" class="form-control form-quanliti" placeholder="Số lượng...">
                 </div>
                 <div class="form-group--product" >
                 <label for="" class="form-label">SP nổi bật or hot</label>
@@ -199,12 +198,10 @@
                 </div>
               </div>
               <label for="" class="form-label">Mô tả</label>
-              <textarea name="mota" class="tiniText" ><?php echo $row_capnhat['sanpham_mota'] ?></textarea>
+              <textarea name="mota" class="tiniText"></textarea>
               <br>
               <label for="" class="form-label">Chi tiết</label>
-              <textarea name="chitiet" class="tiniText">
-              <?php echo $row_capnhat['sanpham_chitiet'] ?>
-              </textarea>
+              <textarea name="chitiet" class="tiniText"></textarea>
               <br>
               <label for="" class="form-label">Danh mục</label>
               <?php

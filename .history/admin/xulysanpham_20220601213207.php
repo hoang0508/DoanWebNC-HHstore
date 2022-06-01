@@ -145,9 +145,9 @@
                 <div class="form-group--product">
                   <label for="" class="form-label">Hình ảnh 1</label>
                   <label for="" class="form-label--images">
-                    <input type="file" name="hinhanh1" class="input-image" />
+                    <input type="file" name="hinhanh1" class="input-image--update" />
                     <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_image'] ?>" class="chose-image--update" alt="">
+                      <img src="../uploads/<?php echo $row_capnhat['sanpham_image'] ?>" class="chose-image" alt="">
                       <p>Chọn ảnh</p>
                     </div>
                   </label>
@@ -157,9 +157,9 @@
                 <div class="form-group--product">
                   <label for="" class="form-label">Hình ảnh 2</label>
                   <label for="" class="form-label--images">
-                    <input type="file" name="hinhanh2" class="input-image" />
+                    <input type="file" name="hinhanh2" class="input-image--update" />
                     <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img1'] ?>" class="chose-image--update" alt="">
+                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img1'] ?>" class="chose-image" alt="">
                       <p>Chọn ảnh</p>
                     </div>
                   </label>
@@ -167,9 +167,9 @@
                 <div class="form-group--product">
                   <label for="" class="form-label">Hình ảnh 3</label>
                   <label for="" class="form-label--images">
-                    <input type="file" name="hinhanh3" class="input-image" />
+                    <input type="file" name="hinhanh3" class="input-image--update" />
                     <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img2'] ?>" class="chose-image--update" alt="">
+                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img2'] ?>" class="chose-image" alt="">
                       <p>Chọn ảnh</p>
                     </div>
                   </label>

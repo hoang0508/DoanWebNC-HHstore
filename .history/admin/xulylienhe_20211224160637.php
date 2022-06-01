@@ -90,7 +90,6 @@ if(isset($_POST['header']) && isset($_POST['email'])){
 
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/font1.css">
   </head>
   <body class="nav-md">
     <div class="container body">

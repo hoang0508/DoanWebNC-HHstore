@@ -111,7 +111,7 @@
     content_css: 'css/content.css'
   });
   </script>
-  <link rel="stylesheet" href="./css/styleForm3.css">
+  <link rel="stylesheet" href="./css/styleForm2.css">
   <link rel="stylesheet" href="./css/font.css">
   </head>
   <body class="nav-md">
@@ -132,81 +132,47 @@
           $sql_capnhat = mysqli_query($con, "SELECT * FROM tbl_sanpham WHERE sanpham_id = '$id_capnhat'");
           $row_capnhat = mysqli_fetch_array($sql_capnhat);
           ?>
-           <div class="col-md-12">
+           <div class="col-md-4">
             <h4>Cập nhật sản phẩm</h4>
             <form action="" method="POST" enctype='multipart/form-data'>
-            <div class="flex flex-mb">
-                <div class="form-group--product">
-                  <label for="" class="form-label">Tên sản phẩm</label>
-                   <input type="text" name="tensanpham" class="form-control form-input" value="<?php echo $row_capnhat['sanpham_name'] ?>">
-                </div>
-                <input type="hidden" name="capnhat_id" class="form-control" value="<?php echo $row_capnhat['sanpham_id'] ?>">
-                <br>
-                <div class="form-group--product">
-                  <label for="" class="form-label">Hình ảnh 1</label>
-                  <label for="" class="form-label--images">
-                    <input type="file" name="hinhanh1" class="input-image" />
-                    <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_image'] ?>" class="chose-image--update" alt="">
-                      <p>Chọn ảnh</p>
-                    </div>
-                  </label>
-                </div>
-              </div>
-              <div class="flex flex-mb">
-                <div class="form-group--product">
-                  <label for="" class="form-label">Hình ảnh 2</label>
-                  <label for="" class="form-label--images">
-                    <input type="file" name="hinhanh2" class="input-image" />
-                    <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img1'] ?>" class="chose-image--update" alt="">
-                      <p>Chọn ảnh</p>
-                    </div>
-                  </label>
-                </div>
-                <div class="form-group--product">
-                  <label for="" class="form-label">Hình ảnh 3</label>
-                  <label for="" class="form-label--images">
-                    <input type="file" name="hinhanh3" class="input-image" />
-                    <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img2'] ?>" class="chose-image--update" alt="">
-                      <p>Chọn ảnh</p>
-                    </div>
-                  </label>
-                </div>
-              </div>
-              <div class="flex flex-mb">
-              <div class="form-group--product">
-                <label for="" class="form-label">Giá</label>
-                <input type="text" name="giasanpham" class="form-control form-input" value="<?php echo $row_capnhat['sanpham_gia'] ?>">
-              </div>
-              <div class="form-group--product">
-                <label for="" class="form-label">Giá khuyến mãi</label>
-                <input type="text" name="giakhuyenmai" class="form-control form-input"  value="<?php echo $row_capnhat['sanpham_giakhuyenmai'] ?>">
-              </div>
-              </div>
-              <div class="flex flex-mb">
-                <div>
-                  <label for="" class="form-label">Số lượng</label>
-                  <input type="number" name="soluong" class="form-control form-quanliti" value="<?php echo $row_capnhat['sanpham_soluong'] ?>">
-                </div>
-                <div class="form-group--product" >
-                <label for="" class="form-label">SP nổi bật or hot</label>
-                  <select name="active-hot" id="" class="form-control form-input">
-                  <option value="1">ACTIVE</option>
-                  <option value="0">HOT</option>
-                  </select>
-                </div>
-              </div>
-              <label for="" class="form-label">Mô tả</label>
-              <textarea name="mota" class="tiniText" ><?php echo $row_capnhat['sanpham_mota'] ?></textarea>
+             <label for="">Tên sản phẩm</label>
+              <input type="text" name="tensanpham" class="form-control" value="<?php echo $row_capnhat['sanpham_name'] ?>">
               <br>
-              <label for="" class="form-label">Chi tiết</label>
-              <textarea name="chitiet" class="tiniText">
-              <?php echo $row_capnhat['sanpham_chitiet'] ?>
-              </textarea>
+              <input type="hidden" name="capnhat_id" class="form-control" value="<?php echo $row_capnhat['sanpham_id'] ?>">
               <br>
-              <label for="" class="form-label">Danh mục</label>
+              <label for="">Hình ảnh 1</label>
+              <input type="file" name="hinhanh1" class="form-control">
+              <br>
+              <img src="../uploads/<?php echo $row_capnhat['sanpham_image'] ?>" width="80" height="80" alt="">
+              <br><br>
+              <label for="">Hình ảnh 2</label>
+              <input type="file" name="hinhanh2" class="form-control">
+              <br>
+              <img src="../uploads/<?php echo $row_capnhat['sanpham_img1'] ?>" width="80" height="80" alt="">
+              <br><br>
+              <label for="">Hình ảnh 3</label>
+
+              <input type="file" name="hinhanh3" class="form-control">
+              <br>
+              <img src="../uploads/<?php echo $row_capnhat['sanpham_img2'] ?>" width="80" height="80" alt="">
+              <br><br>
+              <label for="">Giá</label>
+              <input type="text" name="giasanpham" class="form-control" value="<?php echo $row_capnhat['sanpham_gia'] ?>">
+              <br>
+              <label for="">Giá khuyến mãi</label>
+              <input type="text" name="giakhuyenmai" class="form-control" value="<?php echo $row_capnhat['sanpham_giakhuyenmai'] ?>">
+              <br>
+              <label for="">Số lượng</label>
+              <input type="text" name="soluong" class="form-control" value="<?php echo $row_capnhat['sanpham_soluong'] ?>">
+              <br>
+              
+              <label for="">Mô tả</label>
+              <textarea name="mota" class="form-control"><?php echo $row_capnhat['sanpham_mota'] ?></textarea>
+              <br>
+              <label for="">Chi tiết</label>
+              <textarea name="chitiet" class="form-control"><?php echo $row_capnhat['sanpham_chitiet'] ?></textarea>
+              <br>
+              <label for="">Danh mục</label>
               <?php
                 $sql_danhmuc = mysqli_query($con, "SELECT * FROM tbl_category ORDER BY category_id DESC ")
               ?>
@@ -239,7 +205,7 @@
                 <div class="form-group--product">
                   <label for="" class="form-label">Hình ảnh 1</label>
                   <label for="" class="form-label--images">
-                    <input type="file" name="hinhanh1" class="input-image" />
+                    <input type="file" name="hinhanh1" class="input-hidden">
                     <div class="form-label--chose">
                       <img src="./images/img-upload.png" class="chose-image" alt="">
                       <p>Chọn ảnh</p>
@@ -250,23 +216,11 @@
               <div class="flex flex-mb">
                 <div class="form-group--product">
                   <label for="" class="form-label">Hình ảnh 2</label>
-                  <label for="" class="form-label--images">
-                    <input type="file" name="hinhanh2" class="input-image" />
-                    <div class="form-label--chose">
-                      <img src="./images/img-upload.png" class="chose-image" alt="">
-                      <p>Chọn ảnh</p>
-                    </div>
-                  </label>
+                  <input type="file" name="hinhanh2" class="form-control">
                 </div>
                 <div class="form-group--product">
                   <label for="" class="form-label">Hình ảnh 3</label>
-                  <label for="" class="form-label--images">
-                    <input type="file" name="hinhanh3" class="input-image" />
-                    <div class="form-label--chose">
-                      <img src="./images/img-upload.png" class="chose-image" alt="">
-                      <p>Chọn ảnh</p>
-                    </div>
-                  </label>
+                  <input type="file" name="hinhanh3" class="form-control">
                 </div>
               </div>
               <div class="flex flex-mb">

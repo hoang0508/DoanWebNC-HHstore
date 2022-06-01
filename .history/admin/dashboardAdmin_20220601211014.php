@@ -1,10 +1,10 @@
 <?php
-include '../db/conect.php';
-include '../admin/2404/incLogin.php'
+  include '../db/conect.php';
+  include '../admin/2404/incLogin.php'
 ?>
 
-<?php
-$sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
+<?php 
+  $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,38 +20,38 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
     <title>Trang chủ Admin</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
-        google.charts.setOnLoadCallback(drawChart);
+    google.charts.load('current', {
+        'packages': ['corechart']
+    });
+    google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
+    function drawChart() {
 
-            var data = google.visualization.arrayToDataTable([
-                ['category_name', 'daban'],
-                <?php
-                $sql_ct = mysqli_query($con, "SELECT * FROM tbl_sanpham");
-                while ($id_cate = mysqli_fetch_assoc($sql_ct)) {
-                    $category_id = $id_cate['sanpham_id'];
-                }
-                $sql_soluong_dt = mysqli_query($con, "SELECT * , tbl_category.category_name , count(tbl_donhang.soluong) AS 'daban'  FROM tbl_donhang, tbl_sanpham, tbl_category WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id AND tbl_sanpham.category_id = tbl_category.category_id GROUP BY tbl_category.category_name DESC");
-                while ($row_dt = mysqli_fetch_array($sql_soluong_dt)) {
-                    $category_name = $row_dt['category_name'];
-                    $daban = $row_dt['daban'];
-                ?>['<?php echo $category_name ?>', <?php echo $daban ?>],
-                <?php
-                }
-                ?>
-            ]);
+        var data = google.visualization.arrayToDataTable([
+            ['category_name', 'daban'],
+            <?php
+          $sql_ct = mysqli_query($con, "SELECT * FROM tbl_sanpham");
+          while($id_cate = mysqli_fetch_assoc($sql_ct)) {
+            $category_id = $id_cate['sanpham_id'];
+          }
+          $sql_soluong_dt = mysqli_query($con, "SELECT * , tbl_category.category_name , count(tbl_donhang.soluong) AS 'daban'  FROM tbl_donhang, tbl_sanpham, tbl_category WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id AND tbl_sanpham.category_id = tbl_category.category_id GROUP BY tbl_category.category_name DESC");
+          while($row_dt = mysqli_fetch_array($sql_soluong_dt)) {
+            $category_name = $row_dt['category_name'];
+            $daban = $row_dt['daban'];
+            ?>['<?php echo $category_name ?>', <?php echo $daban ?>],
+            <?php
+          }
+          ?>
+        ]);
 
-            var options = {
-                title: 'Biểu đồ thống kê'
-            };
+        var options = {
+            title: 'Biểu đồ thống kê'
+        };
 
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-            chart.draw(data, options);
-        }
+        chart.draw(data, options);
+    }
     </script>
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -71,58 +71,62 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
 
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" />
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./css/clendar.css">
     <link rel="stylesheet" href="./css/styleh5.css">
     <link rel="stylesheet" href="./css/font.css">
 
     <style type="text/css">
-        .highcharts-figure,
-        .highcharts-data-table table {
-            width: 100%;
-            margin: 20px 30px;
-        }
+    .highcharts-figure,
+    .highcharts-data-table table {
+        min-width: 360px;
+        max-width: 800px;
+        margin: 1em auto;
+    }
 
-        .highcharts-data-table table {
-            font-family: Verdana, sans-serif;
-            border-collapse: collapse;
-            border: 1px solid #ebebeb;
-            margin: 10px auto;
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-        }
+    .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #ebebeb;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
 
-        .highcharts-data-table caption {
-            padding: 1em 0;
-            font-size: 1.2em;
-            color: #555;
-        }
+    .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+    }
 
-        .highcharts-data-table th {
-            font-weight: 600;
-            padding: 0.5em;
-        }
+    .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+    }
 
-        .highcharts-data-table td,
-        .highcharts-data-table th,
-        .highcharts-data-table caption {
-            padding: 0.5em;
-        }
+    .highcharts-data-table td,
+    .highcharts-data-table th,
+    .highcharts-data-table caption {
+        padding: 0.5em;
+    }
 
-        .highcharts-data-table thead tr,
-        .highcharts-data-table tr:nth-child(even) {
-            background: #f8f8f8;
-        }
+    .highcharts-data-table thead tr,
+    .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+    }
 
-        .highcharts-data-table tr:hover {
-            background: #f1f7ff;
-        }
+    .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+    }
     </style>
 
 
@@ -132,56 +136,57 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
     <div class="container body">
         <div class="main_container">
             <?php
-            include("2404/menu.php");
-            include("2404/top.php");
-            ?>
+              include("2404/menu.php");
+              include("2404/top.php");
+              ?>
             <!-- page content -->
             <div class="right_col" role="main">
                 <div class="row">
                     <div class="statistical">
-                        <?php
-                        $sql_phanhoi = mysqli_query($con, "SELECT * , COUNT(email) as 'phanhoi' FROM tbl_lienhe");
-                        while ($row_ph = mysqli_fetch_array($sql_phanhoi)) {
-                        ?>
-                            <div class="list-statis feed-back">
-                                <i class="fa fa-comments-o" aria-hidden="true"></i>
-                                <div class="feed-number">
-                                    <span class="number-txt"><?php echo $row_ph['phanhoi'] ?></span>
-                                    <span class="txt-desc">Phản hồi</span>
-                                </div>
+                        <?php 
+                  $sql_phanhoi = mysqli_query($con, "SELECT * , COUNT(email) as 'phanhoi' FROM tbl_lienhe");
+                  while($row_ph = mysqli_fetch_array($sql_phanhoi)) {
+              ?>
+                        <div class="list-statis feed-back">
+                            <i class="fa fa-comments-o" aria-hidden="true"></i>
+                            <div class="feed-number">
+                                <span class="number-txt"><?php echo $row_ph['phanhoi'] ?></span>
+                                <span class="txt-desc">Phản hồi</span>
                             </div>
+                        </div>
                         <?php
-                        }
-                        ?>
-                        <?php
-                        $sql_dangky = mysqli_query($con, "SELECT COUNT(email) AS 'dangky' FROM tbl_khachhang");
-                        while ($row_dk = mysqli_fetch_array($sql_dangky)) {
-                        ?>
-                            <div class="list-statis login-total">
-                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                                <div class="feed-number">
-                                    <span class="number-txt"><?php echo $row_dk['dangky'] ?></span>
-                                    <span class="txt-desc">Lượt đăng ký</span>
-                                </div>
+                  }
+              ?>
+                        <?php 
+                $sql_dangky = mysqli_query($con, "SELECT COUNT(email) AS 'dangky' FROM tbl_khachhang");
+                while($row_dk = mysqli_fetch_array($sql_dangky)) {
+              ?>
+                        <div class="list-statis login-total">
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            <div class="feed-number">
+                                <span class="number-txt"><?php echo $row_dk['dangky'] ?></span>
+                                <span class="txt-desc">Lượt đăng ký</span>
                             </div>
+                        </div>
                         <?php
-                        }
-                        ?>
-                        <?php
-                        $sql_doanhthu = mysqli_query($con, "SELECT SUM(tbl_donhang.soluong*tbl_sanpham.sanpham_giakhuyenmai) AS 'doanhthu' FROM tbl_donhang,tbl_sanpham WHERE tbl_donhang.sanpham_id = tbl_sanpham.sanpham_id");
-                        $row_dt = mysqli_fetch_array($sql_doanhthu);
-                        ?>
+                }
+              ?>
+                        <?php 
+                $sql_doanhthu = mysqli_query($con, "SELECT SUM(tbl_donhang.soluong*tbl_sanpham.sanpham_giakhuyenmai) AS 'doanhthu' FROM tbl_donhang,tbl_sanpham WHERE tbl_donhang.sanpham_id = tbl_sanpham.sanpham_id");
+                  $row_dt = mysqli_fetch_array($sql_doanhthu);
+              ?>
                         <div class="list-statis money-total">
                             <i class="fa fa-line-chart" aria-hidden="true"></i>
                             <div class="feed-number">
-                                <span class="number-txt" style="font-size: 18px;"><?php echo number_format($row_dt['doanhthu']) ?></span>
+                                <span class="number-txt"
+                                    style="font-size: 18px;"><?php echo number_format($row_dt['doanhthu']) ?></span>
                                 <span class="txt-desc">Tổng thu nhập</span>
                             </div>
                         </div>
                         <?php
-                        $sql_dondat = mysqli_query($con, "SELECT COUNT(mahang) AS 'mahang' FROM tbl_donhang");
-                        $row_dd = mysqli_fetch_array($sql_dondat);
-                        ?>
+                $sql_dondat = mysqli_query($con, "SELECT COUNT(mahang) AS 'mahang' FROM tbl_donhang");
+                $row_dd = mysqli_fetch_array($sql_dondat);
+              ?>
                         <div class="list-statis total-order">
                             <i class="fa fa-cart-plus" aria-hidden="true"></i>
                             <div class="feed-number">
@@ -190,32 +195,33 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                             </div>
                         </div>
                         <?php
-                        $sql_yt =  mysqli_query($con, "SELECT *, COUNT(sanpham_yeuthich) AS 'YT' FROM tbl_sanpham WHERE sanpham_yeuthich = 1");
-                        $row_yt = mysqli_fetch_array($sql_yt);
-                        ?>
+                $sql_yt =  mysqli_query($con, "SELECT *, COUNT(sanpham_yeuthich) AS 'YT' FROM tbl_sanpham WHERE sanpham_yeuthich = 1");
+                $row_yt = mysqli_fetch_array($sql_yt);
+              ?>
                         <div class="list-statis total-vote">
                             <i class="fa fa-heart" aria-hidden="true"></i>
                             <div class="feed-number">
                                 <span class="number-txt">
+                                    <?php 
+                    if($row_yt['sanpham_yeuthich']==1) {
+                      ?>
+                                    <?php echo $row_yt['YT'] ?>
                                     <?php
-                                    if ($row_yt['sanpham_yeuthich'] == 1) {
-                                    ?>
-                                        <?php echo $row_yt['YT'] ?>
+                    }
+                    else {
+                      ?>
+                                    <?php echo '0' ?>
                                     <?php
-                                    } else {
-                                    ?>
-                                        <?php echo '0' ?>
-                                    <?php
-                                    }
-                                    ?>
+                    }
+                  ?>
                                 </span>
                                 <span class="txt-desc">Sp yêu thích</span>
                             </div>
                         </div>
                         <?php
-                        $sql_cv = mysqli_query($con, "SELECT COUNT(cv_email) AS 'email' FROM tbl_cv");
-                        $row_cv = mysqli_fetch_array($sql_cv);
-                        ?>
+                $sql_cv= mysqli_query($con, "SELECT COUNT(cv_email) AS 'email' FROM tbl_cv");
+                $row_cv = mysqli_fetch_array($sql_cv);
+              ?>
                         <div class="list-statis cv-total">
                             <i class="fa fa-file" aria-hidden="true"></i>
                             <div class="feed-number">
@@ -231,9 +237,9 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                             </div>
                         </div>
                         <?php
-                        $sql_admin = mysqli_query($con, "SELECT COUNT(email) as 'admin' FROM tbl_admin");
-                        $row_admin = mysqli_fetch_array($sql_admin);
-                        ?>
+                $sql_admin = mysqli_query($con, "SELECT COUNT(email) as 'admin' FROM tbl_admin");
+                $row_admin = mysqli_fetch_array($sql_admin);
+              ?>
                         <div class="list-statis total-admin">
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             <div class="feed-number">
@@ -242,20 +248,28 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                             </div>
                         </div>
                     </div>
-                    <!-- chart   -->
-                    <figure class="highcharts-figure">
-                        <div id="container"></div>
-                    </figure>
-                    <script src="https://code.highcharts.com/highcharts.js"></script>
-                    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-                    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-                    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-                    <script type="text/javascript">
+                       <!-- chart   -->
+                       <figure class="highcharts-figure">
+                            <div id="container"></div>
+                            <p class="highcharts-description">
+                                Basic line chart showing trends in a dataset. This chart includes the
+                                <code>series-label</code> module, which adds a label to each line for
+                                enhanced readability.
+                            </p>
+                        </figure>
+                        <script src="https://code.highcharts.com/highcharts.js"></script>
+                        <script src="https://code.highcharts.com/modules/series-label.js"></script>
+                        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+
+                        <script type="text/javascript">
                         Highcharts.chart('container', {
 
                             title: {
-                                text: 'Thống Kê Doanh Thu Tháng'
+                                text: 'Thóng Kê Doanh Thu Tháng'
                             },
 
                             yAxis: {
@@ -267,12 +281,12 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                             xAxis: {
 
                                 categories: [<?php
-                                                $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) as 'T' ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
-                                                while ($X_array = mysqli_fetch_array($sql_X)) {
-                                                ?> '<?php echo $X_array['T'] ?>',
+             $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) as 'T' ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
+            while($X_array = mysqli_fetch_array($sql_X)) {
+                ?> '<?php echo $X_array['T'] ?>',
                                     <?php
-                                                }
-                                    ?>
+                }
+              ?>
                                 ]
                             },
 
@@ -294,12 +308,12 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                             series: [{
                                 name: 'VND',
                                 data: [<?php
-                                        $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
-                                        while ($X_array = mysqli_fetch_array($sql_X)) {
-                                        ?> <?php echo $X_array['doanhthu'] ?>,
+             $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
+            while($X_array = mysqli_fetch_array($sql_X)) {
+                ?> <?php echo $X_array['doanhthu'] ?>,
                                     <?php
-                                        }
-                                    ?>
+                }
+              ?>
                                 ]
 
                             }],
@@ -320,7 +334,7 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                             }
 
                         });
-                    </script>
+                        </script>
                     <section class="ftco-section" style="width: 100%;padding: 3rem">
                         <div class="container">
                             <div class="row">
@@ -328,7 +342,8 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="elegant-calencar d-md-flex">
-                                        <div class="wrap-header d-flex align-items-center img" style="background-image: url(images/bg.jpg);">
+                                        <div class="wrap-header d-flex align-items-center img"
+                                            style="background-image: url(images/bg.jpg);">
                                             <p id="reset">Today</p>
                                             <div id="header" class="p-0">
                                                 <!-- <div class="pre-button d-flex align-items-center justify-content-center"><i class="fa fa-chevron-left"></i></div> -->
@@ -341,10 +356,12 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                                         </div>
                                         <div class="calendar-wrap">
                                             <div class="w-100 button-wrap">
-                                                <div class="pre-button d-flex align-items-center justify-content-center">
+                                                <div
+                                                    class="pre-button d-flex align-items-center justify-content-center">
                                                     <i class="fa fa-chevron-left"></i>
                                                 </div>
-                                                <div class="next-button d-flex align-items-center justify-content-center">
+                                                <div
+                                                    class="next-button d-flex align-items-center justify-content-center">
                                                     <i class="fa fa-chevron-right"></i>
                                                 </div>
                                             </div>
@@ -451,7 +468,7 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                             </div>
                         </div>
 
-
+                     
                     </section>
                 </div>
             </div>
@@ -468,21 +485,21 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
         </div>
     </div>
     <script>
-        const deg = 6;
-        const hr = document.querySelector("#hr");
-        const mn = document.querySelector("#mn");
-        const sc = document.querySelector("#sc");
+    const deg = 6;
+    const hr = document.querySelector("#hr");
+    const mn = document.querySelector("#mn");
+    const sc = document.querySelector("#sc");
 
-        setInterval(() => {
-            let day = new Date();
-            let hh = day.getHours() * 30;
-            let mm = day.getMinutes() * deg;
-            let ss = day.getSeconds() * deg;
+    setInterval(() => {
+        let day = new Date();
+        let hh = day.getHours() * 30;
+        let mm = day.getMinutes() * deg;
+        let ss = day.getSeconds() * deg;
 
-            hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
-            mn.style.transform = `rotateZ(${mm}deg)`;
-            sc.style.transform = `rotateZ(${ss}deg)`;
-        });
+        hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
+        mn.style.transform = `rotateZ(${mm}deg)`;
+        sc.style.transform = `rotateZ(${ss}deg)`;
+    });
     </script>
     <script src="./js/app11.js"></script>
     <script src="./js/jquery.min.js"></script>

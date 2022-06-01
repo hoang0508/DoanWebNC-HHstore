@@ -3,62 +3,19 @@
   include '../admin/2404/incLogin.php'
 ?>
 <?php
-    if(isset($_GET['xoa'])) {
-      $email = $_GET['xoa'];
-
-      $sql_delete_lienhe= mysqli_query($con, "DELETE FROM tbl_lienhe WHERE email = '$email'");
-    }
-?>
-<?php
-  if(isset($_POST['sb-form'])) {
+  if(isset($_POST['capnhatdonhang'])) {
     $xuly = $_POST['xuly'];
-    $name = $_POST['name'];
-    $sql_update_lienhe = mysqli_query($con, "UPDATE tbl_lienhe SET phanhoi = '$xuly' WHERE name = '$name'");
+    $mahang = $_POST['mahang_xuly'];
+
+    $sql_update_donhang = mysqli_query($con, "UPDATE tbl_donhang SET trangthai = '$xuly' WHERE mahang = '$mahang'");
   }
 ?>
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-if(isset($_POST['header']) && isset($_POST['email'])){
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $header = $_POST['header'];
-    $message = $_POST['message'];
+    if(isset($_GET['xoa'])) {
+      $id = $_GET['xoa'];
 
-    include "../smtp/PHPMailer.php";
-    require_once "../smtp/SMTP.php";
-    require_once "../smtp/Exception.php";
-
-    $mail = new PHPMailer();
-
-    //smtp settings
-    $mail->isSMTP();
-    $mail->Host = "smtp.gmail.com";
-    $mail->SMTPAuth = true;
-    $mail->Username = "nguyenhuyhoang05082001@gmail.com";
-    $mail->Password = 'Hoang0508js';
-    $mail->Port = 465;
-    $mail->SMTPSecure = "ssl";
-
-    //email settings
-    $mail->isHTML(true);
-    $mail->setFrom($email);
-    $mail->addAddress("$email");
-    $mail->Subject = ("$email ($subject)");
-    $mail->Body = $message;
-
-    if($mail->send()){
-        $status = "success";
-        $response = "Email is sent!";
+      $sql_delete_donhang = mysqli_query($con, "DELETE FROM tbl_donhang WHERE donhang_id = '$id'");
     }
-    else
-    {
-        $status = "failed";
-        $response = "Something is wrong: <br>" . $mail->ErrorInfo;
-    }
-
-    exit(json_encode(array("status" => $status, "response" => $response)));
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +27,7 @@ if(isset($_POST['header']) && isset($_POST['email'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Liên hệ</title>
+    <title>Khách hàng</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -90,7 +47,7 @@ if(isset($_POST['header']) && isset($_POST['email'])){
 
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/font1.css">
+    <link rel="stylesheet" href="./css/font.css">
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -104,81 +61,95 @@ if(isset($_POST['header']) && isset($_POST['email'])){
           <div class="row">
           <div class="container">
     <div class="row">
-      <?php 
-        if(isset($_GET['quanly'])=='lienhe') {
-          ?>
-          <div class="col-md-12">
-          <form action="" class="sub-form" method="POST" enctype="multipart/form-data">
-          <h4>Phản hồi khách hàng</h4>
-          <div class="form-group col-md-12">
-            <input type="email"  name="email" class="form-control col-md-6" id="" placeholder="Email...">
-            <input type="text" name="subject" class="form-control col-md-6" id="" placeholder="Tiêu đề">
-          </div>
-          <br>
-          <div class="form-group col-md-12">
-            <input type="text" name="header" class="form-control" id="" placeholder="Nội dung">
-          </div>
-          <br>
-          <div class="form-group col-md-12">
-            <textarea name="message" style="width: 100%" id="" cols="30" rows="10"></textarea>
-          </div>
-          <?php
-            $sql_lienhe = mysqli_query($con, "SELECT * FROM tbl_lienhe");
-            $row_lh = mysqli_fetch_array($sql_lienhe);
-          ?>
-          <input type="hidden" name="name" value="<?php echo $row_lh['name']?>">
-          <br>
-          <select name="xuly" id="" class="form-control">
-            <option value="0">Chưa phản hồi</option>
-            <option value="1">Đã phản hồi</option>
+       <?php
+        if(isset($_GET['quanly'])=='xemdonhang') {
+          $mahang = $_GET['mahang'];
+          $sql_chitiet = mysqli_query($con, "SELECT * FROM tbl_donhang,tbl_sanpham WHERE tbl_donhang.sanpham_id = tbl_sanpham.sanpham_id AND tbl_donhang.mahang = '$mahang'");
+        ?> 
+        <div class="col-md-12 mb-3">
+          <p style="font-size: 20px;">Xem chi tiết đơn hàng</p>
+                <form action="" method="POST">
+            <table class="table table-bordered">
+            <tr style="text-align:center">
+              <th>STT</th>
+              <th>Mã hàng</th>
+              <th>Tên sản phẩm</th>
+              <th>Số lượng</th>
+              <th>Giá</th>
+              <th>Tổng tiền</th>
+              <th>Ngày tháng đặt</th>
+              <!-- <th>Quản lý</th> -->
+            </tr>
+            <?php
+            $i= 0;
+              while($row_donhang = mysqli_fetch_array($sql_chitiet)){
+                $i++;
+            ?>
+              <tr style="text-align:center">
+                <td><?php echo $i ?></td>
+                <td><?php echo $row_donhang['mahang'] ?></td>
+                <td><?php echo $row_donhang['sanpham_name'] ?></td>
+                <td><?php echo $row_donhang['soluong'] ?></td>
+                <td><?php echo number_format($row_donhang['sanpham_giakhuyenmai']).'vnđ' ?></td>
+                <td><?php echo number_format($row_donhang['soluong']*$row_donhang['sanpham_giakhuyenmai']).'vnđ'?></td>
+                <td><?php echo $row_donhang['ngaythang'] ?></td>
+                <input type="hidden" name="mahang_xuly" value="<?php echo $row_donhang['mahang'] ?>">
+              </tr>
+              <?php
+              }
+              ?>
+                  </table>
+                  <select name="xuly" id="" class="form-control">
+              <option value="1">Đã xử lý</option>
+              <option value="0">Chưa xử lý</option>
             </select>
             <br>
-          <input type="submit" name="sb-form" class="btn-contact btn btn-success" value="Gửi khách hàng">
-        </form>
-          </div>
-          <?php
+            <input type="submit" value="Cập nhật đơn hàng" class="btn btn-success" name="capnhatdonhang">
+          </form>
+        </div>
+        <?php
+        } else {
+         ?> 
+         
+        <?php
         }
-      ?>
-      <div class="col-md-12 mt-4">
-      <h4>Danh sách liên hệ</h4>
+        ?>
+      <div class="col-md-12">
+      <h4>Danh sách đơn hàng</h4>
       <?php
-        $sql_select = mysqli_query($con, "SELECT * FROM tbl_lienhe");
+        $sql_select = mysqli_query($con, "SELECT * FROM tbl_donhang, tbl_sanpham, tbl_khachhang WHERE tbl_donhang.sanpham_id = tbl_sanpham.sanpham_id AND tbl_khachhang.khachhang_id = tbl_donhang.khachhang_id  ORDER BY tbl_donhang.donhang_id DESC");
       ?>
         <table class="table table-bordered">
           <tr style="text-align:center">
             <th>STT</th>
+            <th>Mã hàng</th>
+            <th>Trạng thái đơn hàng</th>
             <th>Tên khách hàng</th>
-            <th>Email khách</th>
-            <th>Số điện thoại</th>
-            <th>Địa chỉ</th>
+            <th>Ngày tháng đặt</th>
             <th>Ghi chú</th>
-            <th>Phản hồi</th>
             <th>Quản lý</th>
           </tr>
           <?php
           $i= 0;
-            while($row_lienhe = mysqli_fetch_array($sql_select)){
+            while($row_donhang = mysqli_fetch_array($sql_select)){
               $i++;
           ?>
             <tr style="text-align:center">
               <td><?php echo $i ?></td>
-              <td><?php echo $row_lienhe['name'] ?></td>
-               </td>
-              <td><?php echo $row_lienhe['email'] ?></td>
-              <td><?php echo $row_lienhe['sdt'] ?></td>
-              <td><?php echo $row_lienhe['diachi'] ?></td>
-              <td><?php echo $row_lienhe['ghichu'] ?></td>
-              <td>
-               <?php
-                  if($row_lienhe['phanhoi']==0) {
-                      echo 'Chưa phản hồi';
-                  }
-                  else {
-                    echo 'Đã phản hồi';
-                  }
+              <td><?php echo $row_donhang['mahang'] ?></td>
+              <td><?php 
+                if($row_donhang['trangthai'] == 0) {
+                  echo 'Chưa xử lý';
+                }
+                else {
+                  echo 'Đã xử lý';
+                }
                ?>
-              </td>
-              <td style="text-align: center;"><a style="font-size: 14px;display:block;" href="?xoa=<?php echo $row_lienhe['email'] ?>" class="btn btn-danger mb-2"><i class="fa fa-trash" aria-hidden="true"></i></a> <a href="?quanly=lienhe&email=<?php echo $row_lienhe['email'] ?>" style="font-size: 14px;display:block" class="btn btn-primary">Phản hồi khách hàng</a></td>
+               </td>
+              <td><?php echo $row_donhang['name'] ?></td>
+              <td><?php echo $row_donhang['ngaythang'] ?></td>
+              <td><?php echo $row_donhang['note'] ?></td>
+              <td style="text-align: center;"><a style="font-size: 14px;display:block;" href="?xoa=<?php echo $row_donhang['donhang_id'] ?>" class="btn btn-danger mb-2"><i class="fa fa-trash" aria-hidden="true"></i></a> <a href="?quanly=xemdonhang&mahang=<?php echo $row_donhang['mahang'] ?>" style="font-size: 14px;display:block" class="btn btn-primary">Xem đơn hàng</a></td>
             </tr>
             <?php
             }

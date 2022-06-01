@@ -2,14 +2,6 @@
   include '../db/conect.php';
   include '../admin/2404/incLogin.php'
 ?>
-<?php 
-  if(isset($_GET['xoa'])) {
-    $id = $_GET['xoa'];
-
-    $sql_delete_cv = mysqli_query($con, "DELETE FROM tbl_cv WHERE cv_id = '$id'");
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Tuyển Dụng</title>
+    <title>Trang chủ Admin</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,8 +32,7 @@
 
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./css/font1.css">
-
+    <link rel="stylesheet" href="./css/font.css">
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -53,86 +44,80 @@
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="row">
-          <div class="container">
-    <div class="row">
-      <?php 
-        if(isset($_GET['quanly'])=='recruiment') {
-          ?>
-          <select name="gender" id="" class="form-control">
-              <option value="1">Nam</option>
-              <option value="0">Nữ</option>
-            </select>
-            <br>
-          <?php
-        }
-      ?>
-      <div class="col-md-12 mt-4">
-      <h4>Danh sách CV </h4>
+          <div class="col-md-12">
+      <h4>khách hàng</h4>
       <?php
-        $sql_select_cv = mysqli_query($con, "SELECT * FROM tbl_cv ");
+        $sql_select_khachhang = mysqli_query($con,"SELECT * FROM tbl_khachhang,tbl_giaodich WHERE tbl_khachhang.khachhang_id = tbl_giaodich.khachhang_id GROUP BY tbl_giaodich.magiaodich  ORDER BY tbl_khachhang.khachhang_id DESC");
       ?>
         <table class="table table-bordered">
           <tr style="text-align:center">
             <th>STT</th>
-            <th>Tên </th>
-            <th>Email </th>
-            <th>Số điện thoại</th>
-            <th>Địa chỉ</th>
-            <th>giới tính</th>
-            <th>File CV</th>
-            <!-- <th>Phản hồi</th> -->
-            <th>Quản lý</th>
+            <th>Tên khách hàng</th>
+            <th>Số điên thoạit</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Ngày mua</th>
+            <th>Quan Lý</th>
           </tr>
           <?php
           $i= 0;
-            while($row_cv = mysqli_fetch_array($sql_select_cv)){
+            while($row_khachhang = mysqli_fetch_array($sql_select_khachhang)){
               $i++;
           ?>
             <tr style="text-align:center">
               <td><?php echo $i ?></td>
-              <td><?php echo $row_cv['cv_ten'] ?></td>
-               </td>
-              <td><?php echo $row_cv['cv_email'] ?></td>
-              <td><?php echo $row_cv['cv_sodienthoai'] ?></td>
-              <td><?php echo $row_cv['cv_diachi'] ?></td>
-              <!--  -->
-              
-              <td>
-               <?php
-                  if($row_cv['cv_gioitinh']==1) {
-                      echo 'Nam';
-                  }
-                  else {
-                    echo 'NỮ';
-                  }
-               ?>
-              </td>
-              <td>
-                <a href="dowload.php?file=<?php $rows['filename'] ?>"><?php echo $row_cv['cv_file'] ?>
-               </td>
-
-              <td style="text-align: center;">
-              <?php
-                $_download = mysqli_query($con,"SELECT * FROM `tbl_cv` ");
-               while($rows = mysqli_fetch_assoc($_download)){ ?>
-                
-              <?php
-             }
-             ?>
-              <a href="dowload.php?file=<?php $rows['filename'] ?>" style="font-size: 14px;display:block" class="btn btn-primary">Dowload </a>;
-              <a href="?xoa=<?php echo $row_cv['cv_id'] ?>" style="font-size: 14px;display:block;" class="btn btn-danger mb-2">Xóa</a> 
-              <!-- <a href="?quanly=tuyendung&email=<?php echo $row_cv['email'] ?>" style="font-size: 14px;display:block" class="btn btn-primary">Phản hồi</a> -->
-            </td>
-          </tr>
+              <td><?php echo $row_khachhang['name'] ?></td>
+              <td><?php echo $row_khachhang['phone'] ?></td>
+              <td><?php echo $row_khachhang['address'] ?></td>
+              <td><?php echo $row_khachhang['email'] ?></td>
+              <td><?php echo $row_khachhang['ngaythang'] ?></td>
+            <td style="text-align: center;"><a href="?quanly=xemgiaodich&khachhang=<?php echo $row_khachhang['magiaodich'] ?>" style="font-size: 14px;display:block" class="btn btn-primary">Xem giao dịch</a>
+          </td>
+            </tr>
             <?php
             }
             ?>
         </table>
       </div>
-    </div>
-  </div>
-          </div>
-        </div>
+
+
+      <div class="col-md-12">
+      <h4>Danh sách lịch sử đơn hàng</h4>
+      
+      <?php
+        if(isset($_GET['khachhang'])){
+          $magiaodich =$_GET['khachhang'];
+        }else{
+          $magiaodich = '';
+        }
+        $sql_select = mysqli_query($con, "SELECT * FROM tbl_giaodich,tbl_khachhang,tbl_sanpham WHERE tbl_giaodich.sanpham_id = tbl_sanpham.sanpham_id AND tbl_khachhang.khachhang_id=tbl_giaodich.khachhang_id  AND tbl_giaodich.magiaodich = '$magiaodich'  ORDER BY tbl_giaodich.giaodich_id DESC");
+      ?>
+        <table class="table table-bordered">
+          <tr style="text-align:center">
+            <th>STT</th>
+            <th>Mã giao dịch</th>
+            <th>Tên sản phẩm</th>
+            <th>Ngày đặt</th>
+           
+          </tr>
+          <?php
+          $i= 0;
+            while($row_donhang = mysqli_fetch_array($sql_select)){
+              $i++;
+          ?>
+            <tr style="text-align:center">
+              <td><?php echo $i ?></td>
+              <td><?php echo $row_donhang['magiaodich'] ?></td>
+              <td><?php echo $row_donhang['sanpham_name'] ?></td>
+              <td><?php echo $row_donhang['ngaythang'] ?></td>
+            </tr>
+            <?php
+            }
+            ?>
+        </table>
+      </div>
+     </div>
+   </div>
         <!-- /page content -->
 
         <!-- footer content -->
@@ -167,7 +152,7 @@
     <script src="vendors/Flot/jquery.flot.js"></script>
     <script src="vendors/Flot/jquery.flot.pie.js"></script>
     <script src="vendors/Flot/jquery.flot.time.js"></script>
-    <script src="vendors/Flot/jquery.flot.stack.js"></script>
+<script src="vendors/Flot/jquery.flot.stack.js"></script>
     <script src="vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
     <script src="vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>

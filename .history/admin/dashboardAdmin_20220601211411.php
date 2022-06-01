@@ -245,17 +245,21 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                     <!-- chart   -->
                     <figure class="highcharts-figure">
                         <div id="container"></div>
+                       
                     </figure>
                     <script src="https://code.highcharts.com/highcharts.js"></script>
                     <script src="https://code.highcharts.com/modules/series-label.js"></script>
                     <script src="https://code.highcharts.com/modules/exporting.js"></script>
                     <script src="https://code.highcharts.com/modules/export-data.js"></script>
                     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+
                     <script type="text/javascript">
                         Highcharts.chart('container', {
 
                             title: {
-                                text: 'Thống Kê Doanh Thu Tháng'
+                                text: 'Thóng Kê Doanh Thu Tháng'
                             },
 
                             yAxis: {

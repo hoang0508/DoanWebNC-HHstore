@@ -2,64 +2,14 @@
   include '../db/conect.php';
   include '../admin/2404/incLogin.php'
 ?>
-<?php
-    if(isset($_GET['xoa'])) {
-      $email = $_GET['xoa'];
+<?php 
+  if(isset($_GET['xoa'])) {
+    $id = $_GET['xoa'];
 
-      $sql_delete_lienhe= mysqli_query($con, "DELETE FROM tbl_lienhe WHERE email = '$email'");
-    }
-?>
-<?php
-  if(isset($_POST['sb-form'])) {
-    $xuly = $_POST['xuly'];
-    $name = $_POST['name'];
-    $sql_update_lienhe = mysqli_query($con, "UPDATE tbl_lienhe SET phanhoi = '$xuly' WHERE name = '$name'");
+    $sql_delete_cv = mysqli_query($con, "DELETE FROM tbl_cv WHERE cv_id = '$id'");
   }
 ?>
-<?php
-use PHPMailer\PHPMailer\PHPMailer;
-if(isset($_POST['header']) && isset($_POST['email'])){
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $header = $_POST['header'];
-    $message = $_POST['message'];
 
-    include "../smtp/PHPMailer.php";
-    require_once "../smtp/SMTP.php";
-    require_once "../smtp/Exception.php";
-
-    $mail = new PHPMailer();
-
-    //smtp settings
-    $mail->isSMTP();
-    $mail->Host = "smtp.gmail.com";
-    $mail->SMTPAuth = true;
-    $mail->Username = "nguyenhuyhoang05082001@gmail.com";
-    $mail->Password = 'Hoang0508js';
-    $mail->Port = 465;
-    $mail->SMTPSecure = "ssl";
-
-    //email settings
-    $mail->isHTML(true);
-    $mail->setFrom($email);
-    $mail->addAddress("$email");
-    $mail->Subject = ("$email ($subject)");
-    $mail->Body = $message;
-
-    if($mail->send()){
-        $status = "success";
-        $response = "Email is sent!";
-    }
-    else
-    {
-        $status = "failed";
-        $response = "Something is wrong: <br>" . $mail->ErrorInfo;
-    }
-
-    exit(json_encode(array("status" => $status, "response" => $response)));
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -70,7 +20,7 @@ if(isset($_POST['header']) && isset($_POST['email'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Liên hệ</title>
+    <title>Tuyển Dụng</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -90,7 +40,6 @@ if(isset($_POST['header']) && isset($_POST['email'])){
 
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/font1.css">
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -105,81 +54,74 @@ if(isset($_POST['header']) && isset($_POST['email'])){
           <div class="container">
     <div class="row">
       <?php 
-        if(isset($_GET['quanly'])=='lienhe') {
+        if(isset($_GET['quanly'])=='recruiment') {
           ?>
-          <div class="col-md-12">
-          <form action="" class="sub-form" method="POST" enctype="multipart/form-data">
-          <h4>Phản hồi khách hàng</h4>
-          <div class="form-group col-md-12">
-            <input type="email"  name="email" class="form-control col-md-6" id="" placeholder="Email...">
-            <input type="text" name="subject" class="form-control col-md-6" id="" placeholder="Tiêu đề">
-          </div>
-          <br>
-          <div class="form-group col-md-12">
-            <input type="text" name="header" class="form-control" id="" placeholder="Nội dung">
-          </div>
-          <br>
-          <div class="form-group col-md-12">
-            <textarea name="message" style="width: 100%" id="" cols="30" rows="10"></textarea>
-          </div>
-          <?php
-            $sql_lienhe = mysqli_query($con, "SELECT * FROM tbl_lienhe");
-            $row_lh = mysqli_fetch_array($sql_lienhe);
-          ?>
-          <input type="hidden" name="name" value="<?php echo $row_lh['name']?>">
-          <br>
-          <select name="xuly" id="" class="form-control">
-            <option value="0">Chưa phản hồi</option>
-            <option value="1">Đã phản hồi</option>
+          <select name="gender" id="" class="form-control">
+              <option value="1">Nam</option>
+              <option value="0">Nữ</option>
             </select>
             <br>
-          <input type="submit" name="sb-form" class="btn-contact btn btn-success" value="Gửi khách hàng">
-        </form>
-          </div>
           <?php
         }
       ?>
       <div class="col-md-12 mt-4">
-      <h4>Danh sách liên hệ</h4>
+      <h4>Danh sách CV </h4>
       <?php
-        $sql_select = mysqli_query($con, "SELECT * FROM tbl_lienhe");
+        $sql_select_cv = mysqli_query($con, "SELECT * FROM tbl_cv ");
       ?>
         <table class="table table-bordered">
           <tr style="text-align:center">
             <th>STT</th>
-            <th>Tên khách hàng</th>
-            <th>Email khách</th>
+            <th>Tên </th>
+            <th>Email </th>
             <th>Số điện thoại</th>
             <th>Địa chỉ</th>
-            <th>Ghi chú</th>
-            <th>Phản hồi</th>
+            <th>giới tính</th>
+            <th>File CV</th>
+            <!-- <th>Phản hồi</th> -->
             <th>Quản lý</th>
           </tr>
           <?php
           $i= 0;
-            while($row_lienhe = mysqli_fetch_array($sql_select)){
+            while($row_cv = mysqli_fetch_array($sql_select_cv)){
               $i++;
           ?>
             <tr style="text-align:center">
               <td><?php echo $i ?></td>
-              <td><?php echo $row_lienhe['name'] ?></td>
+              <td><?php echo $row_cv['cv_ten'] ?></td>
                </td>
-              <td><?php echo $row_lienhe['email'] ?></td>
-              <td><?php echo $row_lienhe['sdt'] ?></td>
-              <td><?php echo $row_lienhe['diachi'] ?></td>
-              <td><?php echo $row_lienhe['ghichu'] ?></td>
+              <td><?php echo $row_cv['cv_email'] ?></td>
+              <td><?php echo $row_cv['cv_sodienthoai'] ?></td>
+              <td><?php echo $row_cv['cv_diachi'] ?></td>
+              <!--  -->
+              
               <td>
                <?php
-                  if($row_lienhe['phanhoi']==0) {
-                      echo 'Chưa phản hồi';
+                  if($row_cv['cv_gioitinh']==1) {
+                      echo 'Nam';
                   }
                   else {
-                    echo 'Đã phản hồi';
+                    echo 'NỮ';
                   }
                ?>
               </td>
-              <td style="text-align: center;"><a style="font-size: 14px;display:block;" href="?xoa=<?php echo $row_lienhe['email'] ?>" class="btn btn-danger mb-2"><i class="fa fa-trash" aria-hidden="true"></i></a> <a href="?quanly=lienhe&email=<?php echo $row_lienhe['email'] ?>" style="font-size: 14px;display:block" class="btn btn-primary">Phản hồi khách hàng</a></td>
-            </tr>
+              <td>
+                <a href="dowload.php?file=<?php $rows['filename'] ?>"><?php echo $row_cv['cv_file'] ?>
+               </td>
+
+              <td style="text-align: center;">
+              <?php
+                $_download = mysqli_query($con,"SELECT * FROM `tbl_cv` ");
+               while($rows = mysqli_fetch_assoc($_download)){ ?>
+                
+              <?php
+             }
+             ?>
+              <a href="dowload.php?file=<?php $rows['filename'] ?>" style="font-size: 14px;display:block" class="btn btn-primary">Dowload </a>;
+              <a href="?xoa=<?php echo $row_cv['cv_id'] ?>" style="font-size: 14px;display:block;" class="btn btn-danger mb-2">Xóa</a> 
+              <!-- <a href="?quanly=tuyendung&email=<?php echo $row_cv['email'] ?>" style="font-size: 14px;display:block" class="btn btn-primary">Phản hồi</a> -->
+            </td>
+          </tr>
             <?php
             }
             ?>

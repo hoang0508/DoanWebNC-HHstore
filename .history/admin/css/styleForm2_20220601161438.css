@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 0 15px;
+}
+
+.flex-mb {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.form-group--product {
+  width: 50%;
+}
+
+.form-group--product .form-input {
+  padding: 10px;
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: all 0.25s linear;
+  background-color: transparent;
+}
+
+.form-group--product .form-input:focus {
+  border-color: #1fa2ff;
+  background-color: #ccc;
+}
+
+.form-quanliti {
+  width: 150px;
+  height: 50px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}

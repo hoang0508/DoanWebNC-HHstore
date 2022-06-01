@@ -3,62 +3,12 @@
   include '../admin/2404/incLogin.php'
 ?>
 <?php
-    if(isset($_GET['xoa'])) {
-      $email = $_GET['xoa'];
-
-      $sql_delete_lienhe= mysqli_query($con, "DELETE FROM tbl_lienhe WHERE email = '$email'");
-    }
-?>
-<?php
-  if(isset($_POST['sb-form'])) {
+  if(isset($_POST['capnhattaikhoan'])) {
     $xuly = $_POST['xuly'];
-    $name = $_POST['name'];
-    $sql_update_lienhe = mysqli_query($con, "UPDATE tbl_lienhe SET phanhoi = '$xuly' WHERE name = '$name'");
+    $id = $_POST['capquyen_id'];
+
+    $sql_update_taikhoan = mysqli_query($con, "UPDATE tbl_admin SET capquyen = '$xuly' WHERE admin_id = '$id'");
   }
-?>
-<?php
-use PHPMailer\PHPMailer\PHPMailer;
-if(isset($_POST['header']) && isset($_POST['email'])){
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $header = $_POST['header'];
-    $message = $_POST['message'];
-
-    include "../smtp/PHPMailer.php";
-    require_once "../smtp/SMTP.php";
-    require_once "../smtp/Exception.php";
-
-    $mail = new PHPMailer();
-
-    //smtp settings
-    $mail->isSMTP();
-    $mail->Host = "smtp.gmail.com";
-    $mail->SMTPAuth = true;
-    $mail->Username = "nguyenhuyhoang05082001@gmail.com";
-    $mail->Password = 'Hoang0508js';
-    $mail->Port = 465;
-    $mail->SMTPSecure = "ssl";
-
-    //email settings
-    $mail->isHTML(true);
-    $mail->setFrom($email);
-    $mail->addAddress("$email");
-    $mail->Subject = ("$email ($subject)");
-    $mail->Body = $message;
-
-    if($mail->send()){
-        $status = "success";
-        $response = "Email is sent!";
-    }
-    else
-    {
-        $status = "failed";
-        $response = "Something is wrong: <br>" . $mail->ErrorInfo;
-    }
-
-    exit(json_encode(array("status" => $status, "response" => $response)));
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +20,7 @@ if(isset($_POST['header']) && isset($_POST['email'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Liên hệ</title>
+    <title>Đơn hàng</title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -90,7 +40,6 @@ if(isset($_POST['header']) && isset($_POST['email'])){
 
     <!-- Custom Theme Style -->
     <link href="build/css/custom.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/font1.css">
   </head>
   <body class="nav-md">
     <div class="container body">
@@ -104,81 +53,86 @@ if(isset($_POST['header']) && isset($_POST['email'])){
           <div class="row">
           <div class="container">
     <div class="row">
-      <?php 
-        if(isset($_GET['quanly'])=='lienhe') {
-          ?>
-          <div class="col-md-12">
-          <form action="" class="sub-form" method="POST" enctype="multipart/form-data">
-          <h4>Phản hồi khách hàng</h4>
-          <div class="form-group col-md-12">
-            <input type="email"  name="email" class="form-control col-md-6" id="" placeholder="Email...">
-            <input type="text" name="subject" class="form-control col-md-6" id="" placeholder="Tiêu đề">
-          </div>
-          <br>
-          <div class="form-group col-md-12">
-            <input type="text" name="header" class="form-control" id="" placeholder="Nội dung">
-          </div>
-          <br>
-          <div class="form-group col-md-12">
-            <textarea name="message" style="width: 100%" id="" cols="30" rows="10"></textarea>
-          </div>
-          <?php
-            $sql_lienhe = mysqli_query($con, "SELECT * FROM tbl_lienhe");
-            $row_lh = mysqli_fetch_array($sql_lienhe);
-          ?>
-          <input type="hidden" name="name" value="<?php echo $row_lh['name']?>">
-          <br>
-          <select name="xuly" id="" class="form-control">
-            <option value="0">Chưa phản hồi</option>
-            <option value="1">Đã phản hồi</option>
+       <?php
+        if(isset($_GET['quanly'])=='xemtaikhoan') {
+          $id = $_GET['id'];
+          $sql_chitiet = mysqli_query($con, "SELECT * FROM tbl_admin WHERE admin_id = '$id'");
+        ?> 
+        <div class="col-md-12 mb-3">
+          <p style="font-size: 20px;">Xem chi tiết tài khoản</p>
+                <form action="" method="POST">
+            <table class="table table-bordered">
+            <tr style="text-align:center">
+              <th>STT</th>
+              <th>Email</th>
+              <th>Password</th>
+              <th>Tên tài khoản</th>
+            </tr>
+            <?php
+            $i= 0;
+              while($row_taikhoan = mysqli_fetch_array($sql_chitiet)){
+                $i++;
+            ?>
+               <tr style="text-align:center">
+              <td><?php echo $i ?></td>
+              <td><?php echo $row_taikhoan['email'] ?></td>
+              <td><?php echo $row_taikhoan['password'] ?></td>
+              <td><?php echo $row_taikhoan['admin_name'] ?></td>
+              <input type="hidden" name="capquyen_id" value="<?php echo $row_taikhoan['admin_id'] ?>">
+              </tr>
+              <?php
+              }
+              ?>
+                  </table>
+                  <select name="xuly" id="" class="form-control">
+              <option value="1">Đã cấp quyền</option>
+              <option value="0">Chưa cấp quyền</option>
             </select>
             <br>
-          <input type="submit" name="sb-form" class="btn-contact btn btn-success" value="Gửi khách hàng">
-        </form>
-          </div>
-          <?php
+            <input type="submit" value="Cấp quyền tài khoản" class="btn btn-success" name="capnhattaikhoan">
+          </form>
+        </div>
+        <?php
+        } else {
+         ?> 
+         
+        <?php
         }
-      ?>
-      <div class="col-md-12 mt-4">
-      <h4>Danh sách liên hệ</h4>
+        ?>
+      <div class="col-md-12">
+      <h4>Danh sách tài khoản</h4>
       <?php
-        $sql_select = mysqli_query($con, "SELECT * FROM tbl_lienhe");
+        $sql_select = mysqli_query($con, "SELECT * FROM tbl_admin");
       ?>
         <table class="table table-bordered">
           <tr style="text-align:center">
             <th>STT</th>
-            <th>Tên khách hàng</th>
-            <th>Email khách</th>
-            <th>Số điện thoại</th>
-            <th>Địa chỉ</th>
-            <th>Ghi chú</th>
-            <th>Phản hồi</th>
+            <th>Email</th>
+            <th>Mật khẩu</th>
+            <th>Tên tài khoản</th>
+            <th>Cấp quyền</th>
             <th>Quản lý</th>
           </tr>
           <?php
           $i= 0;
-            while($row_lienhe = mysqli_fetch_array($sql_select)){
+            while($row_taikhoan = mysqli_fetch_array($sql_select)){
               $i++;
           ?>
             <tr style="text-align:center">
               <td><?php echo $i ?></td>
-              <td><?php echo $row_lienhe['name'] ?></td>
-               </td>
-              <td><?php echo $row_lienhe['email'] ?></td>
-              <td><?php echo $row_lienhe['sdt'] ?></td>
-              <td><?php echo $row_lienhe['diachi'] ?></td>
-              <td><?php echo $row_lienhe['ghichu'] ?></td>
-              <td>
-               <?php
-                  if($row_lienhe['phanhoi']==0) {
-                      echo 'Chưa phản hồi';
-                  }
-                  else {
-                    echo 'Đã phản hồi';
-                  }
+              <td><?php echo $row_taikhoan['email'] ?></td>
+              <td><?php echo $row_taikhoan['password'] ?></td>
+              <td><?php echo $row_taikhoan['admin_name'] ?></td>
+              <td><?php 
+                if($row_taikhoan['capquyen'] == 0) {
+                  echo 'Chưa cấp quyền';
+                }
+                else {
+                  echo 'Đã cấp quyền';
+                }
                ?>
-              </td>
-              <td style="text-align: center;"><a style="font-size: 14px;display:block;" href="?xoa=<?php echo $row_lienhe['email'] ?>" class="btn btn-danger mb-2"><i class="fa fa-trash" aria-hidden="true"></i></a> <a href="?quanly=lienhe&email=<?php echo $row_lienhe['email'] ?>" style="font-size: 14px;display:block" class="btn btn-primary">Phản hồi khách hàng</a></td>
+               </td>
+              <td style="text-align: center;"><a style="font-size: 14px;display:block;" href="?xoa=<?php echo $row_taikhoan['admin_id'] ?>" class="btn btn-danger mb-2">Xóa</a> <a href="?quanly=xemtaikhoan&id=<?php echo $row_taikhoan['admin_id'] ?>" style="font-size: 14px;display:block" class="btn btn-primary">Xem tài khoản</a></td>
             </tr>
             <?php
             }

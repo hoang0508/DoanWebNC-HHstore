@@ -147,7 +147,7 @@
                   <label for="" class="form-label--images">
                     <input type="file" name="hinhanh1" class="input-image" />
                     <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_image'] ?>" class="chose-image--update" alt="">
+                      <img src="../uploads/<?php echo $row_capnhat['sanpham_image'] ?>" class="chose-image" alt="">
                       <p>Chọn ảnh</p>
                     </div>
                   </label>
@@ -159,7 +159,7 @@
                   <label for="" class="form-label--images">
                     <input type="file" name="hinhanh2" class="input-image" />
                     <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img1'] ?>" class="chose-image--update" alt="">
+                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img1'] ?>" class="chose-image" alt="">
                       <p>Chọn ảnh</p>
                     </div>
                   </label>
@@ -169,7 +169,7 @@
                   <label for="" class="form-label--images">
                     <input type="file" name="hinhanh3" class="input-image" />
                     <div class="form-label--chose">
-                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img2'] ?>" class="chose-image--update" alt="">
+                      <img src="../uploads/<?php echo $row_capnhat['sanpham_img2'] ?>" class="chose-image" alt="">
                       <p>Chọn ảnh</p>
                     </div>
                   </label>
@@ -202,9 +202,7 @@
               <textarea name="mota" class="tiniText" ><?php echo $row_capnhat['sanpham_mota'] ?></textarea>
               <br>
               <label for="" class="form-label">Chi tiết</label>
-              <textarea name="chitiet" class="tiniText">
-              <?php echo $row_capnhat['sanpham_chitiet'] ?>
-              </textarea>
+              <textarea name="chitiet" class="tiniText"></textarea>
               <br>
               <label for="" class="form-label">Danh mục</label>
               <?php

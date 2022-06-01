@@ -255,7 +255,7 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                         Highcharts.chart('container', {
 
                             title: {
-                                text: 'Thống Kê Doanh Thu Tháng'
+                                text: 'Thóng Kê Doanh Thu Tháng'
                             },
 
                             yAxis: {

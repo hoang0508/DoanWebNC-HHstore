@@ -54,7 +54,7 @@
 	<!-- Font-Awesome-Icons-CSS -->
 	<link href="css/popuo-box.css" rel="stylesheet" type="text/css"  />
 	<!-- pop-up-box -->
-	<link href="./css/menu1.css" rel="stylesheet" type="text/css"/>
+	<link href="css/menu1.css" rel="stylesheet" type="text/css"/>
 	<!-- menu style -->
 	<!-- //Custom-Files -->
 
@@ -519,9 +519,6 @@ else if($tam =='xemdonhang'){
 }
 else if($tam =='recruitment'){
 	include ('./inc/recruitment.php');
-}
-else if($tam =='blog'){
-	include ('./inc/blog.php');
 }
 else {
 	include ('./inc/home.php');

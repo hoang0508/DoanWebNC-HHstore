@@ -1,0 +1,23 @@
+ul.header-menu {
+  gap: 0 30px;
+}
+a.nav-link {
+  position: relative;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+a.nav-link::before {
+  background-color: #4364f7;
+  bottom: -5px;
+  content: "";
+  display: block;
+  height: 3px;
+  position: absolute;
+  transition: all 0.25s linear;
+  width: 0;
+}
+
+a.nav-link:hover::before {
+  width: 100%;
+}

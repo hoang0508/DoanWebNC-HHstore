@@ -280,10 +280,10 @@ $row_dh = mysqli_fetch_array($sql_donhang);
 			<div class="col-md-9 header mt-4 mb-md-0 mb-4">
 				<div class="row">
 					<!-- search -->
-					<div class="col-10">
+					<div class="col-10 agileits_search">
 						<form class="form-inline" action="index.php?quanly=timkiem" method="POST">
-							<input class="input-search" name="search_product"  placeholder="Tìm kiếm sản phẩm" required>
-							<button class="btn-search--input" name="search_button" type="submit">Tìm kiếm</button>
+							<input class="" name="search_product" type="search" placeholder="Tìm kiếm sản phẩm" required>
+							<button class="btn my-2 my-sm-0 btn-search" name="search_button" type="submit">Tìm kiếm</button>
 						</form>
 					</div>
 					<!-- //search -->

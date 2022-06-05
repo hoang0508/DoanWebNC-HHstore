@@ -67,17 +67,17 @@ $sql_category = mysqli_query($con, 'SELECT * FROM tbl_category ORDER BY category
 						</div>
 					</li>
 					<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-						<a class="nav-link" href="?quanly=blog">
+						<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Blog
 						</a>
 					</li>
 					<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-						<a class="nav-link" href="?quanly=lienhe">
+						<a class="nav-link" href="?quanly=lienhe" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Liên hệ
 						</a>
 					</li>
 					<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-						<a class="nav-link" href="?quanly=recruitment">
+						<a class="nav-link" href="?quanly=recruitment" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Tuyển dụng
 						</a>
 					</li>

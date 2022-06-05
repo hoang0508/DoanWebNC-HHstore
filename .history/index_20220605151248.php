@@ -48,13 +48,13 @@
 	<!-- Custom-Files -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Bootstrap css -->
-	<link href="./css/style2-bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/style2.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Main css -->
 	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<!-- Font-Awesome-Icons-CSS -->
 	<link href="css/popuo-box.css" rel="stylesheet" type="text/css"  />
 	<!-- pop-up-box -->
-	<link href="./css/menu1.css" rel="stylesheet" type="text/css"/>
+	<link href="css/menu.css" rel="stylesheet" type="text/css"/>
 	<!-- menu style -->
 	<!-- //Custom-Files -->
 
@@ -72,8 +72,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/reset2.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/contact2.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"  >
-	<link rel="stylesheet" type="text/css" href="./css/footer.css"  >
-  <link rel="stylesheet" type="text/css" href="./css/Global-Style.css" >
+  <link rel="stylesheet" type="text/css" href="./css/Global.css" >
 </head>
 
 <style>
@@ -519,9 +518,6 @@ else if($tam =='xemdonhang'){
 }
 else if($tam =='recruitment'){
 	include ('./inc/recruitment.php');
-}
-else if($tam =='blog'){
-	include ('./inc/blog.php');
 }
 else {
 	include ('./inc/home.php');

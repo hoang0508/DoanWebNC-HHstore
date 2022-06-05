@@ -131,6 +131,11 @@ h3.sub-info {
   margin-top: 30px;
 }
 
+.contact__addrress p.address-name {
+  color: #000 !important;
+  font-weight: 500 !important;
+}
+
 .contact__address-list {
   display: flex;
   justify-content: space-between;
@@ -255,8 +260,10 @@ img.partner-image:hover {
 
 .place-name a.place-link {
   font-size: 14px;
-  font-weight: 400;
-  color: #373f50;
+  font-weight: 500;
+  color: #000;
+  display: block;
+  margin-top: 8px;
 }
 
 .contact__icon {
@@ -307,7 +314,18 @@ form.form-maps {
   border: 0;
   border-radius: 5px;
   font-size: 16px;
-  background-color: #ea4335;
+  background: #eb3349; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #f45c43,
+    #eb3349
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #f45c43,
+    #eb3349
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   color: #fff;
   transition: all 0.25s linear;
   margin-bottom: 20px;

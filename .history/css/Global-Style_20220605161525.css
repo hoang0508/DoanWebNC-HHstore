@@ -545,7 +545,7 @@ h3.heading-tittle1 {
 }
 
 .overlay {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); */
   inset: 0;
   position: absolute;
 }
@@ -621,7 +621,7 @@ h3.heading-tittle1 {
   position: absolute;
   background: url(../images/banner0.jpg) no-repeat center !important;
   background-size: cover;
-  opacity: 0.3;
+  /* opacity: 0.3; */
   top: 0;
   left: 0;
   cursor: pointer;
@@ -655,4 +655,32 @@ h3.heading-tittle::before {
   height: 5px;
   background-color: #3d6ef7;
   border-radius: 10px;
+}
+
+.input-search {
+  width: 70%;
+  border: 1px solid #ccc;
+  padding: 13px;
+  border-radius: 6px 0 0 6px;
+}
+
+.btn-search--input {
+  background: #0052d4; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #6fb1fc,
+    #4364f7,
+    #0052d4
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #6fb1fc,
+    #4364f7,
+    #0052d4
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 15px 40px;
+  outline: none;
+  border-radius: 0 6px 6px 0;
+  color: #fff;
+  cursor: pointer;
 }

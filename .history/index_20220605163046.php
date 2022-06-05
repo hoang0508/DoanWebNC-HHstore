@@ -520,9 +520,6 @@ else if($tam =='xemdonhang'){
 else if($tam =='recruitment'){
 	include ('./inc/recruitment.php');
 }
-else if($tam =='blog'){
-	include ('./inc/blog.php');
-}
 else {
 	include ('./inc/home.php');
 }

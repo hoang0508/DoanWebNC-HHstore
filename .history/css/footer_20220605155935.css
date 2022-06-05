@@ -1,0 +1,15 @@
+.footer-bg {
+  background-color: rgb(15 23 42);
+}
+
+.footer-grids ul li a {
+  color: #fff;
+}
+
+.social icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

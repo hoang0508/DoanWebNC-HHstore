@@ -133,7 +133,7 @@
 			</div>
 		</div>
 		<!-- footer third section -->
-		<div class="footer-bg">
+		<div class="w3l-middlefooter-sec">
 			<div class="container py-md-5 py-sm-4 py-3">
 				<div class="row footer-info w3-agileits-info">
 					<!-- footer categories -->

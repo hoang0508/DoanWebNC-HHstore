@@ -21,7 +21,7 @@ if (isset($_POST['sb-form'])) {
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-if (isset($_POST['message']) && isset($_POST['email'])) {
+if (isset($_POST['header']) && isset($_POST['email'])) {
   $email = $_POST['email'];
   $subject = $_POST['subject'];
   $message = $_POST['message'];
@@ -148,9 +148,12 @@ if (isset($_POST['message']) && isset($_POST['email'])) {
                       <input type="text" name="subject" class="form-control col-md-6" id="" placeholder="Tiêu đề">
                     </div>
                     <br>
+                    <div class="form-group col-md-12">
+                      <input type="text" name="header" class="form-control" id="" placeholder="Nội dung">
+                    </div>
                     <br>
                     <div class="form-group col-md-12">
-                      <textarea class="tiniText" name="message"></textarea>
+                      <textarea name="message" style="width: 100%" id="" cols="30" rows="10"></textarea>
                     </div>
                     <?php
                     $sql_lienhe = mysqli_query($con, "SELECT * FROM tbl_lienhe");

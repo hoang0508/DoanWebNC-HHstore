@@ -1,4 +1,23 @@
 <style>
+h3.heading-tittle {
+	display: inline-block;
+	position: relative;
+  margin-bottom: 50px !important;
+	font-weight: 600;
+  font-size: 32px;
+	padding-right: 10px;
+}
+
+h3.heading-tittle::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	width: 50px;
+	height: 5px;
+	background-color: #3D6EF7;
+	border-radius: 10px;
+}
 
 
 .product-new-top {

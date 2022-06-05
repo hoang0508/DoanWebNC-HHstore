@@ -21,7 +21,7 @@ if (isset($_POST['sb-form'])) {
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-if (isset($_POST['message']) && isset($_POST['email'])) {
+if (isset($_POST['header']) && isset($_POST['email'])) {
   $email = $_POST['email'];
   $subject = $_POST['subject'];
   $message = $_POST['message'];

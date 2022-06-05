@@ -17,27 +17,27 @@ if (isset($_POST['sb-form'])) {
 }
 ?>
 <?php
+// include "../PHPMailer/src/PHPMailer.php";
+include "../PHPMailer/src/Exception.php";
+include "../PHPMailer/src/OAuth.php";
+include "../PHPMailer/src/POP3.php";
+include "../PHPMailer/src/SMTP.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-if (isset($_POST['message']) && isset($_POST['email'])) {
+if (isset($_POST['header']) && isset($_POST['email'])) {
   $email = $_POST['email'];
   $subject = $_POST['subject'];
+  $header = $_POST['header'];
   $message = $_POST['message'];
-  
-  include "../PHPMailer/src/PHPMailer.php";
-  include "../PHPMailer/src/Exception.php";
-  include "../PHPMailer/src/OAuth.php";
-  include "../PHPMailer/src/POP3.php";
-  include "../PHPMailer/src/SMTP.php";
-  $mail = new PHPMailer(true);    
 
+  // $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
   try {
     //Server settings
     $mail->SMTPDebug = 2;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
+    $mail->Host = 'smtp1.gmail.com;';  // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = 'nguyenhuyhoang05082001@gmail.com';                 // SMTP username
     $mail->Password = 'prbclaxpciyvtywn';                           // SMTP password
@@ -46,7 +46,7 @@ if (isset($_POST['message']) && isset($_POST['email'])) {
 
     //Recipients
     $mail->setFrom('nguyenhuyhoang05082001@gmail.com', 'Mailer');
-    $mail->addAddress('nguyenhuyhoang05082001@gmail.com');     // Add a recipient
+    $mail->addAddress($email);     // Add a recipient
     // $mail->addAddress('ellen@example.com');               // Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');
     $mail->addCC('nguyenhuyhoang05082001@gmail.com');
@@ -62,7 +62,7 @@ if (isset($_POST['message']) && isset($_POST['email'])) {
     $mail->Body = $message;
 
     $mail->send();
-    echo '<script>alert("Thư đã được gửi đi")</script>';
+    echo 'Message has been sent';
   } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
   }
@@ -98,28 +98,6 @@ if (isset($_POST['message']) && isset($_POST['email'])) {
   <!-- bootstrap-daterangepicker -->
   <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
-  <!-- Tine -->
-  <script src="https://cdn.tiny.cloud/1/po3oq8g18rn7fc8keswxmb7hpg6sye7r36doe1hygjl1act2/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-  <script type="text/javascript">
-  tinymce.init({
-    selector: '.tiniText',
-    width: 1100,
-    height: 300,
-    plugins: [
-      'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
-      'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
-      'media', 'table', 'emoticons', 'template', 'help'
-    ],
-    toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
-      'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
-      'forecolor backcolor emoticons | help',
-    menu: {
-      favs: { title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons' }
-    },
-    menubar: 'favs file edit view insert format tools table help',
-    content_css: 'css/content.css'
-  });
-  </script>
   <!-- Custom Theme Style -->
   <link href="build/css/custom.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/font1.css">
@@ -148,9 +126,12 @@ if (isset($_POST['message']) && isset($_POST['email'])) {
                       <input type="text" name="subject" class="form-control col-md-6" id="" placeholder="Tiêu đề">
                     </div>
                     <br>
+                    <div class="form-group col-md-12">
+                      <input type="text" name="header" class="form-control" id="" placeholder="Nội dung">
+                    </div>
                     <br>
                     <div class="form-group col-md-12">
-                      <textarea class="tiniText" name="message"></textarea>
+                      <textarea name="message" style="width: 100%" id="" cols="30" rows="10"></textarea>
                     </div>
                     <?php
                     $sql_lienhe = mysqli_query($con, "SELECT * FROM tbl_lienhe");

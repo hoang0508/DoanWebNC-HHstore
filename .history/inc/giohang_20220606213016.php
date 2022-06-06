@@ -130,9 +130,9 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		} catch (Exception $e) {
 			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
-		header('Location: ./index.php');
 	}
-	?>
+	header('Location: ./index.php');
+?>
 <div class="details-bg" style="background-image: url(./images/bn-cart.png)">
 	<div class="overlay"></div>
 	<h3 class="details-text">Giỏ hàng</h3>

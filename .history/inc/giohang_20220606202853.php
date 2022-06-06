@@ -41,7 +41,7 @@ else if (isset($_POST['capnhatsoluong'])) {
 }
 ?>
 <!-- Session trong PHP được dùng để lưu trữ thông tin của người dùng hoặc là lưu trữ tùy chọn cấu hình hệ thống cho người dùng.  -->
-<!-- khi lấy dc dữ liệu sản phẩm > tiên shanhf thanh toán; -->
+<!-- khi lấy dc dữ liệu sản phẩm > tiên shanhf thanh toán; --> -->
 <!-- nếu icó $_POST['thanhtoandangnhap'] tồn tại;gãn $khachhang_id = $_SESSION['khachhang_id'];  -->
 <!-- $mahang = rand(0,9999);:tránh việc chùng lặp đơn hàng vì môi dơn 1 mã  -->
 <!-- vòng for để kiểm tra và lấy thông tin đơnhàng để nhập v ào swql -->
@@ -85,7 +85,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
       <td>$i</td>
       <td>$sanpham</td>
       <td>$soluong</td>
-      <td>$total_sp VNĐ</td>
+      <td>$total_sp</td>
       <td>Tiền mặt</td>
     </tr>
 		</tbody>";
@@ -123,16 +123,15 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			$mail->Subject = "Chào bạn, Đây là thông tin mua hàng của bạn, mã hàng: $mahang";
 			$mail->Body = $content;
 	
-			if($mail->send()) {
-				echo '<script>
-				alert("Đặt hàng thành công")</script>';
-			}
+			$mail->send();
+			echo '<script>
+			document.querySelector("loading").textContent="Đang chờ xử lý";
+			alert("Đặt hàng thành công")</script>';
 		} catch (Exception $e) {
 			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
-		header('Location: ./index.php');
-	}
-	?>
+}
+?>
 <div class="details-bg" style="background-image: url(./images/bn-cart.png)">
 	<div class="overlay"></div>
 	<h3 class="details-text">Giỏ hàng</h3>

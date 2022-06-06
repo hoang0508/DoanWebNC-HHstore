@@ -124,15 +124,18 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			$mail->Body = $content;
 	
 			if($mail->send()) {
+				?>
+				<?php
+				header('Location: ./index.php');
+				?>
 				echo '<script>
 				alert("Đặt hàng thành công")</script>';
 			}
 		} catch (Exception $e) {
 			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
-		header('Location: ./index.php');
-	}
-	?>
+}
+?>
 <div class="details-bg" style="background-image: url(./images/bn-cart.png)">
 	<div class="overlay"></div>
 	<h3 class="details-text">Giỏ hàng</h3>

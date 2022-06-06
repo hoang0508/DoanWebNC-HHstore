@@ -124,15 +124,15 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			$mail->Body = $content;
 	
 			if($mail->send()) {
+				echo '<script>document.querySelector(".loading").textContent= "Đang chờ xử lý";</script>';
 				echo '<script>
 				alert("Đặt hàng thành công")</script>';
 			}
 		} catch (Exception $e) {
 			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
-		header('Location: ./index.php');
-	}
-	?>
+}
+?>
 <div class="details-bg" style="background-image: url(./images/bn-cart.png)">
 	<div class="overlay"></div>
 	<h3 class="details-text">Giỏ hàng</h3>
@@ -145,7 +145,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			Giỏ hàng của bạn
 		</h3>
 		<!-- //tittle heading -->
-		<div class="loading"></div>
+		<div class="loading">hhh</div>
 		<div class="checkout-right">
 			<?php
 			$sql_lay_giohang = mysqli_query($con, "SELECT * FROM tbl_giohang ORDER BY giohang_id DESC");

@@ -41,7 +41,7 @@ else if (isset($_POST['capnhatsoluong'])) {
 }
 ?>
 <!-- Session trong PHP được dùng để lưu trữ thông tin của người dùng hoặc là lưu trữ tùy chọn cấu hình hệ thống cho người dùng.  -->
-<!-- khi lấy dc dữ liệu sản phẩm > tiên shanhf thanh toán; -->
+<!-- khi lấy dc dữ liệu sản phẩm > tiên shanhf thanh toán; --> -->
 <!-- nếu icó $_POST['thanhtoandangnhap'] tồn tại;gãn $khachhang_id = $_SESSION['khachhang_id'];  -->
 <!-- $mahang = rand(0,9999);:tránh việc chùng lặp đơn hàng vì môi dơn 1 mã  -->
 <!-- vòng for để kiểm tra và lấy thông tin đơnhàng để nhập v ào swql -->
@@ -59,14 +59,13 @@ if (isset($_POST['thanhtoandangnhap'])) {
 	$name = $_SESSION['dangnhap_home'];
 
 	$mahang = rand(0, 9999);
-	$content = "<table border='1' style='width:70%;text-align: center'>";
+	$content = "<table border='1' style='width:70%'>";
 	$content.= '<thead>
 	<tr>
 		<th scope="col">STT</th>
 		<th scope="col">Tên sản phẩm</th>
 		<th scope="col">Số lượng</th>
 		<th scope="col">Giá</th>
-		<th scope="col">Phương thức thanh toán</th>
 	</tr>
 </thead>';
 	$i= 0;
@@ -85,8 +84,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
       <td>$i</td>
       <td>$sanpham</td>
       <td>$soluong</td>
-      <td>$total_sp VNĐ</td>
-      <td>Tiền mặt</td>
+      <td>$total_sp</td>
     </tr>
 		</tbody>";
 		$sql_giaodich = mysqli_query($con, "INSERT INTO tbl_giaodich(sanpham_id,soluong,magiaodich,khachhang_id ) values ('$sanpham_id','$soluong','$mahang','$khachhang_id')");
@@ -120,19 +118,16 @@ if (isset($_POST['thanhtoandangnhap'])) {
 	
 			//email settings
 			$mail->isHTML(true);
-			$mail->Subject = "Chào bạn, Đây là thông tin mua hàng của bạn, mã hàng: $mahang";
+			$mail->Subject = "Chào bạn, Đây là thông tin mua hàng của bạn!!!";
 			$mail->Body = $content;
 	
-			if($mail->send()) {
-				echo '<script>
-				alert("Đặt hàng thành công")</script>';
-			}
+			$mail->send();
+			echo '<script>alert("Đặt hàng thành công")</script>';
 		} catch (Exception $e) {
 			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
-		header('Location: ./index.php');
-	}
-	?>
+}
+?>
 <div class="details-bg" style="background-image: url(./images/bn-cart.png)">
 	<div class="overlay"></div>
 	<h3 class="details-text">Giỏ hàng</h3>
@@ -145,8 +140,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			Giỏ hàng của bạn
 		</h3>
 		<!-- //tittle heading -->
-		<div class="loading"></div>
-		<div class="checkout-right">
+		<div  class="checkout-right">
 			<?php
 			$sql_lay_giohang = mysqli_query($con, "SELECT * FROM tbl_giohang ORDER BY giohang_id DESC");
 			?>

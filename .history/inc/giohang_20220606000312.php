@@ -60,7 +60,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 
 	$mahang = rand(0, 9999);
 	$content = "<table class='table'>";
-	$content.= '<thead>
+	$content .= '<thead>
 	<tr>
 		<th scope="col">STT</th>
 		<th scope="col">Tên sản phẩm</th>
@@ -79,18 +79,18 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		$i++;
 		
 		$sql_donhang = mysqli_query($con, "INSERT INTO tbl_donhang(sanpham_id, khachhang_id, soluong, mahang) VALUES ('$sanpham_id', '$khachhang_id','$soluong','$mahang')");
-		$content .= "<tbody>
-		<tr>
+		$sql_giaodich = mysqli_query($con, "INSERT INTO tbl_giaodich(sanpham_id,soluong,magiaodich,khachhang_id ) values ('$sanpham_id','$soluong','$mahang','$khachhang_id')");
+		$sql_delete = mysqli_query($con, "DELETE FROM tbl_giohang  WHERE sanpham_id = '$sanpham_id'");
+		$content .= '<tbody>
+    <tr>
       <td>$i</td>
       <td>$sanpham</td>
       <td>$soluong</td>
       <td>$total_sp</td>
     </tr>
-		</tbody>";
-		$sql_giaodich = mysqli_query($con, "INSERT INTO tbl_giaodich(sanpham_id,soluong,magiaodich,khachhang_id ) values ('$sanpham_id','$soluong','$mahang','$khachhang_id')");
-		$sql_delete = mysqli_query($con, "DELETE FROM tbl_giohang  WHERE sanpham_id = '$sanpham_id'");
+</tbody>';
 	}
-	$content.= "</table>";
+	$content .= "</table>";
 	
 		include "./PHPMailer/src/PHPMailer.php";
 		include "./PHPMailer/src/Exception.php";
@@ -176,11 +176,8 @@ if (isset($_POST['thanhtoandangnhap'])) {
 										</a>
 									</td>
 									<td class="invert">
-									<div class="btn-count btn-count--cart">
-											<span class="minus">-</span>
-											<input type="text" class="number-cart number" name="soluong[]" id="" value="<?php echo $row_fetch_giohang['soluong']  ?>">
-											<span class="plus">+</span>
-										</div>
+										<input type="number" class="number-cart1" name="soluong[]" id="" value="<?php echo $row_fetch_giohang['soluong']  ?>">
+
 										<input type="hidden" name="product_id[]" value="<?php echo $row_fetch_giohang['sanpham_id']  ?>">
 									</td>
 									<td class="invert"><?php echo $row_fetch_giohang['tensanpham'] ?></td>

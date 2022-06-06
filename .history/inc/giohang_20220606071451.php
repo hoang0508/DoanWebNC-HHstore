@@ -75,7 +75,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		$sql_sp = mysqli_query($con, "SELECT * FROM tbl_giohang WHERE sanpham_id = '$sanpham_id'");
 		$row_sp = mysqli_fetch_array($sql_sp);
 		$sanpham = $row_sp['tensanpham'];
-		$total_sp = $row_sp['giasanpham'] * $soluong;
+		$total_sp = $row_sp['giasanpham'];
 		$i++;
 		
 		$sql_donhang = mysqli_query($con, "INSERT INTO tbl_donhang(sanpham_id, khachhang_id, soluong, mahang) VALUES ('$sanpham_id', '$khachhang_id','$soluong','$mahang')");
@@ -176,11 +176,8 @@ if (isset($_POST['thanhtoandangnhap'])) {
 										</a>
 									</td>
 									<td class="invert">
-									<div class="btn-count btn-count--cart">
-											<span class="minus">-</span>
-											<input type="text" class="number-cart number" name="soluong[]" id="" value="<?php echo $row_fetch_giohang['soluong']  ?>">
-											<span class="plus">+</span>
-										</div>
+										<input type="number" class="number-cart1" name="soluong[]" id="" value="<?php echo $row_fetch_giohang['soluong']  ?>">
+
 										<input type="hidden" name="product_id[]" value="<?php echo $row_fetch_giohang['sanpham_id']  ?>">
 									</td>
 									<td class="invert"><?php echo $row_fetch_giohang['tensanpham'] ?></td>

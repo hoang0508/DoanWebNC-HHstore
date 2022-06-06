@@ -52,57 +52,31 @@ use PHPMailer\PHPMailer\Exception;
 
 if (isset($_POST['thanhtoandangnhap'])) {
 	$khachhang_id = $_SESSION['khachhang_id'];
-	$sql_email = mysqli_query($con, "SELECT * FROM tbl_khachhang");
-	$row_email = mysqli_fetch_array($sql_email);
-	$_SESSION['email'] = $row_email['email'];
-	$email_kh = $_SESSION['email'];
+	$email = $_SESSION['email'];
 	$name = $_SESSION['dangnhap_home'];
 
+
+
 	$mahang = rand(0, 9999);
-	$content = "<table class='table'>";
-	$content.= '<thead>
-	<tr>
-		<th scope="col">STT</th>
-		<th scope="col">Tên sản phẩm</th>
-		<th scope="col">Số lượng</th>
-		<th scope="col">Giá</th>
-	</tr>
-</thead>';
-	$i= 0;
 	for ($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++) {
 		$sanpham_id = $_POST['thanhtoan_product_id'][$i];
 		$soluong = $_POST['thanhtoan_soluong'][$i];
-		$sql_sp = mysqli_query($con, "SELECT * FROM tbl_giohang WHERE sanpham_id = '$sanpham_id'");
-		$row_sp = mysqli_fetch_array($sql_sp);
-		$sanpham = $row_sp['tensanpham'];
-		$total_sp = $row_sp['giasanpham'] * $soluong;
-		$i++;
-		
 		$sql_donhang = mysqli_query($con, "INSERT INTO tbl_donhang(sanpham_id, khachhang_id, soluong, mahang) VALUES ('$sanpham_id', '$khachhang_id','$soluong','$mahang')");
-		$content .= "<tbody>
-		<tr>
-      <td>$i</td>
-      <td>$sanpham</td>
-      <td>$soluong</td>
-      <td>$total_sp</td>
-    </tr>
-		</tbody>";
 		$sql_giaodich = mysqli_query($con, "INSERT INTO tbl_giaodich(sanpham_id,soluong,magiaodich,khachhang_id ) values ('$sanpham_id','$soluong','$mahang','$khachhang_id')");
 		$sql_delete = mysqli_query($con, "DELETE FROM tbl_giohang  WHERE sanpham_id = '$sanpham_id'");
-	}
-	$content.= "</table>";
-	
-		include "./PHPMailer/src/PHPMailer.php";
-		include "./PHPMailer/src/Exception.php";
-		include "./PHPMailer/src/OAuth.php";
-		include "./PHPMailer/src/POP3.php";
-		include "./PHPMailer/src/SMTP.php";
+
+
+		include "../PHPMailer/src/PHPMailer.php";
+		include "../PHPMailer/src/Exception.php";
+		include "../PHPMailer/src/OAuth.php";
+		include "../PHPMailer/src/POP3.php";
+		include "../PHPMailer/src/SMTP.php";
 	
 		$mail = new PHPMailer(true);  
 		try {
 			//Server settings
-			// $mail->SMTPDebug = 2;  
-			$mail->CharSet = 'UTF-8';                              // Enable verbose debug output
+			$mail->SMTPDebug = 2;  
+			$mail -> charSet = "UTF-8";                                // Enable verbose debug output
 			$mail->isSMTP();                                      // Set mailer to use SMTP
 			$mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
 			$mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -119,13 +93,14 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			//email settings
 			$mail->isHTML(true);
 			$mail->Subject = "Chào bạn, Đây là thông tin mua hàng của bạn!!!";
-			$mail->Body = $content;
+			$mail->Body = 'Nội dung mua hàng';
 	
 			$mail->send();
-			echo '<script>alert("Đặt hàng thành công")</script>';
+			echo '<script>alert("Thư đã được gửi đi")</script>';
 		} catch (Exception $e) {
 			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
+	}
 }
 ?>
 <div class="details-bg" style="background-image: url(./images/bn-cart.png)">
@@ -176,11 +151,8 @@ if (isset($_POST['thanhtoandangnhap'])) {
 										</a>
 									</td>
 									<td class="invert">
-									<div class="btn-count btn-count--cart">
-											<span class="minus">-</span>
-											<input type="text" class="number-cart number" name="soluong[]" id="" value="<?php echo $row_fetch_giohang['soluong']  ?>">
-											<span class="plus">+</span>
-										</div>
+										<input type="number" class="number-cart1" name="soluong[]" id="" value="<?php echo $row_fetch_giohang['soluong']  ?>">
+
 										<input type="hidden" name="product_id[]" value="<?php echo $row_fetch_giohang['sanpham_id']  ?>">
 									</td>
 									<td class="invert"><?php echo $row_fetch_giohang['tensanpham'] ?></td>

@@ -176,11 +176,13 @@ if (isset($_POST['thanhtoandangnhap'])) {
 										</a>
 									</td>
 									<td class="invert">
-									<div class="btn-count btn-count--cart">
+									<div class="btn-count">
 											<span class="minus">-</span>
-											<input type="text" class="number-cart number" name="soluong[]" id="" value="<?php echo $row_fetch_giohang['soluong']  ?>">
+											<input type="number" class="number-cart" name="soluong[]" id="" value="<?php echo $row_fetch_giohang['soluong']  ?>">
 											<span class="plus">+</span>
 										</div>
+									
+
 										<input type="hidden" name="product_id[]" value="<?php echo $row_fetch_giohang['sanpham_id']  ?>">
 									</td>
 									<td class="invert"><?php echo $row_fetch_giohang['tensanpham'] ?></td>

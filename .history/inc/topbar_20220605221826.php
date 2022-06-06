@@ -16,7 +16,7 @@ if (isset($_POST['dangnhap_home'])) {
 		if ($count > 0) {
 			$_SESSION['dangnhap_home'] = $row_dangnhap['name'];
 			$_SESSION['khachhang_id'] = $row_dangnhap['khachhang_id'];
-		
+			$_SESSION['email'] = $row_dangnhap['email'];
 			echo '<script>alert("Đăng nhập thành công!")</script>';
 		} else {
 			echo '<script>alert("Tài khoản hoặc mật khẩu sai!")</script>';

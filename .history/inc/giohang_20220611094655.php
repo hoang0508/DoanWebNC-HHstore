@@ -59,23 +59,22 @@ if (isset($_POST['thanhtoandangnhap'])) {
 	$_SESSION['phone'] = $row_email['phone'];
 	$email_kh = $_SESSION['email'];
 	$name = $_SESSION['dangnhap_home'];
-	$address = $_SESSION['address'];
-	$phone = $_SESSION['phone'];
 
 	$mahang = rand(0, 9999);
-	$content = "<table border='1' style='width:100%;text-align: center'>";
+	$content = "<table border='1' style='width:70%;text-align: center'>";
 	$content.= '<thead>
 	<tr>
 		<th scope="col">STT</th>
 		<th>Tên khách hàng</th>
 		<th>Địa chỉ</th>
-		<th>SĐT</th>
+		<th?>SĐT</th>
 		<th scope="col">Tên sản phẩm</th>
 		<th scope="col">Số lượng</th>
 		<th scope="col">Giá</th>
 		<th scope="col">Phương thức thanh toán</th>
 	</tr>
 </thead>';
+	$i= 0;
 	for ($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++) {
 		$sanpham_id = $_POST['thanhtoan_product_id'][$i];
 		$soluong = $_POST['thanhtoan_soluong'][$i];
@@ -83,14 +82,13 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		$row_sp = mysqli_fetch_array($sql_sp);
 		$sanpham = $row_sp['tensanpham'];
 		$total_sp = $row_sp['giasanpham'] * $soluong;
+		$i++;
 		
 		$sql_donhang = mysqli_query($con, "INSERT INTO tbl_donhang(sanpham_id, khachhang_id, soluong, mahang, phuongthuc) VALUES ('$sanpham_id', '$khachhang_id','$soluong','$mahang', '0')");
 		$content .= "<tbody>
 		<tr>
       <td>$i</td>
-			<td>$name</td>
-			<td>$address</td>
-			<td>$phone</td>
+			<td></td>
       <td>$sanpham</td>
       <td>$soluong</td>
       <td>$total_sp VNĐ</td>
@@ -138,6 +136,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		} catch (Exception $e) {
 			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 		}
+		header('Location: ./index.php');
 	}
 	?>
 <div class="details-bg" style="background-image: url(./images/bn-cart.png)">

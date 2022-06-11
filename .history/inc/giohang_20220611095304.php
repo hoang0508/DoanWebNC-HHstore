@@ -76,6 +76,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		<th scope="col">Phương thức thanh toán</th>
 	</tr>
 </thead>';
+	$i= 0;
 	for ($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++) {
 		$sanpham_id = $_POST['thanhtoan_product_id'][$i];
 		$soluong = $_POST['thanhtoan_soluong'][$i];
@@ -83,6 +84,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		$row_sp = mysqli_fetch_array($sql_sp);
 		$sanpham = $row_sp['tensanpham'];
 		$total_sp = $row_sp['giasanpham'] * $soluong;
+		$i++;
 		
 		$sql_donhang = mysqli_query($con, "INSERT INTO tbl_donhang(sanpham_id, khachhang_id, soluong, mahang, phuongthuc) VALUES ('$sanpham_id', '$khachhang_id','$soluong','$mahang', '0')");
 		$content .= "<tbody>

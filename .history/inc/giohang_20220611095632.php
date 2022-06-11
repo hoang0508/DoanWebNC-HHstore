@@ -76,6 +76,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		<th scope="col">Phương thức thanh toán</th>
 	</tr>
 </thead>';
+	$i= 0;
 	for ($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++) {
 		$sanpham_id = $_POST['thanhtoan_product_id'][$i];
 		$soluong = $_POST['thanhtoan_soluong'][$i];
@@ -83,61 +84,62 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		$row_sp = mysqli_fetch_array($sql_sp);
 		$sanpham = $row_sp['tensanpham'];
 		$total_sp = $row_sp['giasanpham'] * $soluong;
+		$i++;
 		
 		$sql_donhang = mysqli_query($con, "INSERT INTO tbl_donhang(sanpham_id, khachhang_id, soluong, mahang, phuongthuc) VALUES ('$sanpham_id', '$khachhang_id','$soluong','$mahang', '0')");
-		$content .= "<tbody>
-		<tr>
-      <td>$i</td>
-			<td>$name</td>
-			<td>$address</td>
-			<td>$phone</td>
-      <td>$sanpham</td>
-      <td>$soluong</td>
-      <td>$total_sp VNĐ</td>
-      <td>Tiền mặt</td>
-    </tr>
-		</tbody>";
+		// $content .= "<tbody>
+		// <tr>
+    //   <td>$i</td>
+		// 	<td>$name</td>
+		// 	<td>$address</td>
+		// 	<td>$phone</td>
+    //   <td>$sanpham</td>
+    //   <td>$soluong</td>
+    //   <td>$total_sp VNĐ</td>
+    //   <td>Tiền mặt</td>
+    // </tr>
+		// </tbody>";
 		$sql_giaodich = mysqli_query($con, "INSERT INTO tbl_giaodich(sanpham_id,soluong,magiaodich,khachhang_id ) values ('$sanpham_id','$soluong','$mahang','$khachhang_id')");
 		$sql_delete = mysqli_query($con, "DELETE FROM tbl_giohang  WHERE sanpham_id = '$sanpham_id'");
 	}
-	$content.= "</table>";
+	// $content.= "</table>";
 	
-		include "./PHPMailer/src/PHPMailer.php";
-		include "./PHPMailer/src/Exception.php";
-		include "./PHPMailer/src/OAuth.php";
-		include "./PHPMailer/src/POP3.php";
-		include "./PHPMailer/src/SMTP.php";
+	// 	include "./PHPMailer/src/PHPMailer.php";
+	// 	include "./PHPMailer/src/Exception.php";
+	// 	include "./PHPMailer/src/OAuth.php";
+	// 	include "./PHPMailer/src/POP3.php";
+	// 	include "./PHPMailer/src/SMTP.php";
 	
-		$mail = new PHPMailer(true);  
-		try {
-			//Server settings
-			// $mail->SMTPDebug = 2;  
-			$mail->CharSet = 'UTF-8';                              // Enable verbose debug output
-			$mail->isSMTP();                                      // Set mailer to use SMTP
-			$mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
-			$mail->SMTPAuth = true;                               // Enable SMTP authentication
-			$mail->Username = 'nguyenhuyhoang05082001@gmail.com';                 // SMTP username
-			$mail->Password = 'prbclaxpciyvtywn';                           // SMTP password
-			$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-			$mail->Port = 587;                                    // TCP port to connect to
+	// 	$mail = new PHPMailer(true);  
+	// 	try {
+	// 		//Server settings
+	// 		// $mail->SMTPDebug = 2;  
+	// 		$mail->CharSet = 'UTF-8';                              // Enable verbose debug output
+	// 		$mail->isSMTP();                                      // Set mailer to use SMTP
+	// 		$mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
+	// 		$mail->SMTPAuth = true;                               // Enable SMTP authentication
+	// 		$mail->Username = 'nguyenhuyhoang05082001@gmail.com';                 // SMTP username
+	// 		$mail->Password = 'prbclaxpciyvtywn';                           // SMTP password
+	// 		$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+	// 		$mail->Port = 587;                                    // TCP port to connect to
 	
-			//Recipients
-			$mail->setFrom('nguyenhuyhoang05082001@gmail.com', 'Shop HH Store');
-			$mail->addAddress($email_kh, $name);     // Add a recipient
-			$mail->addCC('nguyenhuyhoang05082001@gmail.com');
+	// 		//Recipients
+	// 		$mail->setFrom('nguyenhuyhoang05082001@gmail.com', 'Shop HH Store');
+	// 		$mail->addAddress($email_kh, $name);     // Add a recipient
+	// 		$mail->addCC('nguyenhuyhoang05082001@gmail.com');
 	
-			//email settings
-			$mail->isHTML(true);
-			$mail->Subject = "Chào bạn $name, Thông tin mua hàng của bạn, mã hàng: $mahang";
-			$mail->Body = $content;
+	// 		//email settings
+	// 		$mail->isHTML(true);
+	// 		$mail->Subject = "Chào bạn $name, Thông tin mua hàng của bạn, mã hàng: $mahang";
+	// 		$mail->Body = $content;
 	
-			if($mail->send()) {
-				echo '<script>
-				alert("Đặt hàng thành công")</script>';
-			}
-		} catch (Exception $e) {
-			echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-		}
+	// 		if($mail->send()) {
+	// 			echo '<script>
+	// 			alert("Đặt hàng thành công")</script>';
+	// 		}
+	// 	} catch (Exception $e) {
+	// 		echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+	// 	}
 	}
 	?>
 <div class="details-bg" style="background-image: url(./images/bn-cart.png)">

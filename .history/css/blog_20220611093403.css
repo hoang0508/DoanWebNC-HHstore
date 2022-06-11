@@ -1,0 +1,124 @@
+/*blog*/
+
+.blog-post {
+  margin-top: 30px;
+  margin-bottom: 100px;
+  cursor: pointer;
+}
+
+.post {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 40px;
+}
+
+.blog-post_people {
+  width: calc(50% - 20px);
+}
+
+.post_image {
+  position: relative;
+}
+
+.post_image img {
+  border-radius: 10px;
+}
+
+.post_times {
+  position: absolute;
+  top: 12px;
+  right: 35px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #4b566b;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+h3.post_title {
+  margin-top: 20px;
+  color: #373f50;
+  font-weight: 600;
+  font-size: 20px;
+  transition: all 0.25s linear;
+}
+
+h3.post_title:hover {
+  color: #fe696a;
+  cursor: pointer;
+}
+
+.post_author {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.post_author img.author_image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post_author p.author_name {
+  font-size: 13px;
+  color: #4b566b;
+  margin-right: 10px;
+  position: relative;
+}
+
+.post_author p.author_name::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+  margin: 0 10px;
+}
+
+.post_author span {
+  font-size: 13px;
+  color: #4b566b;
+  margin-left: 10px;
+}
+
+/*review*/
+
+.blog-review {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+.blog-review_left {
+  width: 40%;
+}
+
+.blog-review_right {
+  width: 60%;
+  color: #000;
+  font-weight: 500;
+}
+
+p.review_txt {
+  color: inherit !important ;
+}
+
+.blog-review_right p.review_desc {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 20px;
+  color: inherit !important;
+}
+
+.blog-review_right img.review-image {
+  margin-bottom: 15px;
+  border-radius: 10px;
+}

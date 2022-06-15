@@ -34,8 +34,9 @@ if (isset($_POST['message']) && isset($_POST['email'])) {
   $mail = new PHPMailer(true);    
 
   try {
-    //Server settings 
-    $mail->CharSet = 'UTF-8';                               // Enable verbose debug output
+    //Server settings
+    $mail->SMTPDebug = 2;   
+			$mail -> charSet = "UTF-8";                                // Enable verbose debug output
       // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.gmail.com;';  // Specify main and backup SMTP servers
@@ -46,7 +47,7 @@ if (isset($_POST['message']) && isset($_POST['email'])) {
     $mail->Port = 587;                                    // TCP port to connect to
 
     //Recipients
-    $mail->setFrom('nguyenhuyhoang05082001@gmail.com', 'Shop HH Store');
+    $mail->setFrom('nguyenhuyhoang05082001@gmail.com', 'Mailer');
     $mail->addAddress($email);     // Add a recipient
     $mail->addCC('nguyenhuyhoang05082001@gmail.com');
 
@@ -56,7 +57,7 @@ if (isset($_POST['message']) && isset($_POST['email'])) {
 
     //email settings
     $mail->isHTML(true);
-    $mail->Subject = "Cảm ơn bạn $email đã gửi thư đến chúng tôi!";
+    $mail->Subject = ("$email ($subject)");
     $mail->Body = $message;
 
     $mail->send();
@@ -141,12 +142,8 @@ if (isset($_POST['message']) && isset($_POST['email'])) {
                 <div class="col-md-12">
                   <form action="" class="sub-form" method="POST" enctype="multipart/form-data">
                     <h4>Phản hồi khách hàng</h4>
-                    <?php
-                    $sql_lienhe = mysqli_query($con, "SELECT * FROM tbl_lienhe");
-                    $row_email = mysqli_fetch_array($sql_lienhe);
-                    ?>
                     <div class="form-group col-md-12">
-                      <input type="email" name="email" class="form-control col-md-6" id="" placeholder="Email..." value="<?php echo   $row_email['email'] ?>">
+                      <input type="email" name="email" class="form-control col-md-6" id="" placeholder="Email...">
                       <input type="text" name="subject" class="form-control col-md-6" id="" placeholder="Tiêu đề">
                     </div>
                     <br>

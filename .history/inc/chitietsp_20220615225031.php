@@ -209,9 +209,6 @@
 		background-color: #1da1f2;
 		border-radius: inherit;
 	}
-	.product-cart .row {
-		flex-direction: column !important;
-	}
 </style>
 <?php
 if (isset($_GET['id'])) {

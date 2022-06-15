@@ -141,12 +141,8 @@ if (isset($_POST['message']) && isset($_POST['email'])) {
                 <div class="col-md-12">
                   <form action="" class="sub-form" method="POST" enctype="multipart/form-data">
                     <h4>Phản hồi khách hàng</h4>
-                    <?php
-                    $sql_lienhe = mysqli_query($con, "SELECT * FROM tbl_lienhe");
-                    $row_email = mysqli_fetch_array($sql_lienhe);
-                    ?>
                     <div class="form-group col-md-12">
-                      <input type="email" name="email" class="form-control col-md-6" id="" placeholder="Email..." value="<?php echo   $row_email['email'] ?>">
+                      <input type="email" name="email" class="form-control col-md-6" id="" placeholder="Email..." value="<?php echo $row_lienhe['email'] ?>>
                       <input type="text" name="subject" class="form-control col-md-6" id="" placeholder="Tiêu đề">
                     </div>
                     <br>

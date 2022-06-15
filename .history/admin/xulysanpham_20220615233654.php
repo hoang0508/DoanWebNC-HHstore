@@ -466,7 +466,7 @@ if (isset($_GET['xoa'])) {
             const href = e.target.getAttribute("href");
             console.log("🚀 ~ file: xulysanpham.php ~ line 428 ~ item.addEventListener ~ href", href)
             Swal.fire({
-                title: 'Bạn có muốn xóa sản phẩm?',
+                title: 'Are you sure?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,

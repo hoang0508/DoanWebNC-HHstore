@@ -23,7 +23,6 @@ if (isset($_POST['themsanpham'])) {
   move_uploaded_file($hinhanh_tmp1, $path . $hinhanh1);
   move_uploaded_file($hinhanh_tmp2, $path . $hinhanh2);
   move_uploaded_file($hinhanh_tmp3, $path . $hinhanh3);
-  echo '<script>alert("Sản phẩm đã được thêm!!")</script>';
 } else if (isset($_POST['capnhatsanpham'])) {
   $id_update = $_POST['capnhat_id'];
   $tensanpham = $_POST['tensanpham'];
@@ -42,13 +41,11 @@ if (isset($_POST['themsanpham'])) {
   $path = '../uploads/';
   if ($hinhanh1 == '') {
     $sql_update_image = "UPDATE tbl_sanpham SET sanpham_name = '$tensanpham',sanpham_chitiet = '$chitiet',sanpham_mota = '$mota',sanpham_gia = '$gia',sanpham_giakhuyenmai = '$giakhuyenmai',sanpham_soluong = '$soluong', category_id= '$danhmuc'  WHERE sanpham_id = '$id_update'";
-  echo '<script>alert("Sản phẩm đã được update!!")</script>';
   } else {
     move_uploaded_file($hinhanh_tmp1, $path . $hinhanh1);
     move_uploaded_file($hinhanh_tmp2, $path . $hinhanh2);
     move_uploaded_file($hinhanh_tmp3, $path . $hinhanh3);
     $sql_update_image = "UPDATE tbl_sanpham SET sanpham_name = '$tensanpham',sanpham_chitiet = '$chitiet',sanpham_mota = '$mota',sanpham_gia = '$gia',sanpham_giakhuyenmai = '$giakhuyenmai',sanpham_soluong = '$soluong', sanpham_image = '$hinhanh1', sanpham_img1 = '$hinhanh2', sanpham_img2 = '$hinhanh3' ,category_id= '$danhmuc'  WHERE sanpham_id = '$id_update'";
-  echo '<script>alert("Sản phẩm đã được update!!")</script>';
   }
   mysqli_query($con, $sql_update_image);
 }
@@ -466,7 +463,7 @@ if (isset($_GET['xoa'])) {
             const href = e.target.getAttribute("href");
             console.log("🚀 ~ file: xulysanpham.php ~ line 428 ~ item.addEventListener ~ href", href)
             Swal.fire({
-                title: 'Bạn có muốn xóa sản phẩm?',
+                title: 'Are you sure?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
                 showCancelButton: true,

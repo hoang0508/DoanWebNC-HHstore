@@ -50,13 +50,7 @@ if (isset($_POST['themsanpham'])) {
   mysqli_query($con, $sql_update_image);
 }
 ?>
-<?php
-if (isset($_GET['xoa'])) {
-  $id = $_GET['xoa'];
-  $sql_delete_sp = mysqli_query($con, "DELETE FROM tbl_sanpham WHERE sanpham_id = '$id'");
-  header('Location: xulysanpham.php?m=1');
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -352,10 +346,7 @@ if (isset($_GET['xoa'])) {
                       <td><?php echo $row_sp['category_name'] ?></td>
                       <td><?php echo  number_format($row_sp['sanpham_gia']) . 'vnd' ?></td>
                       <td><?php echo  number_format($row_sp['sanpham_giakhuyenmai']) . 'vnd' ?></td>
-                      <td style="text-align: center;">
-                        <a style="font-size: 14px;" href="?xoa=<?php echo $row_sp['sanpham_id'] ?>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                        <a href="xulysanpham.php?quanly=capnhat&capnhat_id=<?php echo $row_sp['sanpham_id'] ?>" style="font-size: 14px" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                      </td>
+                      <td style="text-align: center;"><a style="font-size: 14px;" href="?xoa=<?php echo $row_sp['sanpham_id'] ?>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a> <a href="xulysanpham.php?quanly=capnhat&capnhat_id=<?php echo $row_sp['sanpham_id'] ?>" style="font-size: 14px" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                     </tr>
                   <?php
                   }
@@ -420,17 +411,13 @@ if (isset($_GET['xoa'])) {
 
   <!-- Custom Theme Scripts -->
   <script src="build/js/custom.min.js"></script>
-  <?php
-  if (isset($_GET['m'])) { ?>
-    <div class="flash-data" data-flashdata="<?php echo $_GET['m']; ?>"></div>
-  <?php } ?>
+
   <script>
     const btnDelete = document.querySelectorAll(".btn-danger");
     [...btnDelete].forEach((item) => {
-      item.addEventListener("click", (e) => {
+      item.addEventListener((e) => {
+        console.log(item);
         e.preventDefault();
-        const href = e.target.getAttribute("href");
-        console.log("🚀 ~ file: xulysanpham.php ~ line 428 ~ item.addEventListener ~ href", href)
         Swal.fire({
           title: 'Are you sure?',
           text: "You won't be able to revert this!",
@@ -441,25 +428,21 @@ if (isset($_GET['xoa'])) {
           confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
           if (result.isConfirmed) {
-            document.location.href = href;
+            // <?php
+            // if (isset($_GET['xoa'])) {
+            //   $id = $_GET['xoa'];
+            //   $sql_delete_sp = mysqli_query($con, "DELETE FROM tbl_sanpham WHERE sanpham_id = '$id'");
+            // }
+            // ?>
             Swal.fire(
               'Deleted!',
-              'Sản phẩm đã được xóa!!.',
+              'Your file has been deleted.',
               'success'
             )
           }
         })
       })
     })
-
-    const flashdata = $('.flash-data').data('flashdata')
-    if (flashdata) {
-      swal.fire({
-        type: 'success',
-        title: 'Sản phẩm đã được xóa',
-        text: 'Xóa sản phẩm thành công!!'
-      })
-    }
   </script>
 </body>
 

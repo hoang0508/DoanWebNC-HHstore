@@ -50,13 +50,7 @@ if (isset($_POST['themsanpham'])) {
   mysqli_query($con, $sql_update_image);
 }
 ?>
-<?php
-if (isset($_GET['xoa'])) {
-  $id = $_GET['xoa'];
-  $sql_delete_sp = mysqli_query($con, "DELETE FROM tbl_sanpham WHERE sanpham_id = '$id'");
-  header('Location: xulysanpham.php?m=1');
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -444,7 +438,7 @@ if (isset($_GET['xoa'])) {
             document.location.href = href;
             Swal.fire(
               'Deleted!',
-              'Sản phẩm đã được xóa!!.',
+              'Your file has been deleted.',
               'success'
             )
           }
@@ -456,8 +450,8 @@ if (isset($_GET['xoa'])) {
     if (flashdata) {
       swal.fire({
         type: 'success',
-        title: 'Sản phẩm đã được xóa',
-        text: 'Xóa sản phẩm thành công!!'
+        title: 'Record Deleted',
+        text: 'Record has been deleted'
       })
     }
   </script>

@@ -444,7 +444,7 @@ if (isset($_GET['xoa'])) {
             document.location.href = href;
             Swal.fire(
               'Deleted!',
-              'Sản phẩm đã được xóa!!.',
+              'Sản phẩm đã được xóa.',
               'success'
             )
           }

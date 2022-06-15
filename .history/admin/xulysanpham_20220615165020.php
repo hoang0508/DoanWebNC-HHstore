@@ -444,7 +444,7 @@ if (isset($_GET['xoa'])) {
             document.location.href = href;
             Swal.fire(
               'Deleted!',
-              'Sản phẩm đã được xóa!!.',
+              'Your file has been deleted.',
               'success'
             )
           }
@@ -456,8 +456,8 @@ if (isset($_GET['xoa'])) {
     if (flashdata) {
       swal.fire({
         type: 'success',
-        title: 'Sản phẩm đã được xóa',
-        text: 'Xóa sản phẩm thành công!!'
+        title: 'Record Deleted',
+        text: 'Record has been deleted'
       })
     }
   </script>

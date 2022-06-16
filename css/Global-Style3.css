@@ -791,3 +791,7 @@ h3.heading-tittle::before {
   display: flex;
   align-items: center;
 }
+
+.product-active--list .slick-slide {
+  width: 250px !important;
+}

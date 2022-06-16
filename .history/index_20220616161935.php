@@ -74,7 +74,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/blog.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/footer.css"  >
-  <link rel="stylesheet" type="text/css" href="./css/Global-Style3.css" >
+  <link rel="stylesheet" type="text/css" href="./css/Global-Style2.css" >
 </head>
 
 <style>
@@ -643,8 +643,8 @@ else {
   <script>
     $('.product-active--list').slick({
   infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 3,
+  slidesToShow: 4,
+  slidesToScroll: 3
   prevArrow: false,
       nextArrow: false,
 });

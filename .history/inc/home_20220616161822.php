@@ -587,3 +587,9 @@ setInterval(function () {
 	</script>
 
 <script>
+$('.product-active--list').slick({
+  infinite: true,
+  slidesToShow: 4,
+  slidesToScroll: 3
+});
+  </script>

@@ -200,8 +200,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 									<td class="invert"><?php echo  number_format($row_fetch_giohang['giasanpham']) . 'vnd' ?></td>
 									<td class="invert"><?php echo  number_format($subtotal) . 'vnd' ?></td>
 									<td class="invert">
-										<a style="color: #fff; font-size: 14px" class="btn btn-danger" href="?quanly=giohang&xoa=<?php echo $row_fetch_giohang['giohang_id'] ?>">
-										<i class="fa fa-trash" aria-hidden="true"></i></a>
+										<a style="color: #fff; font-size: 14px" class="btn btn-danger" href="?quanly=giohang&xoa=<?php echo $row_fetch_giohang['giohang_id'] ?>">Xóa</a>
 									</td>
 								</tr>
 							<?php

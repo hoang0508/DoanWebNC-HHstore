@@ -74,7 +74,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/blog.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/footer.css"  >
-  <link rel="stylesheet" type="text/css" href="./css/Global-Style2.css" >
+  <link rel="stylesheet" type="text/css" href="./css/Global-Style3.css" >
 </head>
 
 <style>

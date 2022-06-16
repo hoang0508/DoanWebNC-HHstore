@@ -200,8 +200,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 									<td class="invert"><?php echo  number_format($row_fetch_giohang['giasanpham']) . 'vnd' ?></td>
 									<td class="invert"><?php echo  number_format($subtotal) . 'vnd' ?></td>
 									<td class="invert">
-										<a style="color: #fff; font-size: 14px" class="btn btn-danger" href="?quanly=giohang&xoa=<?php echo $row_fetch_giohang['giohang_id'] ?>">
-										<i class="fa fa-trash" aria-hidden="true"></i></a>
+										<a style="color: #fff; font-size: 14px" class="btn btn-danger" href="?quanly=giohang&xoa=<?php echo $row_fetch_giohang['giohang_id'] ?>">Xóa</a>
 									</td>
 								</tr>
 							<?php
@@ -213,8 +212,8 @@ if (isset($_POST['thanhtoandangnhap'])) {
 								</td>
 							</tr>
 							<tr>
-								<td colspan="7" class="text-right">
-									<button type="submit" class="btn-cart btn-cart--update" value="Cập nhật giỏ hàng" name="capnhatsoluong">Cập nhật giỏ hàng</button>
+								<td colspan="7">
+									<input type="submit" class="btn btn-primary" value="Cập nhật giỏ hàng" name="capnhatsoluong">
 									<?php
 									$sql_giohang_select = mysqli_query($con, "SELECT * FROM tbl_giohang");
 									$count_giohang_select = mysqli_num_rows($sql_giohang_select);
@@ -226,7 +225,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 										<?php
 										}
 										?>
-										<button type="submit" class="btn-cart btn-cart--price" value="Thanh toán giỏ hàng" name="thanhtoandangnhap">Thanh toán giỏ hàng</button>
+										<input type="submit" class="btn btn-success ml-2" value="Thanh toán giỏ hàng" name="thanhtoandangnhap">
 								</td>
 							<?php
 									}

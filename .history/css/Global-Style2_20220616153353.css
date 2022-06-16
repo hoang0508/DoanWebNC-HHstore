@@ -27,7 +27,35 @@ table.timetable_sub {
 }
 
 .timetable_sub th {
-  background-color: #1fa2ff;
+  background: #1488cc; /* fallback for old browsers */
+  padding: 20px 10px;
+  letter-spacing: 0 !important;
+  border: none !important;
+  font-weight: 500;
+}
+
+.timetable_sub td {
+  border: none !important;
+  font-weight: 500;
+}
+
+.rem1 {
+  border-bottom: 1px solid #ccc;
+}
+
+.timetable_sub td.cart-price-txt {
+  text-align: right;
+  padding-top: 20px;
+  font-size: 17px;
+  color: #f12711;
+  font-weight: 500;
+}
+
+.btn-cart {
+  padding: 15px 30px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px 0 0 10px;
 }
 
 .modal-title {
@@ -555,6 +583,7 @@ h3.heading-tittle1 {
 }
 
 .btn-count .number-cart {
+  width: 100px;
   background: none;
   border: none !important;
   text-align: center;

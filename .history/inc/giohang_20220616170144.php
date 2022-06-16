@@ -53,11 +53,11 @@ use PHPMailer\PHPMailer\Exception;
 
 if (isset($_POST['thanhtoandangnhap'])) {
 	$khachhang_id = $_SESSION['khachhang_id'];
-	// $sql_email = mysqli_query($con, "SELECT * FROM tbl_khachhang");
-	// $row_email = mysqli_fetch_array($sql_email);
-	// $_SESSION['email'] = $row_email['email'];
-	// $_SESSION['address'] = $row_email['address'];
-	// $_SESSION['phone'] = $row_email['phone'];
+	$sql_email = mysqli_query($con, "SELECT * FROM tbl_khachhang");
+	$row_email = mysqli_fetch_array($sql_email);
+	$_SESSION['email'] = $row_email['email'];
+	$_SESSION['address'] = $row_email['address'];
+	$_SESSION['phone'] = $row_email['phone'];
 	$email_kh = $_SESSION['email'];
 	$name = $_SESSION['dangnhap_home'];
 	$address = $_SESSION['address'];

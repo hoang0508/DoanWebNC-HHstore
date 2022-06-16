@@ -17,9 +17,6 @@ if (isset($_POST['dangnhap_home'])) {
 			$_SESSION['dangnhap_home'] = $row_dangnhap['name'];
 			$_SESSION['khachhang_id'] = $row_dangnhap['khachhang_id'];
 			$_SESSION['email'] = $row_dangnhap['email'];
-			$_SESSION['address'] = $row_dangnhap['address'];
-			$_SESSION['phone'] = $row_dangnhap['phone'];
-
 		
 			echo '<script>alert("Đăng nhập thành công!")</script>';
 		} else {

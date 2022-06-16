@@ -38,7 +38,7 @@ else if (isset($_POST['capnhatsoluong'])) {
 } else if (isset($_GET['xoa'])) {
 	$id = $_GET['xoa'];
 	$sql_delete = mysqli_query($con, "DELETE FROM tbl_giohang  WHERE giohang_id = '$id'");
-	// header('Location: index.php?m=1');
+	header('Location: index.php?m=1');
 }
 ?>
 <!-- Session trong PHP được dùng để lưu trữ thông tin của người dùng hoặc là lưu trữ tùy chọn cấu hình hệ thống cho người dùng.  -->
@@ -317,7 +317,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
     [...btnDelete].forEach((item) => {
         item.addEventListener("click", (e) => {
             e.preventDefault();
-            const href = e.currentTarget.getAttribute("href");
+            const href = e.target.getAttribute("href");
             Swal.fire({
                 title: 'Bạn có muốn xóa sản phẩm?',
                 text: "You won't be able to revert this!",

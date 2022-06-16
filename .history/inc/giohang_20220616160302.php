@@ -317,7 +317,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
     [...btnDelete].forEach((item) => {
         item.addEventListener("click", (e) => {
             e.preventDefault();
-            const href = e.currentTarget.getAttribute("href");
+            const href = e.target.getAttribute("href");
             Swal.fire({
                 title: 'Bạn có muốn xóa sản phẩm?',
                 text: "You won't be able to revert this!",

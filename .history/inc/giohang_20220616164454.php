@@ -88,7 +88,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		$sql_donhang = mysqli_query($con, "INSERT INTO tbl_donhang(sanpham_id, khachhang_id, soluong, mahang, phuongthuc) VALUES ('$sanpham_id', '$khachhang_id','$soluong','$mahang', '0')");
 		$content .= "<tbody>
 		<tr>
-      <td style='padding: 10px 20px;'>$i</td>
+      <td>$i</td>
 			<td>$name</td>
 			<td>$address</td>
 			<td>$phone</td>

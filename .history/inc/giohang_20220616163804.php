@@ -67,7 +67,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 	$content = "<table border='1' style='width:100%;text-align: center;border-collapse: collapse;'>";
 	$content.= '<thead>
 	<tr>
-		<th scope="col" style="padding: 10px 20px;">STT</th>
+		<th scope="col">STT</th>
 		<th>Tên khách hàng</th>
 		<th>Địa chỉ</th>
 		<th>SĐT</th>
@@ -88,7 +88,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 		$sql_donhang = mysqli_query($con, "INSERT INTO tbl_donhang(sanpham_id, khachhang_id, soluong, mahang, phuongthuc) VALUES ('$sanpham_id', '$khachhang_id','$soluong','$mahang', '0')");
 		$content .= "<tbody>
 		<tr>
-      <td style='padding: 10px 20px;'>$i</td>
+      <td>$i</td>
 			<td>$name</td>
 			<td>$address</td>
 			<td>$phone</td>
@@ -124,7 +124,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 	
 			//Recipients
 			$mail->setFrom('nguyenhuyhoang05082001@gmail.com', 'Shop HH Store');
-			$mail->addAddress($email_kh);     // Add a recipient
+			$mail->addAddress($email_kh, $name);     // Add a recipient
 			$mail->addCC('nguyenhuyhoang05082001@gmail.com');
 	
 			//email settings

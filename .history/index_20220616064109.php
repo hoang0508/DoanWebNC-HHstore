@@ -48,7 +48,7 @@
 	<!-- Custom-Files -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Bootstrap css -->
-	<link href="./css/style3-bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="./css/style2-bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- Main css -->
 	<link rel="stylesheet" href="css/fontawesome-all.css">
 	<!-- Font-Awesome-Icons-CSS -->
@@ -74,7 +74,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/blog.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/footer.css"  >
-  <link rel="stylesheet" type="text/css" href="./css/Global-Style3.css" >
+  <link rel="stylesheet" type="text/css" href="./css/Global-Style2.css" >
 </head>
 
 <style>

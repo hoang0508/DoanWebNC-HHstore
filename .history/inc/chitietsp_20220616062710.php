@@ -297,21 +297,7 @@ while ($row_chitiet = mysqli_fetch_array($sql_chitiet)) {
 							<span class="item_price details-price"><?php echo number_format($row_chitiet['sanpham_giakhuyenmai']) . 'vnd' ?></span>
 							<del class="mx-2 font-weight-light"><?php echo number_format($row_chitiet['sanpham_gia']) . 'vnd' ?></del>
 						</p>
-						<div class="product-details--text mb-3">
-							<?php
-							if( $row_sp_cs['soluong'] >= 1) {
-								?>
-								<?php echo $row_sp_cs['soluong'] ?>  sản phẩm có sẵn
-								<?php 
-							}
-							else {
-								echo $row_sp_cs['sanpham_soluong'];
-								echo " Sản phẩm có sẵn"
-								?>
-							<?php
-							}
-							?>
-							</div>
+						<div class="product-details--text mb-3"><?php echo $row_sp_cs['soluong'] ?> sản phẩm có sẵn</div>
 						<div class="occasion-cart">
 							<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out ">
 								<!-- action="?quanly=giohang":đường đã cho hành động của form;dùng vs phương thức Post -->

@@ -123,7 +123,7 @@ a.pd-name {
 
 span.number-buy {
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .star-vote i.fa-star {
@@ -725,4 +725,9 @@ h3.heading-tittle::before {
   border-radius: 0 6px 6px 0;
   color: #fff;
   cursor: pointer;
+}
+
+.info-product-price {
+  display: flex;
+  align-items: center;
 }

@@ -306,7 +306,7 @@ while ($row_chitiet = mysqli_fetch_array($sql_chitiet)) {
 							}
 							else {
 								echo $row_sp_cs['sanpham_soluong'];
-								echo " Sản phẩm có sẵn"
+								echo "Sản phẩm có sẵn"
 								?>
 							<?php
 							}

@@ -299,18 +299,16 @@ while ($row_chitiet = mysqli_fetch_array($sql_chitiet)) {
 						</p>
 						<div class="product-details--text mb-3">
 							<?php
-							if( $row_sp_cs['soluong'] >= 1) {
+							if( $row_sp_cs['soluong'] >= 0) {
 								?>
 								<?php echo $row_sp_cs['soluong'] ?>  sản phẩm có sẵn
 								<?php 
 							}
 							else {
 								echo $row_sp_cs['sanpham_soluong'];
-								echo " Sản phẩm có sẵn"
+								echo "Sản phẩm có sẵn"
 								?>
-							<?php
 							}
-							?>
 							</div>
 						<div class="occasion-cart">
 							<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out ">

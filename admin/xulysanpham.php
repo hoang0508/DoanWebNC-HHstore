@@ -351,7 +351,17 @@ if (isset($_GET['xoa'])) {
                             <div class="col-md-12">
                                 <h4>Danh sách sản phẩm</h4>
                                 <?php
-                $sql_select_sp = mysqli_query($con, "SELECT * FROM tbl_sanpham, tbl_category WHERE tbl_sanpham.category_id = tbl_category.category_id  ORDER BY tbl_sanpham.category_id DESC");
+                                if (isset($_GET['trang'])){
+                                  $page = $_GET['trang'];  
+                                }else{
+                                    $page = '';
+                                }
+                                if($page == '' || $page == 1){
+                                    $begin = 0;
+                                }else{
+                                    $begin = ($page*7)-7;
+                                }
+                $sql_select_sp = mysqli_query($con, "SELECT * FROM tbl_sanpham, tbl_category WHERE tbl_sanpham.category_id = tbl_category.category_id  ORDER BY tbl_sanpham.category_id DESC LIMIT $begin,7");
                 ?>
                                 <table class="table table-bordered">
                                     <tr style="text-align:center">
@@ -394,6 +404,50 @@ if (isset($_GET['xoa'])) {
                   ?>
                                 </table>
                             </div>
+                            <!-- //phân rang -->
+                            <div style="clear:both;"></div>
+                            <style type="text/css">
+                            ul.list_trang {
+                                padding: 0;
+                                margin: 0;
+                                list-style: none;
+                            }
+
+                            ul.list_trang li {
+                                float: left;
+                                padding: 10px 13px;
+                                margin: 10px;
+                                background: burlywood;
+                                display: block;
+                            }
+
+                            ul.list_trang li a {
+                                color: #000;
+                                text-align: center;
+                                text-decoration: none;
+
+                            }
+                            </style>
+                            <?php
+                            $sql_trang = mysqli_query($con,"SELECT * FROM tbl_sanpham");
+                            $row_count = mysqli_num_rows($sql_trang);
+                            $trang = ceil($row_count/7);
+                            ?>
+                            <p>Trang hiện tại: <?php echo $page ?>/<?php echo $trang ?></p>
+
+                            <ul class="list_trang">
+                                <?php
+                                for($i=1;$i<=$trang;$i++){
+                                ?>
+                                <li
+                                    <?php if($i == $page){echo 'style="background:brown; font-size:14 ;"';}else{ echo '';}?>>
+                                    <a href="xulysanpham.php?trang=<?php echo $i?>"><?php echo $i?></a>
+                                </li>
+                                <?php
+                                }
+                                ?>
+
+                            </ul>
                         </div>
                     </div>
                 </div>

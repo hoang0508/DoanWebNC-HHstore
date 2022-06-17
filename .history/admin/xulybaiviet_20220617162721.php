@@ -119,33 +119,24 @@ if (isset($_GET['xoa'])) {
                 $row_capnhat = mysqli_fetch_array($sql_capnhat);
                 $id_category_1 = $row_capnhat['danhmuctin_id'];
               ?>
-                <div class="col-md-12">
+                <div class="col-md-4">
                   <h4>Cập nhật bài viết</h4>
                   <form action="" method="POST" enctype='multipart/form-data'>
-                    <div class="flex flex-mb">
-                      <div class="form-group--product">
-                        <label for="" class="form-label">Tên bài viết</label>
-                        <input type="text" name="tenbaiviet" class="form-control form-input" value="<?php echo $row_capnhat['tenbaiviet'] ?>">
-                      </div>
-                      <br>
-                      <div class="form-group--product">
-                        <label for="" class="form-label">Hình ảnh</label>
-                        <label for="" class="form-label--images">
-                          <input type="file" name="hinhanh" class="input-image" />
-                          <div class="form-label--chose">
-                            <img src="../uploads/<?php echo $row_capnhat['baiviet_image'] ?>" class="chose-image" alt="">
-                            <p>Chọn ảnh</p>
-                          </div>
-                        </label>
-                      </div>
-                    </div>
-                    <label for="" class="form-label">Mô tả</label>
-                    <textarea name="mota" class="tiniText"><?php echo $row_capnhat['tomtat'] ?></textarea>
+                    <label for="">Tên bài viết</label>
+                    <input type="text" name="tenbaiviet" class="form-control" value="<?php echo $row_capnhat['tenbaiviet'] ?>">
                     <br>
-                    <label for="" class="form-label">Chi tiết</label>
-                    <textarea name="mota" class="tiniText">
-                    <?php echo $row_capnhat['noidung'] ?>
-                    </textarea>
+                    <input type="hidden" name="capnhat_id" class="form-control" value="<?php echo $row_capnhat['baiviet_id'] ?>">
+                    <br>
+                    <label for="">Hình ảnh</label>
+                    <input type="file" name="hinhanh" class="form-control">
+                    <br>
+                    <img src="../uploads/<?php echo $row_capnhat['baiviet_image'] ?>" width="80" height="80" alt="">
+                    <br><br>
+                    <label for="">Mô tả</label>
+                    <textarea name="mota" class="form-control"><?php echo $row_capnhat['tomtat'] ?></textarea>
+                    <br>
+                    <label for="">Chi tiết</label>
+                    <textarea name="chitiet" class="form-control"><?php echo $row_capnhat['noidung'] ?></textarea>
                     <br>
                     <label for="">Danh mục</label>
                     <?php
@@ -198,7 +189,7 @@ if (isset($_GET['xoa'])) {
                     <textarea name="mota" class="tiniText"></textarea>
                     <br>
                     <label for="" class="form-label">Chi tiết</label>
-                    <textarea name="chitiet" class="tiniText"></textarea>
+                    <textarea name="mota" class="tiniText"></textarea>
                     <br>
                     <label for="">Danh mục</label>
                     <?php

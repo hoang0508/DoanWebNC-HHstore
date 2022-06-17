@@ -1,0 +1,23 @@
+.product-page {
+  margin-left: auto;
+}
+
+ul.list_trang {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+ul.list_trang li {
+  padding: 10px 13px;
+  margin: 10px;
+  background: burlywood;
+}
+
+ul.list_trang li a {
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+}

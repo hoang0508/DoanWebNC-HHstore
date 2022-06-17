@@ -123,7 +123,6 @@ if (isset($_GET['xoa'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
     <link rel="stylesheet" href="./css/styleForm3.css">
     <link rel="stylesheet" href="./css/font1.css">
-    <link rel="stylesheet" href="./css/page.css">
 
 </head>
 
@@ -406,6 +405,29 @@ if (isset($_GET['xoa'])) {
                                 </table>
                             </div>
                             <!-- //phân rang -->
+                            <div style="clear:both;"></div>
+                            <style type="text/css">
+                            ul.list_trang {
+                                padding: 0;
+                                margin: 0;
+                                list-style: none;
+                            }
+
+                            ul.list_trang li {
+                                float: left;
+                                padding: 10px 13px;
+                                margin: 10px;
+                                background: burlywood;
+                                display: block;
+                            }
+
+                            ul.list_trang li a {
+                                color: #000;
+                                text-align: center;
+                                text-decoration: none;
+
+                            }
+                            </style>
                             <?php
                             $sql_trang = mysqli_query($con,"SELECT * FROM tbl_sanpham");
                             $row_count = mysqli_num_rows($sql_trang);
@@ -419,7 +441,7 @@ if (isset($_GET['xoa'])) {
                                     for($i=1;$i<=$trang;$i++){
                                     ?>
                                     <li
-                                        <?php if($i == $page){echo 'style="background: #EB3349; font-size:14 ;"';}else{ echo '';}?>>
+                                        <?php if($i == $page){echo 'style="background:brown; font-size:14 ;"';}else{ echo '';}?>>
                                         <a href="xulysanpham.php?trang=<?php echo $i?>"><?php echo $i?></a>
                                     </li>
                                     <?php

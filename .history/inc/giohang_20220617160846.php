@@ -162,7 +162,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 								</tr>
 								<tr>
 									<td colspan="7" class="text-right">
-										<button type="button" class="btn-cart btn-cart--update" value="Cập nhật giỏ hàng" name="capnhatsoluong">Cập nhật giỏ hàng</button>
+										<button type="submit" class="btn-cart btn-cart--update" value="Cập nhật giỏ hàng" name="capnhatsoluong">Cập nhật giỏ hàng</button>
 										<?php
 										$sql_giohang_select = mysqli_query($con, "SELECT * FROM tbl_giohang");
 										$count_giohang_select = mysqli_num_rows($sql_giohang_select);
@@ -318,6 +318,7 @@ if (isset($_GET['m'])) { ?>
 <script>
 	const btnCartUpdate = document.querySelector(".btn-cart--update");
 	btnCartUpdate.addEventListener("click", async (e) => {
+		e.preventDefault()
 		await Swal.fire({
 			position: 'top-end',
 			icon: 'success',

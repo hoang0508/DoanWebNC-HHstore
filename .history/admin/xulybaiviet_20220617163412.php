@@ -122,7 +122,7 @@ if (isset($_GET['xoa'])) {
                 <div class="col-md-12">
                   <h4>Cập nhật bài viết</h4>
                   <form action="" method="POST" enctype='multipart/form-data'>
-                    <div class="flex flex-mb">
+                  <div class="flex flex-mb">
                       <div class="form-group--product">
                         <label for="" class="form-label">Tên bài viết</label>
                         <input type="text" name="tenbaiviet" class="form-control form-input" value="<?php echo $row_capnhat['tenbaiviet'] ?>">

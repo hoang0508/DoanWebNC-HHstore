@@ -122,7 +122,7 @@ if (isset($_GET['xoa'])) {
                 <div class="col-md-12">
                   <h4>Cập nhật bài viết</h4>
                   <form action="" method="POST" enctype='multipart/form-data'>
-                    <div class="flex flex-mb">
+                  <div class="flex flex-mb">
                       <div class="form-group--product">
                         <label for="" class="form-label">Tên bài viết</label>
                         <input type="text" name="tenbaiviet" class="form-control form-input" value="<?php echo $row_capnhat['tenbaiviet'] ?>">
@@ -139,13 +139,11 @@ if (isset($_GET['xoa'])) {
                         </label>
                       </div>
                     </div>
-                    <label for="" class="form-label">Mô tả</label>
-                    <textarea name="mota" class="tiniText"><?php echo $row_capnhat['tomtat'] ?></textarea>
+                    <label for="">Mô tả</label>
+                    <textarea name="mota" class="form-control"><?php echo $row_capnhat['tomtat'] ?></textarea>
                     <br>
-                    <label for="" class="form-label">Chi tiết</label>
-                    <textarea name="mota" class="tiniText">
-                    <?php echo $row_capnhat['noidung'] ?>
-                    </textarea>
+                    <label for="">Chi tiết</label>
+                    <textarea name="chitiet" class="form-control"><?php echo $row_capnhat['noidung'] ?></textarea>
                     <br>
                     <label for="">Danh mục</label>
                     <?php

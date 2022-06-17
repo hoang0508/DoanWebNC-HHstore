@@ -419,7 +419,7 @@ if (isset($_GET['xoa'])) {
                                     for($i=1;$i<=$trang;$i++){
                                     ?>
                                     <li
-                                        <?php if($i == $page){echo 'style="background: #EB3349; font-size:14 ;"';}else{ echo '';}?>>
+                                        <?php if($i == $page){echo 'style="background:brown; font-size:14 ;"';}else{ echo '';}?>>
                                         <a href="xulysanpham.php?trang=<?php echo $i?>"><?php echo $i?></a>
                                     </li>
                                     <?php

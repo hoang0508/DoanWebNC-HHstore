@@ -75,7 +75,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/footer.css"  >
   <link rel="stylesheet" type="text/css" href="./css/Global-Style2.css" >
-  	<!-- jquery -->
+  	jquery
 	<script src="js/jquery-2.2.3.min.js"></script>
 </head>
 

@@ -181,7 +181,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 											?>
 											<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />
 											<input type="hidden" name="mahang" value="<?= $mahang?>" />
-											<div class="button-cart--pay">
+											<div class="button-cart">
 												<button type="button" class="btn-cart btn-cart--price" value="Thanh toán giỏ hàng">Thanh toán giỏ hàng</button>
 												<div class="button-cart--loading">
 													<div class="lds-ellipsis">

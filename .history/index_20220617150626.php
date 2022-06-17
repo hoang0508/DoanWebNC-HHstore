@@ -75,8 +75,8 @@
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/footer.css"  >
   <link rel="stylesheet" type="text/css" href="./css/Global-Style2.css" >
-  	<!-- jquery -->
-	<script src="js/jquery-2.2.3.min.js"></script>
+  	<!-- jquery
+	<script src="js/jquery-2.2.3.min.js"></script> -->
 </head>
 
 <style>
@@ -537,6 +537,9 @@ else if($tam =='blog'){
 else {
 	include ('./inc/home.php');
 }
+?>
+<?php
+
 include ('./inc/footer.php');
 ?>
 
@@ -545,6 +548,9 @@ include ('./inc/footer.php');
 	<!-- js-files -->
 	<script  type="text/javascript" src="./js/apph-2.js"></script>
 	<script  type="text/javascript" src="./js/count.js"></script>
+
+	<!-- jquery -->
+	<script src="js/jquery-2.2.3.min.js"></script>
   <!-- slider -->
   <script
     type="text/javascript"
@@ -660,8 +666,7 @@ include ('./inc/footer.php');
     <!-- sweet -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11">
 	</script>
-	<!-- jquery -->
-	<script src="js/jquery-2.2.3.min.js"></script>
+
 		<!-- imagezoom -->
 		<script src="js/imagezoom.js"></script>
 	<!-- //imagezoom -->

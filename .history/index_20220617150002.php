@@ -497,6 +497,7 @@ body::-webkit-scrollbar-thumb {
 include './inc/topbar.php';
 include './inc/menu.php';
 include './inc/topDown.php';
+include './inc/footer.php';
 
 if(isset($_GET['quanly'])) {
 	$tam = $_GET['quanly'];
@@ -537,14 +538,16 @@ else if($tam =='blog'){
 else {
 	include ('./inc/home.php');
 }
-include ('./inc/footer.php');
+	include './inc/footer.php';
 ?>
-
 
 
 	<!-- js-files -->
 	<script  type="text/javascript" src="./js/apph-2.js"></script>
 	<script  type="text/javascript" src="./js/count.js"></script>
+
+	<!-- jquery -->
+	<script src="js/jquery-2.2.3.min.js"></script>
   <!-- slider -->
   <script
     type="text/javascript"
@@ -660,8 +663,7 @@ include ('./inc/footer.php');
     <!-- sweet -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11">
 	</script>
-	<!-- jquery -->
-	<script src="js/jquery-2.2.3.min.js"></script>
+
 		<!-- imagezoom -->
 		<script src="js/imagezoom.js"></script>
 	<!-- //imagezoom -->

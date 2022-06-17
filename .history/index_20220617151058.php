@@ -74,9 +74,7 @@
 	<link rel="stylesheet" type="text/css" href="./css/blog.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/menu.css"  >
 	<link rel="stylesheet" type="text/css" href="./css/footer.css"  >
-  <link rel="stylesheet" type="text/css" href="./css/Global-Style2.css" >
-  	<!-- jquery -->
-	<script src="js/jquery-2.2.3.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/Global-Style3.css" >
 </head>
 
 <style>
@@ -148,13 +146,14 @@ body::-webkit-scrollbar-thumb {
     padding-bottom: 15px;
     position: relative;
     text-align: center;
+    max-width: 300px;
     margin: 0 auto;
     display: flex;
   }
 
   .form-group input {
-    width: 100%;
-    padding: 15px 30px;
+    width: 300px;
+    padding: 10px 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
     position: relative;
@@ -178,22 +177,15 @@ body::-webkit-scrollbar-thumb {
   .form-group i.eye-pass {
     position: absolute;
     right: 10px;
-    cursor: pointer;
   }
 
   .form-group .login__button {
     padding: 15px 30px;
-    background-color: #1488CC;
+    background-color: #3d6ef7;
     color: #fff;
     border-radius: 10px;
     text-align: center;
     margin: 0 auto;
-    cursor: pointer;
-  }
-
-  .form-login--label {
-    margin-bottom: 10px;
-    font-weight: 500;
   }
 
 	.form {
@@ -537,14 +529,15 @@ else if($tam =='blog'){
 else {
 	include ('./inc/home.php');
 }
-include ('./inc/footer.php');
+	include './inc/footer.php';
 ?>
-
 
 
 	<!-- js-files -->
 	<script  type="text/javascript" src="./js/apph-2.js"></script>
 	<script  type="text/javascript" src="./js/count.js"></script>
+
+
   <!-- slider -->
   <script
     type="text/javascript"

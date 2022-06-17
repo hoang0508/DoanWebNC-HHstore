@@ -56,7 +56,6 @@ $address = $_SESSION['address'];
 $phone = $_SESSION['phone'];
 $mahang = rand(0, 9999);
 if (isset($_POST['thanhtoandangnhap'])) {
-	print_r($_POST);
 	$mahang = $_POST['mahang'];
 	for ($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++) {
 		$sanpham_id = $_POST['thanhtoan_product_id'][$i];
@@ -104,7 +103,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			<?php
 			} else {
 			?>
-			
+
 				<div class="table-responsive">
 					<form id="thanhtoan" action="" method="POST">
 						<table class="timetable_sub" style="width: 98%">
@@ -353,8 +352,7 @@ if (isset($_GET['m'])) { ?>
 				},
 				success: function(reponse)
 				{
-					const inputHidden = $('<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />')
-					$('#thanhtoan').append(inputHidden);
+					$('#thanhtoan').html('<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />');
 					$('#thanhtoan').submit()
 				}
 			});

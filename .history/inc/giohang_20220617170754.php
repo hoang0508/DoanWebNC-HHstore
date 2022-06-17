@@ -29,7 +29,6 @@ else if (isset($_POST['capnhatsoluong'])) {
 	for ($i = 0; $i < count($_POST['product_id']); $i++) {
 		$sanpham_id = $_POST['product_id'][$i];
 		$soluong = $_POST['soluong'][$i];
-	print_r($soluong);
 		if ($soluong <= 0) {
 			$sql_delete = mysqli_query($con, "DELETE FROM tbl_giohang  WHERE sanpham_id = '$sanpham_id'");
 		} else {
@@ -56,7 +55,6 @@ $address = $_SESSION['address'];
 $phone = $_SESSION['phone'];
 $mahang = rand(0, 9999);
 if (isset($_POST['thanhtoandangnhap'])) {
-	print_r($_POST);
 	$mahang = $_POST['mahang'];
 	for ($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++) {
 		$sanpham_id = $_POST['thanhtoan_product_id'][$i];
@@ -104,9 +102,9 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			<?php
 			} else {
 			?>
-			
+
 				<div class="table-responsive">
-					<form id="thanhtoan" action="" method="POST">
+					<form id="thanhtoan" action="" method="post">
 						<table class="timetable_sub" style="width: 98%">
 							<thead>
 								<tr>
@@ -164,7 +162,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 								</tr>
 								<tr>
 									<td colspan="7" class="text-right">
-										<button type="submit" class="btn-cart btn-cart--update" value="Cập nhật giỏ hàng" name="capnhatsoluong">Cập nhật giỏ hàng</button>
+										<button type="button" class="btn-cart btn-cart--update" value="Cập nhật giỏ hàng" name="capnhatsoluong">Cập nhật giỏ hàng</button>
 										<?php
 										$sql_giohang_select = mysqli_query($con, "SELECT * FROM tbl_giohang");
 										$count_giohang_select = mysqli_num_rows($sql_giohang_select);
@@ -181,8 +179,8 @@ if (isset($_POST['thanhtoandangnhap'])) {
 											<?php
 											}
 											?>
+											<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />
 											<input type="hidden" name="mahang" value="<?= $mahang?>" />
-
 											<div class="button-cart--pay">
 												<button type="button" class="btn-cart btn-cart--price" value="Thanh toán giỏ hàng">Thanh toán giỏ hàng</button>
 												<div class="button-cart--loading">
@@ -191,7 +189,6 @@ if (isset($_POST['thanhtoandangnhap'])) {
 														<div></div>
 														<div></div>
 													</div>
-												</div>
 												</div>
 									</td>
 								<?php
@@ -202,6 +199,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 							</tbody>
 						</table>
 					</form>
+				</div>
 			<?php
 			}
 			?>
@@ -319,8 +317,8 @@ if (isset($_GET['m'])) { ?>
 
 <script>
 	const btnCartUpdate = document.querySelector(".btn-cart--update");
-	btnCartUpdate.addEventListener("click", (e) => {
-		Swal.fire({
+	btnCartUpdate.addEventListener("click", async (e) => {
+		await Swal.fire({
 			position: 'top-end',
 			icon: 'success',
 			title: 'Cập nhật sản phẩm thành công!!',
@@ -351,11 +349,11 @@ if (isset($_GET['m'])) { ?>
 					phone: "<?= $phone ?>",
 					mahang: "<?= $mahang ?>"
 				},
-				success: function(reponse)
+				success: function(response)
+
 				{
-					const inputHidden = $('<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />')
-					$('#thanhtoan').append(inputHidden);
 					$('#thanhtoan').submit()
+
 				}
 			});
 		});

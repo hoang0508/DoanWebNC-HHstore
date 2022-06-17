@@ -13,12 +13,12 @@
                 <div class="blog-post_people">
                     <a href="">
                         <div class="post_image">
-                            <img src="../images/<?php echo $row_blog[''] ?>" alt="" class="img-bn">
+                            <img src="assets/img/anh84.jpg" alt="" class="img-bn">
                         </div>
-                        <h3 class="post_title"><?php echo $row_blog['content_name'] ?></h3>
+                        <h3 class="post_title">We Launched New Store in San Francisco!</h3>
                         <div class="post_author">
-                            <p class="author_name"><?php echo $row_blog['author'] ?></p>
-                            <span><?php echo $row_blog['ngaydang'] ?></span>
+                            <p class="author_name">Paul Woodred</p>
+                            <span>Cartzilla news</span>
                         </div>
                     </a>
                 </div>

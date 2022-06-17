@@ -795,3 +795,15 @@ h3.heading-tittle::before {
 .product-active--list .slick-slide {
   width: 250px !important;
 }
+
+.cart-null {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cart-null--bag {
+  width: 200px;
+  color: #ffe259;
+}

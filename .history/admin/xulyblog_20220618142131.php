@@ -23,7 +23,7 @@ if (isset($_POST['themblog'])) {
     $chitiet = $_POST['chitiet'];
     $path = '../uploads/';
   if ($hinhanh == '') {
-    $sql_update_image = "UPDATE tbl_blog SET content_name = '$tenbaiviet' ,author = '$tentacgia',content = '$chitiet ' WHERE blog_id = '$id_capnhat'";
+    $sql_update_image = "UPDATE tbl_blog SET content_name = '$tenbaiviet' ,author = '$tentacgia',content = '$chitiet ' WHERE baiviet_id = '$id_update'";
   } else {
     move_uploaded_file($hinhanh_tmp, $path . $hinhanh);
     $sql_update_image = "UPDATE tbl_blog SET tenbaiviet = '$tenbaiviet',content = '$chitiet',baiviet_image ='$hinhanh',author = '$tentacgia' WHERE blog_id = '$id_capnhat'";

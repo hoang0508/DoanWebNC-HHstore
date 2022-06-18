@@ -56,6 +56,7 @@ $address = $_SESSION['address'];
 $phone = $_SESSION['phone'];
 $mahang = rand(0, 9999);
 if (isset($_POST['thanhtoandangnhap'])) {
+	print_r($_POST);
 	$mahang = $_POST['mahang'];
 	for ($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++) {
 		$sanpham_id = $_POST['thanhtoan_product_id'][$i];

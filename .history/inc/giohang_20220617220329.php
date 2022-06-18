@@ -103,9 +103,9 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			<?php
 			} else {
 			?>
-			
+
 				<div class="table-responsive">
-					<form id="thanhtoan" action="" method="POST">
+					<form id="thanhtoan" action="" method="post">
 						<table class="timetable_sub" style="width: 98%">
 							<thead>
 								<tr>
@@ -181,7 +181,6 @@ if (isset($_POST['thanhtoandangnhap'])) {
 											}
 											?>
 											<input type="hidden" name="mahang" value="<?= $mahang?>" />
-
 											<div class="button-cart--pay">
 												<button type="button" class="btn-cart btn-cart--price" value="Thanh toán giỏ hàng">Thanh toán giỏ hàng</button>
 												<div class="button-cart--loading">
@@ -352,8 +351,8 @@ if (isset($_GET['m'])) { ?>
 				},
 				success: function(reponse)
 				{
-					const inputHidden = $('<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />')
-					$('#thanhtoan').append(inputHidden);
+					const input = <input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />;
+					$('#thanhtoan').html(input);
 					$('#thanhtoan').submit()
 				}
 			});

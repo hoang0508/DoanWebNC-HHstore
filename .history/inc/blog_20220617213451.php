@@ -1,31 +1,25 @@
 <?php
-    include('./db/conect.php')
+
  ?>
 <!-- Blog -->
 <div class="blog-post">
     <div class="container">
             <h3 class="heading-tittle">Blog nổi bật</h3>
             <div class="post">
-            <?php 
-                $sql_blog = mysqli_query($con, "SELECT * FROM tbl_blog");
-                while($row_blog = mysqli_fetch_array($sql_blog)) {
-             ?>
                 <div class="blog-post_people">
                     <a href="">
                         <div class="post_image">
-                            <img src="../images/<?php echo $row_blog[''] ?>" alt="" class="img-bn">
+                            <img src="assets/img/anh84.jpg" alt="" class="img-bn">
                         </div>
-                        <h3 class="post_title"><?php echo $row_blog['content_name'] ?></h3>
+                        <h3 class="post_title">We Launched New Store in San Francisco!</h3>
                         <div class="post_author">
-                            <p class="author_name"><?php echo $row_blog['author'] ?></p>
-                            <span><?php echo $row_blog['ngaydang'] ?></span>
+                            <img src="https://images.unsplash.com/photo-1577307890875-3958f8761779?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTh8fGdpcmx8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" class="author_image">
+                            <p class="author_name">Paul Woodred</p>
+                            <span>Cartzilla news</span>
                         </div>
                     </a>
                 </div>
-                <?php
-                }
-                ?>
-         </div>
+            </div>
         </div>
     </div>
 

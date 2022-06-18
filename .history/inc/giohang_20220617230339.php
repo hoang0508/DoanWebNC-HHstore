@@ -103,7 +103,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			<?php
 			} else {
 			?>
-			
+
 				<div class="table-responsive">
 					<form id="thanhtoan" action="" method="POST">
 						<table class="timetable_sub" style="width: 98%">
@@ -352,8 +352,7 @@ if (isset($_GET['m'])) { ?>
 				},
 				success: function(reponse)
 				{
-					const inputHidden = $('<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />')
-					$('#thanhtoan').append(inputHidden);
+					$('#thanhtoan').html('<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />');
 					$('#thanhtoan').submit()
 				}
 			});

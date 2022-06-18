@@ -352,8 +352,7 @@ if (isset($_GET['m'])) { ?>
 				},
 				success: function(reponse)
 				{
-					const inputHidden = $('<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />')
-					$('#thanhtoan').append(inputHidden);
+					$('#thanhtoan').html('<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />');
 					$('#thanhtoan').submit()
 				}
 			});

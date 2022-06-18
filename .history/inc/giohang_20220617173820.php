@@ -103,9 +103,9 @@ if (isset($_POST['thanhtoandangnhap'])) {
 			<?php
 			} else {
 			?>
-			
+
 				<div class="table-responsive">
-					<form id="thanhtoan" action="" method="POST">
+					<form id="thanhtoan" action="" method="post">
 						<table class="timetable_sub" style="width: 98%">
 							<thead>
 								<tr>
@@ -180,8 +180,8 @@ if (isset($_POST['thanhtoandangnhap'])) {
 											<?php
 											}
 											?>
+											<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />
 											<input type="hidden" name="mahang" value="<?= $mahang?>" />
-
 											<div class="button-cart--pay">
 												<button type="button" class="btn-cart btn-cart--price" value="Thanh toán giỏ hàng">Thanh toán giỏ hàng</button>
 												<div class="button-cart--loading">
@@ -316,7 +316,7 @@ if (isset($_GET['m'])) { ?>
 	}
 </script>
 
-<script>
+<!-- <script>
 	const btnCartUpdate = document.querySelector(".btn-cart--update");
 	btnCartUpdate.addEventListener("click", (e) => {
 		Swal.fire({
@@ -327,7 +327,7 @@ if (isset($_GET['m'])) { ?>
 			timer: 50000000
 		})
 	})
-</script>
+</script> -->
 
 <!-- AJAX EMAIL -->
 <script type="text/javascript">
@@ -350,11 +350,11 @@ if (isset($_GET['m'])) { ?>
 					phone: "<?= $phone ?>",
 					mahang: "<?= $mahang ?>"
 				},
-				success: function(reponse)
+				success: function(response)
+
 				{
-					const inputHidden = $('<input type="hidden" name="thanhtoandangnhap" value="Thanh toán giỏ hàng" />')
-					$('#thanhtoan').append(inputHidden);
 					$('#thanhtoan').submit()
+
 				}
 			});
 		});

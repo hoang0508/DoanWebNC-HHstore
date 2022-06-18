@@ -590,19 +590,4 @@ setInterval(function () {
 }, 1000);
 	</script>
 
-
 <script>
-	function topDownScroll() {
-  const topDown = document.querySelector(".top-down");
-  if (this.scrollY >= 300) {
-    topDown.classList.add("scroll-show");
-    console.log("kkk");
-  } else {
-    topDown.classList.remove("scroll-show");
-  }
-}
-
-window.addEventListener("scroll", topDownScroll);
-</script>
-
-

@@ -39,26 +39,6 @@ table.timetable_sub {
   font-weight: 500;
 }
 
-.table-donhang {
-  border: none;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-.table-donhang td {
-  padding: 30px;
-}
-
-.table-bordered th,
-.table-bordered td {
-  border: none !important;
-}
-
-.table th,
-.table td {
-  vertical-align: baseline;
-}
-
 .rem1 {
   border-bottom: 1px solid #ccc;
 }

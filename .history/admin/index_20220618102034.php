@@ -71,8 +71,6 @@
     align-items: center;
     justify-content: center;
    background-image: url('./images/login.avif');
-   background-repeat: no-repeat;
-   background-size: cover;
   }
   form {
     max-width: 550px;
@@ -144,23 +142,18 @@
     text-align: center;
     font-size: 14px;
   }
-
-  .form-login--label {
-    display: block;
-    margin-bottom: 10px;
-  }
 </style>
 
 <body>
     <form action="" method="POST" class="login__create">
         <h3>Đăng nhập Admin</h3>
         <div class="form-login">
-            <label class="form-login--label" for="">Email</label>
+            <label for="">Email</label>
             <div class="form-group">
                 <i class="fa fa-envelope-o icon-form" aria-hidden="true"></i>
                 <input type="text" name="email" id="" class="form-email" placeholder="Email">
             </div>
-            <label  class="form-login--label"  for="">Password</label>
+            <label for="">Password</label>
             <div class="form-group">
                 <i class="fa fa-lock icon-form" aria-hidden="true"></i>
                 <input type="password" name="pass" id="" class="form-password" placeholder="Password">

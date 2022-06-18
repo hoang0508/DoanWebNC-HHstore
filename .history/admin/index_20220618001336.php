@@ -71,11 +71,9 @@
     align-items: center;
     justify-content: center;
    background-image: url('./images/login.avif');
-   background-repeat: no-repeat;
-   background-size: cover;
   }
   form {
-    max-width: 550px;
+    max-width: 500px;
     width: 100%;
     background-color: #fff;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -97,14 +95,15 @@
     padding-bottom: 15px;
     position: relative;
     text-align: center;
+    max-width: 300px;
     margin: 0 auto;
     display: flex;
     align-items: center;
   }
 
   .form-group input {
-    width: 100%;
-    padding: 15px 30px;
+    width: 300px;
+    padding: 10px 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
     position: relative;
@@ -128,7 +127,6 @@
   .form-group i.eye-pass {
     position: absolute;
     right: 10px;
-    cursor: pointer;
   }
 
   .form-group .login__button {
@@ -138,16 +136,10 @@
     border-radius: 10px;
     text-align: center;
     margin: 0 auto;
-    cursor: pointer;
   }
   .text-admin {
     text-align: center;
     font-size: 14px;
-  }
-
-  .form-login--label {
-    display: block;
-    margin-bottom: 10px;
   }
 </style>
 
@@ -155,12 +147,10 @@
     <form action="" method="POST" class="login__create">
         <h3>Đăng nhập Admin</h3>
         <div class="form-login">
-            <label class="form-login--label" for="">Email</label>
             <div class="form-group">
                 <i class="fa fa-envelope-o icon-form" aria-hidden="true"></i>
                 <input type="text" name="email" id="" class="form-email" placeholder="Email">
             </div>
-            <label  class="form-login--label"  for="">Password</label>
             <div class="form-group">
                 <i class="fa fa-lock icon-form" aria-hidden="true"></i>
                 <input type="password" name="pass" id="" class="form-password" placeholder="Password">

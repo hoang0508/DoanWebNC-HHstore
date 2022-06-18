@@ -71,8 +71,6 @@
     align-items: center;
     justify-content: center;
    background-image: url('./images/login.avif');
-   background-repeat: no-repeat;
-   background-size: cover;
   }
   form {
     max-width: 550px;
@@ -143,11 +141,6 @@
   .text-admin {
     text-align: center;
     font-size: 14px;
-  }
-
-  .form-login--label {
-    display: block;
-    margin-bottom: 10px;
   }
 </style>
 

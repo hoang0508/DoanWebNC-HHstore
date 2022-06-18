@@ -45,10 +45,6 @@ table.timetable_sub {
   border-bottom: 1px solid #eee;
 }
 
-.table-donhang td {
-  padding: 30px;
-}
-
 .table-bordered th,
 .table-bordered td {
   border: none !important;

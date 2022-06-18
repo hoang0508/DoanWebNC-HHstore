@@ -543,7 +543,7 @@ include ('./inc/footer.php');
 
 
 	<!-- js-files -->
-	<script  type="text/javascript" src="./js/apph-3.js"></script>
+	<script  type="text/javascript" src="./js/apph-2.js"></script>
 	<script  type="text/javascript" src="./js/count.js"></script>
   <!-- slider -->
   <script

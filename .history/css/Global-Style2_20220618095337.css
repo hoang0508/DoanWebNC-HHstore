@@ -41,12 +41,7 @@ table.timetable_sub {
 
 .table-donhang {
   border: none;
-  padding-bottom: 10px;
   border-bottom: 1px solid #eee;
-}
-
-.table-donhang td {
-  padding: 30px;
 }
 
 .table-bordered th,

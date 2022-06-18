@@ -163,7 +163,7 @@ if (isset($_POST['thanhtoandangnhap'])) {
 								</tr>
 								<tr>
 									<td colspan="7" class="text-right">
-										<div class="btn-flex">
+										<div>
 											<button type="submit" class="btn-cart btn-cart--update" value="Cập nhật giỏ hàng" name="capnhatsoluong">Cập nhật giỏ hàng</button>
 											<?php
 											$sql_giohang_select = mysqli_query($con, "SELECT * FROM tbl_giohang");

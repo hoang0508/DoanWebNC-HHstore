@@ -71,8 +71,6 @@
     align-items: center;
     justify-content: center;
    background-image: url('./images/login.avif');
-   background-repeat: no-repeat;
-   background-size: cover;
   }
   form {
     max-width: 550px;

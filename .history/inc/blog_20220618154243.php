@@ -2,10 +2,6 @@
     include('./db/conect.php')
  ?>
 <!-- Blog -->
-<div class="details-bg" style="background-image: url(./images/blog.jpg)">
-	<div class="overlay"></div>
-	<h3 class="details-text">Blog</h3>
-</div>
 <div class="blog-post">
     <div class="container">
         <h3 class="heading-tittle">Blog nổi bật</h3>

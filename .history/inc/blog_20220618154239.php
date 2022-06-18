@@ -2,10 +2,6 @@
     include('./db/conect.php')
  ?>
 <!-- Blog -->
-<div class="details-bg" style="background-image: url(./images/blog.jpg)">
-	<div class="overlay"></div>
-	<h3 class="details-text">Blog</h3>
-</div>
 <div class="blog-post">
     <div class="container">
         <h3 class="heading-tittle">Blog nổi bật</h3>
@@ -38,7 +34,7 @@
     <div class="container">
         <h3 class="heading-tittle">Blog mới nhất</h3>
         <?php 
-                $sql_blog = mysqli_query($con, "SELECT * FROM tbl_blog  WHERE blog_hot = '0'");
+                $sql_blog = mysqli_query($con, "SELECT * FROM tbl_blog  WHERE blog_hot = '1'");
                 while($row_blog = mysqli_fetch_array($sql_blog)) {
              ?>
         <div class="blog-review">

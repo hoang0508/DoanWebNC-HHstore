@@ -47,8 +47,7 @@ $sql_category = mysqli_query($con, 'SELECT * FROM tbl_category ORDER BY category
 					}
 					?>
                     <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
-                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
+                        <a class="nav-link" href="?quanly=about">
                             Giới thiệu
                         </a>
                     </li>

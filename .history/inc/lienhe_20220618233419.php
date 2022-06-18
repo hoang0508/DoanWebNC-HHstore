@@ -59,7 +59,7 @@ if (isset($_POST['submit-contact'])) {
         </div>
         <div class="contact__partner-list">
             <div class="partner-list_item">
-                <div class="item-images"><img src="images/9860-1632802194-gdvn-dhdl-3992.jpg" alt=""
+                <div class="item-images"><img src="../images/9860-1632802194-gdvn-dhdl-3992.webp" alt=""
                         class="partner-image"></div>
                 <div class="item-contact">
                     <h3 class="address-name">Cầu Giấy, Hà Nội</h3>
@@ -89,7 +89,7 @@ if (isset($_POST['submit-contact'])) {
                 </div>
             </div>
             <div class="partner-list_item">
-                <div class="item-images"><img src="images/th.jpg" alt="" class="partner-image"></div>
+                <div class="item-images"><img src="../images/th.jpg" alt="" class="partner-image"></div>
                 <div class="item-contact">
                     <h3 class="address-name">Yên Định, Thanh Hóa</h3>
                     <div class="partner__place">
@@ -118,7 +118,7 @@ if (isset($_POST['submit-contact'])) {
                 </div>
             </div>
             <div class="partner-list_item">
-                <div class="item-images"><img src="images/canh-ho-tay-ve-dem.jpg" alt="" class="partner-image"></div>
+                <div class="item-images"><img src="../images/canh-ho-tay-ve-dem.jpg" alt="" class="partner-image"></div>
                 <div class="item-contact">
                     <h3 class="address-name">Tây Hồ, Hà Nội</h3>
                     <div class="partner__place">

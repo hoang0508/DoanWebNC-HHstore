@@ -74,6 +74,10 @@
     <link rel="stylesheet" type="text/css" href="./css/blog.css">
     <link rel="stylesheet" type="text/css" href="./css/menu.css">
     <link rel="stylesheet" type="text/css" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/templatemo-sixteen.css">
+    <!-- <link rel="stylesheet" href="./css/owl.css">
+    <link rel="stylesheet" href="./css/flex-slider.css"> -->
+
     <link rel="stylesheet" type="text/css" href="./css/Global-Style2.css">
     <!-- jquery -->
     <script src="js/jquery-2.2.3.min.js"></script>
@@ -547,6 +551,9 @@ else if($tam =='recruitment'){
 else if($tam =='blog'){
 	include ('./inc/blog.php');
 }
+else if($tam =='about'){
+	include ('./inc/about.php');
+}
 else {
 	include ('./inc/home.php');
 }
@@ -680,48 +687,45 @@ include ('./inc/footer.php');
             controlNav: "thumbnails"
         });
     });
-    // 
     </script>
-    // <script src="./js/scroll.js"></script>
-    //
-    <!-- for bootstrap working -->
-    // <script src="js/bootstrap.js">
-    // < /script <
-    // !--Messenger Plugin chat Code-- >
-    // <
-    // div id = "fb-root" > < /div>
+    <script src="./js/scroll.js"></script>
+    <!-- for bootstrap working
+    <script src="js/bootstrap.js">
+    < /script <
+    !--Messenger Plugin chat Code-- >
+    <
+    div id = "fb-root" > < /div>
 
-    //     <
-    //     !--Your Plugin chat code-- >
-    //     <
-    //     div id = "fb-customer-chat"
-    // class = "fb-customerchat" >
-    //     <
-    //     /div>
+        <
+        !--Your Plugin chat code-- >
+        <
+        div id = "fb-customer-chat"
+    class = "fb-customerchat" >
+        <
+        /div>
 
-    //     <
-    //     script >
-    //     var chatbox = document.getElementById('fb-customer-chat');
-    // chatbox.setAttribute("page_id", "111981197792996");
-    // chatbox.setAttribute("attribution", "biz_inbox");
+        <
+        script >
+        var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "111981197792996");
+    chatbox.setAttribute("attribution", "biz_inbox");
 
-    // window.fbAsyncInit = function() {
-    //     FB.init({
-    //         xfbml: true,
-    //         version: 'v12.0'
-    //     });
-    // };
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml: true,
+            version: 'v12.0'
+        });
+    };
 
-    // (function(d, s, id) {
-    //     var js, fjs = d.getElementsByTagName(s)[0];
-    //     if (d.getElementById(id)) return;
-    //     js = d.createElement(s);
-    //     js.id = id;
-    //     js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-    //     fjs.parentNode.insertBefore(js, fjs);
-    // }(document, 'script', 'facebook-jssdk'));
-    // 
-    </script>
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script> -->
 </body>
 
 </html>

@@ -853,7 +853,8 @@ h3.heading-tittle::before {
 .button-cart--loading {
   position: absolute;
   top: 50%;
-  transform: translate(-100%, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease;

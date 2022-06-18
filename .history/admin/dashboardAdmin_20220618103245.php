@@ -275,8 +275,7 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                                                 }
                                     ?>
                                 ]
-                            
-                            },  
+                            },
 
                             legend: {
                                 layout: 'vertical',
@@ -293,9 +292,8 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                                 }
                             },
 
-                            series: [
-                                {
-                                name: 'Tổng thu nhập tháng',
+                            series: [{
+                                name: 'Tháng',
                                 data: [<?php
                                         $sql_X = mysqli_query($con, "SELECT MONTHNAME(tbl_donhang.ngaythang) ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthu' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by MONTH(tbl_donhang.ngaythang)");
                                         while ($X_array = mysqli_fetch_array($sql_X)) {
@@ -304,19 +302,8 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                                         }
                                     ?>
                                 ]
-                            },
-                            {
-                                name: "Tổng thu nhập ngày",
-                                data: [<?php
-                                        $sql_Y = mysqli_query($con, "SELECT DAYNAME(tbl_donhang.ngaythang) ,  SUM(tbl_sanpham.sanpham_giakhuyenmai*tbl_donhang.soluong) AS 'doanhthungay' FROM tbl_sanpham, tbl_donhang WHERE tbl_sanpham.sanpham_id = tbl_donhang.sanpham_id Group by DAYNAME(tbl_donhang.ngaythang)");
-                                        while ($X_array = mysqli_fetch_array($sql_Y)) {
-                                        ?> <?php echo $X_array['doanhthungay'] ?>,
-                                    <?php
-                                        }
-                                    ?>
-                                ]
-                            }
-                        ],
+
+                            }],
 
                             responsive: {
                                 rules: [{

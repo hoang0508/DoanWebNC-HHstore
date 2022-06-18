@@ -275,8 +275,7 @@ $sql_phanhoi = mysqli_query($con, "SELECT COUNT(email) FROM tbl_lienhe");
                                                 }
                                     ?>
                                 ]
-                            
-                            },  
+                            },
 
                             legend: {
                                 layout: 'vertical',

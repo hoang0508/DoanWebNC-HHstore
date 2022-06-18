@@ -17,7 +17,7 @@
             <div class="blog-post_people">
                 <a href="">
                     <div class="post_image">
-                        <img src="images/<?php echo $row_blog['Blog_img'] ?>" alt="" class="img-bn">
+                        <img src="../images/<?php echo $row_blog['Blog_img'] ?>" alt="" class="img-bn">
                     </div>
                     <h3 class="post_title"><?php echo $row_blog['content_name'] ?></h3>
                     <div class="post_author">
@@ -49,7 +49,7 @@
                 </div>
                 <h3 class="post_title"><?php echo $row_blog['content_name'] ?></h3>
                 <div class="post-images">
-                    <img src="images/<?php echo $row_blog['Blog_img'] ?>"
+                    <img src="https://images.unsplash.com/photo-1655317173493-71ebfdce3968?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
                         alt="">
                 </div>
             </div>

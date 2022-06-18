@@ -17,7 +17,7 @@
             <div class="blog-post_people">
                 <a href="">
                     <div class="post_image">
-                        <img src="images/<?php echo $row_blog['Blog_img'] ?>" alt="" class="img-bn">
+                        <img src="../images/<?php echo $row_blog['Blog_img'] ?>" alt="" class="img-bn">
                     </div>
                     <h3 class="post_title"><?php echo $row_blog['content_name'] ?></h3>
                     <div class="post_author">

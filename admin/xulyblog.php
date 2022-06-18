@@ -15,7 +15,6 @@ if (isset($_POST['themblog'])) {
     move_uploaded_file($hinhanh_tmp, $path . $hinhanh);
     print_r($sql_insert_product);
   } else if (isset($_POST['capnhatbaiviet'])) {
-    $id_update = $_POST['capnhat_id'];
     $tenbaiviet = $_POST['tenBlog'];
     $hinhanh = $_FILES['hinhanh']['name'];
     $hinhanh_tmp = $_FILES['hinhanh']['tmp_name'];
@@ -161,7 +160,7 @@ if (isset($_GET['xoa'])) {
                     </textarea>
 
                                     <br>
-                                    <input type="submit" name="capnhatbaiviet" value="Cập nhật Blog"
+                                    <input type="submit" name="capnhatbaiviet" value="Cập nhật bài viết"
                                         class="btn btn-success">
                                 </form>
                             </div>
@@ -221,7 +220,7 @@ if (isset($_GET['xoa'])) {
                                     <tr style="text-align:center">
                                         <th>STT</th>
                                         <th>Tên bài viết</th>
-                                        <th>Tên tác giả</th>
+                                        <th>ên tác giả</th>
                                         <th>Hình ảnh</th>
                                         <th>Nội dung</th>
                                         <th>Ngày đăng</th>

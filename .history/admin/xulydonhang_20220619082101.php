@@ -9,7 +9,6 @@ if (isset($_POST['capnhatdonhang'])) {
 
   $sql_update_donhang = mysqli_query($con, "UPDATE tbl_donhang SET trangthai = '$xuly' WHERE mahang = '$mahang'");
   $sql_update_giaodich = mysqli_query($con, "UPDATE tbl_giaodich SET tinhtrangdon = '$xuly' WHERE magiaodich = '$mahang'");
-  echo '<script>alert("Đơn hàng đã update!!")</script>';
 }
 ?>
 <?php
@@ -321,6 +320,49 @@ $sql_update_giaodich = mysqli_query($con, "UPDATE tbl_giaodich SET huydon = '$hu
       })
     }
   </script>
+
+
+<!-- // -->
+<?php
+  if (isset($_GET['m'])) { ?>
+    <div class="flash-data" data-flashdata="<?php echo $_GET['m']; ?>"></div>
+  <?php } ?>
+  <script>
+    const btnUpdate = document.querySelector(".btn-success");
+        btnUpdate.addEventListener("click", (e) => {
+          e.preventDefault();
+          const href = e.currentTarget.getAttribute("href");
+          Swal.fire({
+  title: 'Custom animation with Animate.css',
+  showClass: {
+    popup: 'animate__animated animate__fadeInDown'
+  },
+  hideClass: {
+    popup: 'animate__animated animate__fadeOutUp'
+  }
+}).then((result) => {
+          if (result.isConfirmed) {
+            document.location.href = href;
+            Swal.fire(
+              'Update!',
+              'Đơn hàng đã được cập nhật!!.',
+              'success'
+            )
+          }
+        })
+        })
+    const flashdata = $('.flash-data').data('flashdata')
+    if (flashdata) {
+      swal.fire({
+        type: 'success',
+        title: 'Đơn hàng đã được cập nhật',
+        text: 'Cập nhật đơn hàng thành công!!'
+      })
+    }
+  </script>
+
+
+
 </body>
 
 </html>

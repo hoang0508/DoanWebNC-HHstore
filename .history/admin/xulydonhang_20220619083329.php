@@ -9,7 +9,7 @@ if (isset($_POST['capnhatdonhang'])) {
 
   $sql_update_donhang = mysqli_query($con, "UPDATE tbl_donhang SET trangthai = '$xuly' WHERE mahang = '$mahang'");
   $sql_update_giaodich = mysqli_query($con, "UPDATE tbl_giaodich SET tinhtrangdon = '$xuly' WHERE magiaodich = '$mahang'");
-  echo '<script>alert("Đơn hàng đã update!!")</script>';
+  echo '<script>alert("Đơn hàng đã update!!")</script>'
 }
 ?>
 <?php

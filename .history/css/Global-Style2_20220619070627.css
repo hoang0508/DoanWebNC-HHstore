@@ -707,8 +707,7 @@ h3.heading-tittle1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  max-width: 900px;
+  align-items: 900px;
   margin: 0 auto;
   text-align: center;
   min-height: 100vh;
@@ -728,27 +727,22 @@ h3.heading-tittle1 {
 }
 
 .banner-content--sale {
-  background: #ff512f; /* fallback for old browsers */
+  background: #eb3349; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to bottom,
-    #dd2476,
-    #ff512f
+    #f45c43,
+    #eb3349
   ); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(
     to bottom,
-    #dd2476,
-    #ff512f
+    #f45c43,
+    #eb3349
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 45px;
   font-weight: bold;
-}
-
-.btn-buy--slider button.button-cart {
-  padding: 20px 58px !important;
-  height: 55px !important;
 }
 
 .carousel-item.item1::after {

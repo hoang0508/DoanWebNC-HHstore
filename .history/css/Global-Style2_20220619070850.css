@@ -746,11 +746,6 @@ h3.heading-tittle1 {
   font-weight: bold;
 }
 
-.btn-buy--slider button.button-cart {
-  padding: 20px 58px !important;
-  height: 55px !important;
-}
-
 .carousel-item.item1::after {
   content: "";
   width: 100%;

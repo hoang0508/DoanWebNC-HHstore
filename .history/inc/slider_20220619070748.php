@@ -17,7 +17,7 @@
                     Sale Siêu Sale!!! </br>Chương trình khuyến mãi mùa hè sôi động với những ưu đãi lên đến hàng
                     triệu dồng,mua ngay mua ngay!!!!</p>
 
-                <div class="btn-buy btn-buy--slider">
+                <div class="btn-buy">
                     <button class="button-cart">Mua ngay</button>
                 </div>
             </div>

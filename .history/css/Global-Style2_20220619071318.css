@@ -747,8 +747,8 @@ h3.heading-tittle1 {
 }
 
 .btn-buy--slider button.button-cart {
-  padding: 20px 58px !important;
-  height: 55px !important;
+  padding: 20px 58px;
+  height: 55px;
 }
 
 .carousel-item.item1::after {

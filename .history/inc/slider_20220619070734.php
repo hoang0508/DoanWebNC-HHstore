@@ -11,13 +11,13 @@
         <div class="carousel-item item1 active">
             <div class="overlay"></div>
             <div class="banner-content">
-                <h3 class="banner-content--text">Mua ngay giá rẻ, <span class="banner-content--sale">Ưu đãi lớn sale
+                <h3 class="banner-content--text">Mua ngay giá rẻ, <span class="banner-content--sale">Ưu đãi mùa hè sale
                         50%</span></h3>
                 <p class="banner-content--desc">Săn Sale Tháng 6, Mừng Ngày Lương Về ,Mua Sắm Thả Ga,Ngại gì Giá Cả,Siêu
                     Sale Siêu Sale!!! </br>Chương trình khuyến mãi mùa hè sôi động với những ưu đãi lên đến hàng
                     triệu dồng,mua ngay mua ngay!!!!</p>
 
-                <div class="btn-buy btn-buy--slider">
+                <div class="btn-buy">
                     <button class="button-cart">Mua ngay</button>
                 </div>
             </div>
